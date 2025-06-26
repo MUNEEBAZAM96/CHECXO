@@ -10,40 +10,42 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
+  <!-- Navbar -->
+  <nav class="navbar animate-fade-in">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <img src="images/logo.png" alt="CHECXO Logo" class="navbar-logo-img" />
+      </div>
+      <ul class="navbar-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#industries">Industries</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <button class="btn btn-primary">Get Started</button>
+        <a href="#contact" class="btn btn-outline">Lets Connect</a>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
   <main>
     <!-- Hero Section -->
-    <section class="hero animate-fade-in">
-      <div class="hero-bg-shapes">
-        <img src="images/shape1.png" alt="Shape" class="shape shape1" />
-        <img src="images/shape2.png" alt="Shape" class="shape shape2" />
-        <img src="images/shape3.png" alt="Shape" class="shape shape3" />
-      </div>
-      <div class="hero-content">
-        <h1>Let's Build <span class="highlight">your business</span></h1>
-        <p>We're here to understand your needs and deliver a solution aligned with your goals.<br>
-        Share your details, and our team will contact you to schedule a conversation.</p>
-      </div>
-      <div class="hero-form animate-slide-in-right">
-        <form class="contact-form" action="#" method="post" enctype="multipart/form-data">
-          <h3>Drop <span class="highlight">Your Project</span> Details</h3>
-          <input type="text" name="first_name" placeholder="First Name" required>
-          <input type="text" name="last_name" placeholder="Last Name" required>
-          <input type="tel" name="phone" placeholder="Phone" required>
-          <input type="text" name="company_name" placeholder="Company Name" required>
-          <input type="url" name="company_domain" placeholder="Company domain / url *" required>
-          <input type="text" name="budget" placeholder="Budget">
-          <input type="text" name="region" placeholder="Region *" required>
-          <textarea name="project_details" placeholder="Your Query / Project Details" rows="3" required></textarea>
-          <div class="form-file-row">
-            <input type="file" name="project_file" id="project_file">
-          </div>
-          <button type="submit" class="submit-btn">Submit</button>
-        </form>
+    <section class="hero hero-full-bg animate-fade-in" id="hero">
+      <img src="images/first_Image.png" alt="Hero Background" class="hero-bg-img" />
+      <div class="hero-overlay"></div>
+      <div class="hero-content hero-content-overlay">
+        <h1 class="hero-headline">
+          <span class="hero-line hero-line1">Creating <span class="highlight">What's Next</span></span>
+          <span class="hero-line hero-line2">We transform ideas into</span>
+          <span class="hero-line hero-line3"><span class="highlight">future-ready solutions</span></span>
+        </h1>
       </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services animate-fade-in-up">
+    <section class="services animate-fade-in-up" id="services">
       <h2>Transform Your Business</h2>
       <div class="services-grid">
         <div class="service-card animate-hover">
@@ -74,7 +76,7 @@
     </section>
 
     <!-- Industries Section -->
-    <section class="industries animate-fade-in-up">
+    <section class="industries animate-fade-in-up" id="industries">
       <h2>Driving Change Across <span class="highlight">Industries</span></h2>
       <div class="industries-grid industries-grid-fa">
         <label class="industry-card animate-hover">
@@ -135,6 +137,33 @@
         </label>
       </div>
     </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio animate-fade-in-up" id="portfolio">
+      <h2>Our <span class="highlight">Portfolio</span></h2>
+      <div id="portfolio-grid" class="portfolio-grid"></div>
+    </section>
+
+    <!-- Contact Form Section (at end) -->
+    <section class="contact-section animate-fade-in-up" id="contact">
+      <div class="contact-form-wrapper">
+        <form class="contact-form" action="#" method="post" enctype="multipart/form-data">
+          <h3>Drop <span class="highlight">Your Project</span> Details</h3>
+          <input type="text" name="first_name" placeholder="First Name" required>
+          <input type="text" name="last_name" placeholder="Last Name" required>
+          <input type="tel" name="phone" placeholder="Phone" required>
+          <input type="text" name="company_name" placeholder="Company Name" required>
+          <input type="url" name="company_domain" placeholder="Company domain / url *" required>
+          <input type="text" name="budget" placeholder="Budget">
+          <input type="text" name="region" placeholder="Region *" required>
+          <textarea name="project_details" placeholder="Your Query / Project Details" rows="3" required></textarea>
+          <div class="form-file-row">
+            <input type="file" name="project_file" id="project_file">
+          </div>
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
@@ -160,5 +189,6 @@
       </div>
     </div>
   </footer>
+  <script src="js/main.js" defer></script>
 </body>
 </html> 
