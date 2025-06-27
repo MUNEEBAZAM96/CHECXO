@@ -1605,4 +1605,399 @@ section {
   padding: 0.5rem 1.2rem;
   box-shadow: 0 2px 8px #14b8a633;
   animation: popInScale 0.7s 0.3s cubic-bezier(.4,0,.2,1) both;
+}
+
+/* --- Enhanced Figma-Inspired Industries Section (with advanced hover/active effects) --- */
+.industries-figma-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  margin-top: 2.5rem;
+}
+.industry-row {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+}
+.industry-card-figma {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 2.5px solid #009688;
+  border-radius: 22px;
+  padding: 1.3rem 2.8rem 1.3rem 1.5rem;
+  min-width: 520px;
+  max-width: 650px;
+  flex: 1 1 0;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.04);
+  transition: box-shadow 0.25s, border-color 0.25s, background 0.25s, transform 0.22s cubic-bezier(.4,0,.2,1);
+  cursor: pointer;
+  gap: 1.5rem;
+  animation: popInScale 0.7s cubic-bezier(.4,0,.2,1);
+  position: relative;
+  overflow: hidden;
+  will-change: transform, box-shadow, background;
+}
+.industry-card-figma:hover {
+  box-shadow: 0 8px 32px 0 rgba(0,150,136,0.18), 0 0 0 6px #00bfae22;
+  border-color: #00bfae;
+  background: linear-gradient(90deg, #f8fffd 60%, #e0f7fa 100%);
+  transform: scale(1.025) translateY(-2px);
+}
+.industry-card-figma:hover .industry-icon-figma {
+  animation: floatIcon 0.8s cubic-bezier(.4,0,.2,1) infinite alternate;
+  box-shadow: 0 4px 16px 0 #00bfae33;
+}
+.industry-card-figma:hover .industry-chevron-figma {
+  transform: rotate(180deg) scale(1.15);
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+.industry-card-figma.active, .industry-card-figma:active {
+  border-color: #00bfae;
+  box-shadow: 0 0 0 6px #00bfae44, 0 8px 32px 0 rgba(0,150,136,0.13);
+  z-index: 1;
+  animation: pulseActive 0.5s cubic-bezier(.4,0,.2,1);
+}
+.industry-icon-figma {
+  background: #009688;
+  color: #fff;
+  border-radius: 14px;
+  font-size: 2.3rem;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1.3rem;
+  box-shadow: 0 2px 8px 0 rgba(0,150,136,0.10);
+  transition: box-shadow 0.25s, transform 0.22s cubic-bezier(.4,0,.2,1);
+}
+.industry-label-figma {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #009688;
+  flex: 1;
+  letter-spacing: 0.01em;
+  transition: color 0.22s cubic-bezier(.4,0,.2,1);
+}
+.industry-card-figma:hover .industry-label-figma {
+  color: #00796b;
+}
+.industry-chevron-figma {
+  color: #009688;
+  font-size: 1.5rem;
+  margin-left: 1.5rem;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+/* Pop-in animation */
+@keyframes popInScale {
+  0% { opacity: 0; transform: scale(0.85) translateY(40px); }
+  60% { opacity: 1; transform: scale(1.05) translateY(-8px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+/* Floating icon animation */
+@keyframes floatIcon {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px) scale(1.08); }
+}
+/* Pulse effect for active card */
+@keyframes pulseActive {
+  0% { box-shadow: 0 0 0 0 #00bfae44, 0 8px 32px 0 rgba(0,150,136,0.13); }
+  60% { box-shadow: 0 0 0 12px #00bfae22, 0 8px 32px 0 rgba(0,150,136,0.13); }
+  100% { box-shadow: 0 0 0 6px #00bfae44, 0 8px 32px 0 rgba(0,150,136,0.13); }
+}
+/* Ripple effect on click */
+.industry-card-figma .ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  background: rgba(0, 150, 136, 0.18);
+  pointer-events: none;
+  z-index: 2;
+}
+@keyframes ripple {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+@media (max-width: 1200px) {
+  .industry-card-figma {
+    min-width: 340px;
+    max-width: 100%;
+    padding: 1.1rem 1.2rem 1.1rem 1.1rem;
+  }
+  .industry-label-figma {
+    font-size: 1.15rem;
+  }
+  .industry-icon-figma {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    margin-right: 0.7rem;
+  }
+}
+@media (max-width: 900px) {
+  .industry-row {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .industries-figma-grid {
+    gap: 1.2rem;
+  }
+  .industry-card-figma {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* --- Industry Info Popups --- */
+.industry-info-popups {
+  margin: 2.5rem auto 0 auto;
+  max-width: 1400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+}
+.industry-info-card {
+  display: none;
+  flex-direction: column;
+  background: linear-gradient(135deg, #f8fffd 60%, #e0f7fa 100%);
+  border: 2.5px solid #e0e0e0;
+  border-radius: 26px;
+  box-shadow: 0 8px 40px 0 rgba(0,150,136,0.13), 0 2px 16px 0 rgba(0,0,0,0.07);
+  padding: 2.5rem 2.5rem 2.1rem 2.5rem;
+  max-width: 650px;
+  min-width: 340px;
+  position: relative;
+  animation: fadeSlideScaleIn 0.7s cubic-bezier(.4,0,.2,1);
+  overflow: hidden;
+}
+.industry-info-card.active {
+  display: flex;
+  border-color: #00bfae;
+  box-shadow: 0 0 0 8px #00bfae22, 0 8px 40px 0 rgba(0,150,136,0.18);
+  animation: fadeSlideScaleIn 0.7s cubic-bezier(.4,0,.2,1);
+}
+.industry-info-card.active::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 26px;
+  pointer-events: none;
+  background: linear-gradient(120deg, #00bfae33 0%, #fff0 60%, #00bfae22 100%);
+  opacity: 0.7;
+  animation: borderSweep 2.2s linear infinite;
+  z-index: 0;
+}
+@keyframes borderSweep {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+.industry-info-header {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, #009688 60%, #00bfae 100%);
+  color: #fff;
+  border-radius: 18px 18px 0 0;
+  padding: 1.1rem 1.5rem 1.1rem 1.2rem;
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 1.3rem;
+  gap: 1.1rem;
+  position: relative;
+  box-shadow: 0 2px 12px 0 #00bfae22;
+}
+.industry-info-icon {
+  font-size: 2.3rem;
+  margin-right: 0.8rem;
+  display: flex;
+  align-items: center;
+  animation: floatIcon 1.2s cubic-bezier(.4,0,.2,1) infinite alternate;
+  filter: drop-shadow(0 2px 8px #00bfae66);
+}
+.industry-info-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  z-index: 1;
+}
+.industry-info-desc {
+  color: #333;
+  font-size: 1.13rem;
+  margin-bottom: 1.7rem;
+  line-height: 1.75;
+  z-index: 1;
+}
+.industry-info-btn {
+  align-self: flex-start;
+  background: linear-gradient(90deg, #009688 60%, #00bfae 100%);
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.8rem 1.7rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px 0 #00bfae22;
+  transition: background 0.2s, box-shadow 0.2s;
+  z-index: 1;
+}
+.industry-info-btn:hover {
+  background: linear-gradient(90deg, #00bfae 60%, #009688 100%);
+  box-shadow: 0 4px 16px 0 #00bfae33;
+}
+/* Close button */
+.industry-info-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 1.5rem;
+  color: #00bfae;
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 #00bfae22;
+  z-index: 2;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+.industry-info-close:hover {
+  background: #00bfae;
+  color: #fff;
+  box-shadow: 0 4px 16px 0 #00bfae33;
+}
+@keyframes fadeSlideScaleIn {
+  0% { opacity: 0; transform: scale(0.92) translateY(60px); }
+  60% { opacity: 1; transform: scale(1.04) translateY(-8px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* --- Active Industry Card (filled style) --- */
+.industry-card-figma.active {
+  background: #009688;
+  border-color: #009688;
+  color: #fff;
+  box-shadow: 0 0 0 6px #00bfae44, 0 8px 32px 0 rgba(0,150,136,0.13);
+}
+.industry-card-figma.active .industry-label-figma,
+.industry-card-figma.active .industry-icon-figma,
+.industry-card-figma.active .industry-chevron-figma {
+  color: #fff;
+}
+.industry-card-figma.active .industry-icon-figma {
+  background: #fff;
+  color: #009688;
+  box-shadow: 0 4px 16px 0 #00bfae33;
+}
+.industry-card-figma.active .industry-chevron-figma {
+  color: #fff;
+}
+.industry-card-figma.active .industry-chevron-figma i {
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  content: '\f054'; /* fa-chevron-right */
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+.industry-card-figma.active .industry-chevron-figma i:before {
+  content: '\f054';
+}
+
+/* --- Animated Gradient Background for Hero --- */
+.animated-gradient-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(120deg, #0ea5e9, #14b8a6, #7f5af0, #00e3ae, #0ea5e9);
+  background-size: 400% 400%;
+  animation: gradientBGmove 16s ease-in-out infinite;
+  opacity: 0.92;
+}
+@keyframes gradientBGmove {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
 } 
+
+/* --- Hero Text Overlay for Readability --- */
+.hero-text-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 3;
+  background: linear-gradient(120deg, rgba(10,20,40,0.38) 60%, rgba(20,40,60,0.22) 100%);
+  pointer-events: none;
+}
+
+/* --- Hero Headline & Animation (Larger & More Animated) --- */
+.hero-headline {
+  color: #fff;
+  text-shadow: 0 4px 32px #0ea5e9cc, 0 2px 8px #000a, 0 1px 0 #222;
+  font-size: 4.2rem;
+  font-weight: 900;
+  line-height: 1.08;
+  z-index: 4;
+  position: relative;
+  animation: heroTextFadeIn 1.2s cubic-bezier(.4,0,.2,1) both;
+}
+.hero-line {
+  display: block;
+  font-size: 3.1rem;
+  font-weight: 900;
+  margin-bottom: 0.25em;
+  color: #fff;
+  text-shadow: 0 2px 16px #0ea5e999, 0 1px 0 #222;
+}
+.hero-line1 .typewriter-gradient {
+  background: linear-gradient(90deg, #0ea5e9 10%, #14b8a6 40%, #7f5af0 80%, #00e3ae 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: gradientText 2.5s ease-in-out infinite alternate, bounceInScale 1.2s 0.2s cubic-bezier(.4,0,.2,1) both;
+  font-weight: 900;
+  text-shadow: 0 2px 16px #0ea5e999, 0 1px 0 #222;
+  display: inline-block;
+}
+@keyframes gradientText {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+@keyframes bounceInScale {
+  0% { opacity: 0; transform: scale(0.7); }
+  60% { opacity: 1; transform: scale(1.15); }
+  80% { transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.hero-line2, .hero-line3 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 16px #0ea5e999, 0 1px 0 #222;
+}
+
+/* --- Animation for Headline/Subheadline --- */
+.animate-hero-headline {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUpHero 1.1s 0.2s cubic-bezier(.4,0,.2,1) forwards;
+}
+.animate-hero-sub {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUpHero 1.1s 0.5s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes fadeInUpHero {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: none; }
+}

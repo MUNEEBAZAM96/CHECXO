@@ -3,38 +3,355 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blockchain Projects | CHECXO</title>
+  <title>Blockchain Solutions | CHECXO</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/genai.css">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papm6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Swiper.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
 <body>
-  <section class="service-hero">
-    <h1>Blockchain Projects</h1>
-    <p>Explore our blockchain innovations for secure, decentralized solutions.</p>
-  </section>
-  <section class="service-projects">
-    <div class="service-projects-grid">
-      <div class="service-project-card">
-        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Blockchain Project 1" />
-        <div class="service-project-info">
-          <h3>Crypto Wallet</h3>
-          <p>Multi-currency wallet with advanced security and analytics.</p>
+  <!-- Navbar -->
+  <nav class="navbar animate-fade-in">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <img src="logo.png" alt="CHECXO Logo" class="navbar-logo-img" />
+      </div>
+      <ul class="navbar-links">
+        <li><a href="index.html#hero">Home</a></li>
+        <li><a href="index.html#industries">Industries</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#portfolio">Portfolio</a></li>
+        <li><a href="index.html#leadership">Leadership</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <button class="btn btn-primary">Get Started</button>
+        <a href="index.html#contact" class="btn btn-outline">Lets Connect</a>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero hero-genai animate-fade-in" id="hero">
+      <img src="Blockchain.jpeg" alt="Blockchain Solutions" class="hero-bg-img hero-genai-img" />
+      <div class="hero-overlay"></div>
+      <div class="hero-overlay-card animate-fade-in-up">
+        <div class="hero-overlay-content">
+          <span class="hero-overlay-category">BLOCKCHAIN SOLUTIONS</span>
+          <h1 class="hero-overlay-title"><span id="blockchain-typed"></span></h1>
+          <a href="#contact" class="btn btn-primary hero-overlay-btn">Start Your Blockchain Journey</a>
+          <p class="hero-overlay-sub">Secure, Decentralized, and Scalable Blockchain Innovations</p>
         </div>
       </div>
-      <div class="service-project-card">
-        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Blockchain Project 2" />
-        <div class="service-project-info">
-          <h3>Smart Contract Platform</h3>
-          <p>Automated, transparent smart contract solutions for business.</p>
+    </section>
+    <div class="center-btn-row">
+      <a href="#solutions" class="btn btn-primary unlock-btn">Explore Blockchain Services</a>
+    </div>
+    <!-- Solutions Section -->
+    <section class="solutions-section animate-fade-in-up" id="solutions">
+      <h2 class="solutions-title">Cutting-Edge Blockchain Services</h2>
+      <div class="solutions-grid">
+        <div class="solution-card animate-hover">
+          <img src="Blockchain_2.jpg" alt="Custom Blockchain Development" class="solution-img-full" />
+          <div class="solution-overlay"></div>
+          <div class="solution-card-content">
+            <div class="solution-title">Custom Blockchain Development</div>
+            <p class="solution-desc">End-to-end blockchain solutions tailored for your business, from private chains to public networks.</p>
+            <a href="#contact" class="btn btn-outline solution-btn">Connect with us</a>
+          </div>
+        </div>
+        <div class="solution-card animate-hover">
+          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Smart Contract Development" class="solution-img-full" />
+          <div class="solution-overlay"></div>
+          <div class="solution-card-content">
+            <div class="solution-title">Smart Contract Development</div>
+            <p class="solution-desc">Automate business logic with secure, transparent, and auditable smart contracts for Ethereum, Solana, and more.</p>
+            <a href="#contact" class="btn btn-outline solution-btn">Connect with us</a>
+          </div>
+        </div>
+        <div class="solution-card animate-hover">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Decentralized Application (dApp) Development" class="solution-img-full" />
+          <div class="solution-overlay"></div>
+          <div class="solution-card-content">
+            <div class="solution-title">Decentralized Application (dApp) Development</div>
+            <p class="solution-desc">Build scalable, user-friendly dApps for DeFi, NFT, gaming, and enterprise use cases.</p>
+            <a href="#contact" class="btn btn-outline solution-btn">Connect with us</a>
+          </div>
+        </div>
+        <div class="solution-card animate-hover">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Crypto Wallet Development" class="solution-img-full" />
+          <div class="solution-overlay"></div>
+          <div class="solution-card-content">
+            <div class="solution-title">Crypto Wallet Development</div>
+            <p class="solution-desc">Multi-currency wallets with advanced security, analytics, and seamless user experience.</p>
+            <a href="#contact" class="btn btn-outline solution-btn">Connect with us</a>
+          </div>
+        </div>
+        <div class="solution-card animate-hover">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Tokenization & NFT Solutions" class="solution-img-full" />
+          <div class="solution-overlay"></div>
+          <div class="solution-card-content">
+            <div class="solution-title">Tokenization & NFT Solutions</div>
+            <p class="solution-desc">Create, manage, and trade digital assets and NFTs with secure, scalable blockchain infrastructure.</p>
+            <a href="#contact" class="btn btn-outline solution-btn">Connect with us</a>
+          </div>
+        </div>
+        <div class="solution-card animate-hover">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Decentralized Exchange (DEX) Development" class="solution-img-full" />
+          <div class="solution-overlay"></div>
+          <div class="solution-card-content">
+            <div class="solution-title">Decentralized Exchange (DEX) Development</div>
+            <p class="solution-desc">Build secure, scalable DEX platforms for global crypto trading and liquidity solutions.</p>
+            <a href="#contact" class="btn btn-outline solution-btn">Connect with us</a>
+          </div>
+        </div>
+        <div class="solution-card animate-hover">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Blockchain Consulting & Strategy" class="solution-img-full" />
+          <div class="solution-overlay"></div>
+          <div class="solution-card-content">
+            <div class="solution-title">Blockchain Consulting & Strategy</div>
+            <p class="solution-desc">Expert guidance on blockchain adoption, architecture, and integration for your business goals.</p>
+            <a href="#contact" class="btn btn-outline solution-btn">Connect with us</a>
+          </div>
+        </div>
+        <div class="solution-card animate-hover">
+          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Private & Consortium Blockchain" class="solution-img-full" />
+          <div class="solution-overlay"></div>
+          <div class="solution-card-content">
+            <div class="solution-title">Private & Consortium Blockchain</div>
+            <p class="solution-desc">Deploy permissioned blockchains for enterprise, supply chain, and regulated industries.</p>
+            <a href="#contact" class="btn btn-outline solution-btn">Connect with us</a>
+          </div>
         </div>
       </div>
-      <div class="service-project-card">
-        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Blockchain Project 3" />
-        <div class="service-project-info">
-          <h3>Decentralized Exchange</h3>
-          <p>Secure, scalable DEX for global crypto trading.</p>
+    </section>
+    <div class="center-btn-row">
+      <a href="#contact" class="btn btn-primary unlock-btn">Talk with blockchain experts</a>
+    </div>
+    <!-- Showcase Projects Section -->
+    <section class="projects-section" id="projects">
+      <h2 class="projects-title">Showcase Projects</h2>
+      <div class="swiper projects-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <a class="project-card" href="#" target="_blank">
+              <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Blockchain Project 1" class="project-img" />
+              <div class="project-img-overlay"></div>
+              <div class="project-info">
+                <div class="project-title">Crypto Wallet</div>
+                <div class="project-desc">Multi-currency wallet with advanced security and analytics.</div>
+              </div>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a class="project-card" href="#" target="_blank">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Blockchain Project 2" class="project-img" />
+              <div class="project-img-overlay"></div>
+              <div class="project-info">
+                <div class="project-title">Smart Contract Platform</div>
+                <div class="project-desc">Automated, transparent smart contract solutions for business.</div>
+              </div>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a class="project-card" href="#" target="_blank">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Blockchain Project 3" class="project-img" />
+              <div class="project-img-overlay"></div>
+              <div class="project-info">
+                <div class="project-title">Decentralized Exchange</div>
+                <div class="project-desc">Secure, scalable DEX for global crypto trading.</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+    <!-- Methodology Section -->
+    <section class="methodology-section" id="methodology">
+      <h2 class="methodology-title">Our Methodology</h2>
+      <div class="swiper methodology-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="methodology-image-block">
+              <img src="https://res.cloudinary.com/dibgebv9u/image/upload/v1751021464/Ai_process1_y1vu0b.png" alt="Advanced Model Deployment Process" class="methodology-img" />
+              <div class="methodology-caption">Agile Blockchain Development Process</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="methodology-image-block">
+              <img src="https://res.cloudinary.com/dibgebv9u/image/upload/v1751021462/Ai_process2_bgq5cg.png" alt="Checxo Blockchain: Catalyze Enterprise Operation on the Go" class="methodology-img" />
+              <div class="methodology-caption">Checxo Blockchain: Catalyze Enterprise Operation on the Go</div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+    <!-- Motivation & Project Inquiry Section -->
+    <section class="motivation-form-section" id="contact">
+      <div class="motivation-form-container">
+        <div class="motivation-left">
+          <h2 class="motivation-title">Let's Build <span class="motivation-gradient">your business</span></h2>
+          <div class="motivation-subtext">
+            We're here to understand your needs and deliver a solution aligned with your goals.<br><br>
+            Share your details, and our team will contact you to schedule a conversation.
+          </div>
+        </div>
+        <form class="project-form" action="#" method="post" enctype="multipart/form-data">
+          <div class="form-title">Drop <span class="motivation-gradient">Your Project</span> Details</div>
+          <input type="text" name="firstName" placeholder="First Name" required />
+          <input type="text" name="lastName" placeholder="Last Name" required />
+          <div class="phone-field">
+            <select name="countryCode" class="country-code-select" required>
+              <option value="+1" selected>🇺🇸 +1</option>
+              <option value="+44">🇬🇧 +44</option>
+              <option value="+91">🇮🇳 +91</option>
+              <option value="+61">🇦🇺 +61</option>
+              <option value="+971">🇦🇪 +971</option>
+              <option value="+81">🇯🇵 +81</option>
+              <option value="+49">🇩🇪 +49</option>
+              <option value="+33">🇫🇷 +33</option>
+              <option value="+86">🇨🇳 +86</option>
+              <option value="+92">🇵🇰 +92</option>
+            </select>
+            <input type="tel" name="phone" placeholder="123456789" required pattern="[0-9\-\s+()]{7,}" />
+          </div>
+          <input type="text" name="companyName" placeholder="Company Name *" required />
+          <input type="url" name="companyDomain" placeholder="Company domain / url *" required />
+          <input type="text" name="budget" placeholder="Budget" />
+          <input type="text" name="region" placeholder="Region *" required />
+          <textarea name="projectDetails" placeholder="Your Query / Project Details" rows="3"></textarea>
+          <div class="form-file-row">
+            <input type="file" name="projectFile" />
+          </div>
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+      </div>
+    </section>
+    <!-- Success Modal -->
+    <div id="form-success-modal" class="form-success-modal" style="display:none;">
+      <div class="form-success-content">
+        <div class="form-success-icon">✔️</div>
+        <h3>Thank you!</h3>
+        <p>Your project details have been received.<br>Our team will contact you soon.</p>
+        <button class="form-success-close">Close</button>
+      </div>
+    </div>
+  </main>
+  <footer class="footer animate-fade-in">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="https://res.cloudinary.com/dibgebv9u/image/upload/v1751025976/samples/logo.png" alt="CHECXO Logo" class="footer-logo-img-footer" />
+      </div>
+      <div class="footer-services">
+        <div class="footer-heading-gradient">Services</div>
+        <ul class="footer-list footer-list-services">
+          <li>Web Development</li>
+          <li>App Development</li>
+          <li>UX/UI Design</li>
+          <li>Generative AI</li>
+          <li>Blockchain</li>
+          <li>Cyber Security</li>
+          <li>Software Solutions</li>
+          <li>Ecommerce</li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <div class="footer-heading-gradient">Let's <span>Connect</span></div>
+        <div class="footer-contact-info">
+          <a href="tel:+447745813953" class="footer-contact-link">+44 7745 813953</a><br>
+          <a href="mailto:infochecxo@gmail.com" class="footer-contact-link">infochecxo@gmail.com</a>
+        </div>
+        <div class="footer-divider"></div>
+        <ul class="footer-list footer-list-countries">
+          <li>United Kingdom</li>
+          <li>Pakistan</li>
+          <li>Australia</li>
+        </ul>
+        <div class="footer-socials footer-socials-right">
+          <a href="#" aria-label="X (Twitter)" class="footer-social-link" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn" class="footer-social-link" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#" aria-label="Instagram" class="footer-social-link" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
         </div>
       </div>
     </div>
-  </section>
+  </footer>
+  <script>
+    // Typing animation for hero overlay title
+    document.addEventListener('DOMContentLoaded', function() {
+      const text = 'Secure, Decentralized, and Scalable Blockchain Innovations';
+      const el = document.getElementById('blockchain-typed');
+      let i = 0;
+      function typeChar() {
+        if (i <= text.length) {
+          el.textContent = text.slice(0, i);
+          i++;
+          setTimeout(typeChar, 32);
+        }
+      }
+      if (el) typeChar();
+    });
+  </script>
+  <!-- Swiper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+    // Swiper 3D Coverflow for Projects
+    document.addEventListener('DOMContentLoaded', function() {
+      new Swiper('.projects-swiper', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        loop: true,
+        coverflowEffect: {
+          rotate: 30,
+          stretch: 0,
+          depth: 200,
+          modifier: 1,
+          slideShadows: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        breakpoints: {
+          900: { slidesPerView: 2 },
+          1200: { slidesPerView: 3 },
+        }
+      });
+    });
+  </script>
+  <script>
+    // Swiper for Methodology Section
+    document.addEventListener('DOMContentLoaded', function() {
+      new Swiper('.methodology-swiper', {
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        slidesPerView: 1,
+        loop: true,
+        navigation: {
+          nextEl: '.methodology-section .swiper-button-next',
+          prevEl: '.methodology-section .swiper-button-prev',
+        },
+        pagination: {
+          el: '.methodology-section .swiper-pagination',
+          clickable: true,
+        },
+        speed: 700,
+      });
+    });
+  </script>
 </body>
 </html> 

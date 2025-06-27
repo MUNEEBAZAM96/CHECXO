@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CHECXO Web Crafters | Agency Portfolio</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/genai.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -33,13 +34,23 @@
   <main>
     <!-- Hero Section -->
     <section class="hero hero-full-bg animate-fade-in" id="hero">
-      <img src="first_Image.png" alt="Hero Background" class="hero-bg-img" />
+      <div class="animated-gradient-bg"></div>
+      <canvas id="three-bg" style="position:absolute;top:0;left:0;width:100vw;height:100vh;z-index:1;pointer-events:none;"></canvas>
+      <lottie-player
+        src="https://assets2.lottiefiles.com/packages/lf20_tno6cg2w.json"
+        background="transparent"
+        speed="1"
+        style="position:absolute;top:0;left:0;width:100vw;height:100vh;z-index:2;pointer-events:none;"
+        loop
+        autoplay
+      ></lottie-player>
       <div class="hero-overlay"></div>
+      <div class="hero-text-overlay"></div>
       <div class="hero-content hero-content-overlay">
-        <h1 class="hero-headline">
-          <span class="hero-line hero-line1">Creating <span class="highlight">What's Next</span></span>
-          <span class="hero-line hero-line2">We transform ideas into</span>
-          <span class="hero-line hero-line3"><span class="highlight">future-ready solutions</span></span>
+        <h1 class="hero-headline animate-hero-headline">
+          <span class="hero-line hero-line1">Creating <span class="highlight typewriter-gradient" id="typewriter"></span></span>
+          <span class="hero-line hero-line2 animate-hero-sub">We transform ideas into</span>
+          <span class="hero-line hero-line3 animate-hero-sub">future-ready solutions</span>
         </h1>
       </div>
     </section>
@@ -78,63 +89,105 @@
     <!-- Industries Section -->
     <section class="industries animate-fade-in-up" id="industries">
       <h2>Driving Change Across <span class="highlight">Industries</span></h2>
-      <div class="industries-grid industries-grid-fa">
-        <label class="industry-card animate-hover">
-          <input type="radio" name="industry" value="Travel & Hospitality" class="industry-radio" hidden checked>
-          <span class="industry-icon"><i class="fas fa-suitcase-rolling"></i></span>
-          <span class="industry-label">Travel & Hospitality</span>
-          <span class="industry-chevron chevron-right"><i class="fas fa-chevron-right"></i></span>
-          <span class="industry-chevron chevron-down"><i class="fas fa-chevron-down"></i></span>
-        </label>
-        <label class="industry-card animate-hover">
-          <input type="radio" name="industry" value="E-commerce" class="industry-radio" hidden>
-          <span class="industry-icon"><i class="fas fa-cart-shopping"></i></span>
-          <span class="industry-label">E-commerce</span>
-          <span class="industry-chevron chevron-right"><i class="fas fa-chevron-right"></i></span>
-          <span class="industry-chevron chevron-down"><i class="fas fa-chevron-down"></i></span>
-        </label>
-        <label class="industry-card animate-hover">
-          <input type="radio" name="industry" value="Software Solutions" class="industry-radio" hidden>
-          <span class="industry-icon"><i class="fas fa-laptop-code"></i></span>
-          <span class="industry-label">Software Solutions</span>
-          <span class="industry-chevron chevron-right"><i class="fas fa-chevron-right"></i></span>
-          <span class="industry-chevron chevron-down"><i class="fas fa-chevron-down"></i></span>
-        </label>
-        <label class="industry-card animate-hover">
-          <input type="radio" name="industry" value="Gaming" class="industry-radio" hidden>
-          <span class="industry-icon"><i class="fas fa-gamepad"></i></span>
-          <span class="industry-label">Gaming</span>
-          <span class="industry-chevron chevron-right"><i class="fas fa-chevron-right"></i></span>
-          <span class="industry-chevron chevron-down"><i class="fas fa-chevron-down"></i></span>
-        </label>
-        <label class="industry-card animate-hover">
-          <input type="radio" name="industry" value="Health" class="industry-radio" hidden>
-          <span class="industry-icon"><i class="fas fa-notes-medical"></i></span>
-          <span class="industry-label">Health</span>
-          <span class="industry-chevron chevron-right"><i class="fas fa-chevron-right"></i></span>
-          <span class="industry-chevron chevron-down"><i class="fas fa-chevron-down"></i></span>
-        </label>
-        <label class="industry-card animate-hover">
-          <input type="radio" name="industry" value="Startups" class="industry-radio" hidden>
-          <span class="industry-icon"><i class="fas fa-rocket"></i></span>
-          <span class="industry-label">Startups</span>
-          <span class="industry-chevron chevron-right"><i class="fas fa-chevron-right"></i></span>
-          <span class="industry-chevron chevron-down"><i class="fas fa-chevron-down"></i></span>
-        </label>
-        <label class="industry-card animate-hover">
-          <input type="radio" name="industry" value="Web-3 Blockchain" class="industry-radio" hidden>
-          <span class="industry-icon"><i class="fas fa-network-wired"></i></span>
-          <span class="industry-label">Web-3 Blockchain</span>
-          <span class="industry-chevron chevron-right"><i class="fas fa-chevron-right"></i></span>
-          <span class="industry-chevron chevron-down"><i class="fas fa-chevron-down"></i></span>
-        </label>
-        <label class="industry-card animate-hover">
-          <input type="radio" name="industry" value="Retail & CPG" class="industry-radio" hidden>
-          <span class="industry-icon"><i class="fas fa-store"></i></span>
-          <span class="industry-label">Retail & CPG</span>
-          <span class="industry-chevron chevron-right"><i class="fas fa-chevron-right"></i></span>
-          <span class="industry-chevron chevron-down"><i class="fas fa-chevron-down"></i></span>
-        </label>
+      <div class="industries-figma-grid">
+        <div class="industry-row">
+          <div class="industry-card-figma" data-industry="travel">
+            <span class="industry-icon-figma"><i class="fas fa-plane-departure"></i></span>
+            <span class="industry-label-figma">Travel & Hospitality</span>
+            <span class="industry-chevron-figma"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="industry-card-figma" data-industry="ecommerce">
+            <span class="industry-icon-figma"><i class="fas fa-cart-shopping"></i></span>
+            <span class="industry-label-figma">E-commerce</span>
+            <span class="industry-chevron-figma"><i class="fas fa-chevron-down"></i></span>
+          </div>
+        </div>
+        <div class="industry-row">
+          <div class="industry-card-figma" data-industry="software">
+            <span class="industry-icon-figma"><i class="fas fa-desktop"></i></span>
+            <span class="industry-label-figma">Software Solution</span>
+            <span class="industry-chevron-figma"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="industry-card-figma" data-industry="gaming">
+            <span class="industry-icon-figma"><i class="fas fa-gamepad"></i></span>
+            <span class="industry-label-figma">Gaming</span>
+            <span class="industry-chevron-figma"><i class="fas fa-chevron-down"></i></span>
+          </div>
+        </div>
+        <div class="industry-row">
+          <div class="industry-card-figma" data-industry="health">
+            <span class="industry-icon-figma"><i class="fas fa-shield-heart"></i></span>
+            <span class="industry-label-figma">Health</span>
+            <span class="industry-chevron-figma"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="industry-card-figma" data-industry="startups">
+            <span class="industry-icon-figma"><i class="fas fa-rocket"></i></span>
+            <span class="industry-label-figma">Startups</span>
+            <span class="industry-chevron-figma"><i class="fas fa-chevron-down"></i></span>
+          </div>
+        </div>
+        <div class="industry-row">
+          <div class="industry-card-figma" data-industry="blockchain">
+            <span class="industry-icon-figma"><i class="fas fa-cubes"></i></span>
+            <span class="industry-label-figma">web-3 Blockchain</span>
+            <span class="industry-chevron-figma"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="industry-card-figma" data-industry="retail">
+            <span class="industry-icon-figma"><i class="fas fa-store"></i></span>
+            <span class="industry-label-figma">Retail & CPG</span>
+            <span class="industry-chevron-figma"><i class="fas fa-chevron-down"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="industry-info-popups">
+        <div class="industry-info-card" data-industry="travel">
+          <button class="industry-info-close" aria-label="Close">&times;</button>
+          <div class="industry-info-header"><span class="industry-info-icon"><i class="fas fa-plane-departure"></i></span> <span class="industry-info-title">Travel & Hospitality</span></div>
+          <div class="industry-info-desc">Digital transformation is redefining the travel and hospitality sector — and CHECXO is at the forefront. We build smart, user-focused platforms that streamline the entire customer journey. Whether it's a hotel reservation system, a real-time tour booking app, or a centralized guest management platform, we ensure seamless integration between user experience and operational backend. Our custom solutions also include AI-powered recommendation engines, chatbots for 24/7 support, and mobile-first travel guides that enhance customer satisfaction and loyalty. For airlines, cruise services, and travel agencies, we offer data-driven dashboards, automated CRM systems, and scalable solutions that reduce cost and maximize service efficiency.</div>
+          <a href="#contact" class="btn btn-primary industry-info-btn">Talk with experts</a>
+        </div>
+        <div class="industry-info-card" data-industry="ecommerce">
+          <button class="industry-info-close" aria-label="Close">&times;</button>
+          <div class="industry-info-header"><span class="industry-info-icon"><i class="fas fa-cart-shopping"></i></span> <span class="industry-info-title">Ecommerce</span></div>
+          <div class="industry-info-desc">In a world where first impressions happen online, your e-commerce experience needs to be flawless. We build fully customized online stores with intuitive navigation, fast load times, secure payments, and powerful admin dashboards. Our e-commerce solutions support B2B, B2C, and D2C models, and include features like AI-driven product recommendations, customer analytics, promotional tools, and seamless mobile experiences. Whether you're launching a new brand or scaling to a global market, CHECXO ensures your store is not only beautiful but also built to convert. We also integrate leading platforms like Shopify, WooCommerce, and Magento — or create fully bespoke solutions from scratch.</div>
+          <a href="#contact" class="btn btn-primary industry-info-btn">Talk with experts</a>
+        </div>
+        <div class="industry-info-card" data-industry="software">
+          <button class="industry-info-close" aria-label="Close">&times;</button>
+          <div class="industry-info-header"><span class="industry-info-icon"><i class="fas fa-desktop"></i></span> <span class="industry-info-title">Software Solution</span></div>
+          <div class="industry-info-desc">Some businesses don't fit a mold — and neither should their software. CHECXO specializes in crafting custom software that solves specific, often complex business problems. Whether it's an enterprise ERP system, a mobile workforce solution, a customer portal, or AI-enhanced analytics software — we align every feature with your operations, goals, and user needs. Our full-stack development capabilities span web, mobile, desktop, and cloud, using modern frameworks and scalable architectures. Plus, we ensure long-term reliability through robust QA, documentation, and post-launch support.</div>
+          <a href="#contact" class="btn btn-primary industry-info-btn">Talk with experts</a>
+        </div>
+        <div class="industry-info-card" data-industry="gaming">
+          <button class="industry-info-close" aria-label="Close">&times;</button>
+          <div class="industry-info-header"><span class="industry-info-icon"><i class="fas fa-gamepad"></i></span> <span class="industry-info-title">Gaming</span></div>
+          <div class="industry-info-desc">Gaming is more than fun — it's a serious business, and we take it seriously. At CHECXO, we develop performance-optimized, scalable gaming platforms that support both casual and competitive audiences. Our team specializes in game logic, UI/UX design, cloud hosting, and multiplayer infrastructure with real-time interactions. From arcade-style mobile games to full-scale fantasy worlds, we provide cross-platform compatibility, integrated payment gateways, and community management tools. We also help gaming startups launch Web3-integrated games with NFT features, token economies, and blockchain-based achievements — giving players more value and ownership.</div>
+          <a href="#contact" class="btn btn-primary industry-info-btn">Talk with experts</a>
+        </div>
+        <div class="industry-info-card" data-industry="health">
+          <button class="industry-info-close" aria-label="Close">&times;</button>
+          <div class="industry-info-header"><span class="industry-info-icon"><i class="fas fa-shield-heart"></i></span> <span class="industry-info-title">Health</span></div>
+          <div class="industry-info-desc">The healthcare industry demands precision, security, and empathy — all of which are built into CHECXO's custom healthtech solutions. We develop telehealth platforms with high-quality video consultations, HIPAA-compliant data handling, and secure patient portals. Clinics and hospitals benefit from our EHR/EMR systems that streamline patient records, billing, and diagnostics. For wellness brands, we create fitness tracking apps, diet management tools, and mental health platforms that empower users to take control of their well-being. Our technology is backed by a deep understanding of regulatory compliance, medical workflows, and data protection, ensuring trust at every level.</div>
+          <a href="#contact" class="btn btn-primary industry-info-btn">Talk with experts</a>
+        </div>
+        <div class="industry-info-card" data-industry="startups">
+          <button class="industry-info-close" aria-label="Close">&times;</button>
+          <div class="industry-info-header"><span class="industry-info-icon"><i class="fas fa-rocket"></i></span> <span class="industry-info-title">Startups</span></div>
+          <div class="industry-info-desc">CHECXO is more than a software provider — we're a growth partner for startups. We help early-stage companies move from idea to execution with speed, clarity, and technical excellence. Whether you need a prototype, MVP, or full-scale product, our agile development process adapts to your vision and your market. We offer product strategy, UI/UX design, backend engineering, cloud setup, and iterative testing — so your startup can launch quickly and scale confidently. Our experience spans across fintech, edtech, healthtech, social platforms, and Saas, making us the perfect partner for ambitious entrepreneurs.</div>
+          <a href="#contact" class="btn btn-primary industry-info-btn">Talk with experts</a>
+        </div>
+        <div class="industry-info-card" data-industry="blockchain">
+          <button class="industry-info-close" aria-label="Close">&times;</button>
+          <div class="industry-info-header"><span class="industry-info-icon"><i class="fas fa-cubes"></i></span> <span class="industry-info-title">web-3 Blockchain</span></div>
+          <div class="industry-info-desc">Blockchain is transforming trust and transparency — and CHECXO helps you take full advantage. We develop decentralized applications (DApps), smart contracts, crypto wallets, NFT platforms, DAO tools, and token ecosystems tailored to your vision. Our blockchain experts understand the technical depth and real-world use cases that drive adoption — whether it's securing supply chains, creating digital assets, or enabling peer-to-peer payments. We work with Ethereum, Binance Smart Chain, Polygon, and Solana to build efficient and secure systems. From ideation to audit-ready deployment, we help you launch confidently in the Web3 world.</div>
+          <a href="#contact" class="btn btn-primary industry-info-btn">Talk with experts</a>
+        </div>
+        <div class="industry-info-card" data-industry="retail">
+          <button class="industry-info-close" aria-label="Close">&times;</button>
+          <div class="industry-info-header"><span class="industry-info-icon"><i class="fas fa-store"></i></span> <span class="industry-info-title">Retail & CPG</span></div>
+          <div class="industry-info-desc">Today's retail landscape is digital, fast-paced, and hyper-competitive. CHECXO equips CPG brands and retailers with the tools to meet modern customer expectations — from smart inventory systems and POS integrations to custom e-commerce platforms and data analytics dashboards. We create solutions that personalize user experiences, automate marketing, and manage logistics across channels. Whether it's an in-store tablet solution or a full-fledged D2C website, we focus on seamless UX, strong branding, and operational visibility. With mobile commerce and AI-driven insights, we help you stay one step ahead in an evolving marketplace.</div>
+          <a href="#contact" class="btn btn-primary industry-info-btn">Talk with experts</a>
+        </div>
       </div>
     </section>
 
@@ -144,51 +197,239 @@
       <div id="portfolio-grid" class="portfolio-grid"></div>
     </section>
 
-    <!-- Contact Form Section (at end) -->
-    <section class="contact-section animate-fade-in-up" id="contact">
-      <div class="contact-form-wrapper">
-        <form class="contact-form" action="#" method="post" enctype="multipart/form-data">
-          <h3>Drop <span class="highlight">Your Project</span> Details</h3>
-          <input type="text" name="first_name" placeholder="First Name" required>
-          <input type="text" name="last_name" placeholder="Last Name" required>
-          <input type="tel" name="phone" placeholder="Phone" required>
-          <input type="text" name="company_name" placeholder="Company Name" required>
-          <input type="url" name="company_domain" placeholder="Company domain / url *" required>
-          <input type="text" name="budget" placeholder="Budget">
-          <input type="text" name="region" placeholder="Region *" required>
-          <textarea name="project_details" placeholder="Your Query / Project Details" rows="3" required></textarea>
+    <!-- Motivation & Project Inquiry Section -->
+    <section class="motivation-form-section" id="contact">
+      <div class="motivation-form-container">
+        <div class="motivation-left">
+          <h2 class="motivation-title">Let's Build <span class="motivation-gradient">your business</span></h2>
+          <div class="motivation-subtext">
+            We're here to understand your needs and deliver a solution aligned with your goals.<br><br>
+            Share your details, and our team will contact you to schedule a conversation.
+          </div>
+        </div>
+        <form class="project-form" action="#" method="post" enctype="multipart/form-data">
+          <div class="form-title">Drop <span class="motivation-gradient">Your Project</span> Details</div>
+          <input type="text" name="firstName" placeholder="First Name" required />
+          <input type="text" name="lastName" placeholder="Last Name" required />
+          <div class="phone-field">
+            <select name="countryCode" class="country-code-select" required>
+              <option value="+1" selected>🇺🇸 +1</option>
+              <option value="+44">🇬🇧 +44</option>
+              <option value="+91">🇮🇳 +91</option>
+              <option value="+61">🇦🇺 +61</option>
+              <option value="+971">🇦🇪 +971</option>
+              <option value="+81">🇯🇵 +81</option>
+              <option value="+49">🇩🇪 +49</option>
+              <option value="+33">🇫🇷 +33</option>
+              <option value="+86">🇨🇳 +86</option>
+              <option value="+92">🇵🇰 +92</option>
+              <!-- Add more as needed -->
+            </select>
+            <input type="tel" name="phone" placeholder="123456789" required pattern="[0-9\-\s+()]{7,}" />
+          </div>
+          <input type="text" name="companyName" placeholder="Company Name *" required />
+          <input type="url" name="companyDomain" placeholder="Company domain / url *" required />
+          <input type="text" name="budget" placeholder="Budget" />
+          <input type="text" name="region" placeholder="Region *" required />
+          <textarea name="projectDetails" placeholder="Your Query / Project Details" rows="3"></textarea>
           <div class="form-file-row">
-            <input type="file" name="project_file" id="project_file">
+            <input type="file" name="projectFile" />
           </div>
           <button type="submit" class="submit-btn">Submit</button>
         </form>
       </div>
     </section>
+    <!-- Success Modal -->
+    <div id="form-success-modal" class="form-success-modal" style="display:none;">
+      <div class="form-success-content">
+        <div class="form-success-icon">✔️</div>
+        <h3>Thank you!</h3>
+        <p>Your project details have been received.<br>Our team will contact you soon.</p>
+        <button class="form-success-close">Close</button>
+      </div>
+    </div>
   </main>
 
   <!-- Footer -->
   <footer class="footer animate-fade-in">
     <div class="footer-content">
       <div class="footer-brand">
-        <img src="images/logo.png" alt="CHECXO Logo" class="footer-logo" />
-        <span class="logo">CHECXO</span> <span class="subtitle">Web Crafters</span>
-        <div class="tagline">Crafting the Future of Technology</div>
+        <img src="https://res.cloudinary.com/dibgebv9u/image/upload/v1751025976/samples/logo.png" alt="CHECXO Logo" class="footer-logo-img-footer" />
       </div>
       <div class="footer-services">
-        <div class="footer-title">Services</div>
-        <div class="footer-list">Web Development, App Development, UX/UI Design, Generative AI, Blockchain, Cyber Security, Software Solutions, Ecommerce</div>
+        <div class="footer-heading-gradient">Services</div>
+        <ul class="footer-list footer-list-services">
+          <li>Web Development</li>
+          <li>App Development</li>
+          <li>UX/UI Design</li>
+          <li>Generative AI</li>
+          <li>Blockchain</li>
+          <li>Cyber Security</li>
+          <li>Software Solutions</li>
+          <li>Ecommerce</li>
+        </ul>
       </div>
       <div class="footer-contact">
-        <div class="footer-title">Let's Connect</div>
-        <div class="footer-list">+44 7745 813953<br>infochecxo@gmail.com<br>United Kingdom, Pakistan, Australia</div>
-        <div class="footer-socials">
-          <img src="images/x.png" alt="X" />
-          <img src="images/linkedin.png" alt="LinkedIn" />
-          <img src="images/instagram.png" alt="Instagram" />
+        <div class="footer-heading-gradient">Let's <span>Connect</span></div>
+        <div class="footer-contact-info">
+          <a href="tel:+447745813953" class="footer-contact-link">+44 7745 813953</a><br>
+          <a href="mailto:infochecxo@gmail.com" class="footer-contact-link">infochecxo@gmail.com</a>
+        </div>
+        <div class="footer-divider"></div>
+        <ul class="footer-list footer-list-countries">
+          <li>United Kingdom</li>
+          <li>Pakistan</li>
+          <li>Australia</li>
+        </ul>
+        <div class="footer-socials footer-socials-right">
+          <a href="#" aria-label="X (Twitter)" class="footer-social-link" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn" class="footer-social-link" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#" aria-label="Instagram" class="footer-social-link" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
         </div>
       </div>
     </div>
   </footer>
   <script src="js/main.js" defer></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <!-- Three.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+  <script>
+    // Enhanced animated 3D mesh/network background
+    document.addEventListener('DOMContentLoaded', function() {
+      const canvas = document.getElementById('three-bg');
+      if (!canvas) return;
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+      renderer.setClearColor(0x000000, 0); // transparent
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+      camera.position.z = 70;
+      // --- Mesh points ---
+      const POINTS = 180;
+      const vertices = [];
+      for (let i = 0; i < POINTS; i++) {
+        const x = (Math.random() - 0.5) * 90;
+        const y = (Math.random() - 0.5) * 50;
+        const z = (Math.random() - 0.5) * 70;
+        vertices.push(x, y, z);
+      }
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+      // --- Animated color ---
+      let colorPhase = 0;
+      function getAnimatedColor() {
+        colorPhase += 0.01;
+        // Animate between #14b8a6 and #0ea5e9
+        const r = Math.floor(20 + 10 * Math.sin(colorPhase));
+        const g = Math.floor(184 + 40 * Math.sin(colorPhase + 1));
+        const b = Math.floor(166 + 70 * Math.sin(colorPhase + 2));
+        return (r << 16) | (g << 8) | b;
+      }
+      // --- Points with glow ---
+      const pointsMaterial = new THREE.PointsMaterial({
+        color: 0x14b8a6,
+        size: 2.2,
+        transparent: true,
+        opacity: 0.85
+      });
+      const points = new THREE.Points(geometry, pointsMaterial);
+      scene.add(points);
+      // --- Connecting lines ---
+      const lineMaterial = new THREE.LineBasicMaterial({
+        color: 0x0ea5e9,
+        transparent: true,
+        opacity: 0.22
+      });
+      const lineGeometry = new THREE.BufferGeometry();
+      // Build lines between close points
+      const lineVertices = [];
+      const posArr = geometry.getAttribute('position');
+      for (let i = 0; i < POINTS; i++) {
+        for (let j = i + 1; j < POINTS; j++) {
+          const dx = posArr.getX(i) - posArr.getX(j);
+          const dy = posArr.getY(i) - posArr.getY(j);
+          const dz = posArr.getZ(i) - posArr.getZ(j);
+          const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+          if (dist < 22) { // connect if close
+            lineVertices.push(posArr.getX(i), posArr.getY(i), posArr.getZ(i));
+            lineVertices.push(posArr.getX(j), posArr.getY(j), posArr.getZ(j));
+          }
+        }
+      }
+      lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(lineVertices, 3));
+      const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+      scene.add(lines);
+      // --- Soft blur effect (CSS) ---
+      canvas.style.filter = 'blur(1.2px) drop-shadow(0 0 16px #14b8a6cc)';
+      // --- Mouse interactivity ---
+      let mouseX = 0, mouseY = 0;
+      let targetRotationX = 0, targetRotationY = 0;
+      let currentRotationX = 0, currentRotationY = 0;
+      document.addEventListener('mousemove', (event) => {
+        mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+        targetRotationX = mouseY * 0.3;
+        targetRotationY = mouseX * 0.3;
+      });
+      // --- Animate ---
+      function animate() {
+        requestAnimationFrame(animate);
+        // Animate mesh color
+        const animatedColor = getAnimatedColor();
+        pointsMaterial.color.setHex(animatedColor);
+        // Smooth mouse interaction
+        currentRotationX += (targetRotationX - currentRotationX) * 0.05;
+        currentRotationY += (targetRotationY - currentRotationY) * 0.05;
+        // Animate mesh with mouse interaction
+        points.rotation.y += 0.0045 + currentRotationY * 0.001;
+        points.rotation.x += 0.0012 + currentRotationX * 0.001;
+        lines.rotation.y += 0.0045 + currentRotationY * 0.001;
+        lines.rotation.x += 0.0012 + currentRotationX * 0.001;
+        renderer.render(scene, camera);
+      }
+      animate();
+      // Responsive
+      window.addEventListener('resize', () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+      });
+    });
+    // --- Parallax effect for hero content ---
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const heroContent = document.querySelector('.hero-content');
+      if (heroContent) {
+        const rate = scrolled * -0.5;
+        heroContent.style.transform = `translateY(${rate}px)`;
+      }
+    });
+    // Typewriter effect for 'What's Next'
+    const words = ["What's Next", "Innovation", "Digital Excellence", "AI Solutions", "Future-ready Tech"];
+    let twIndex = 0, charIndex = 0, isDeleting = false;
+    const twElem = document.getElementById('typewriter');
+    function typeWriter() {
+      if (!twElem) return;
+      const word = words[twIndex];
+      if (isDeleting) {
+        charIndex--;
+        twElem.textContent = word.substring(0, charIndex);
+      } else {
+        charIndex++;
+        twElem.textContent = word.substring(0, charIndex);
+      }
+      let delay = isDeleting ? 60 : 110;
+      if (!isDeleting && charIndex === word.length) {
+        delay = 1200;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        twIndex = (twIndex + 1) % words.length;
+        delay = 600;
+      }
+      setTimeout(typeWriter, delay);
+    }
+    typeWriter();
+  </script>
 </body>
 </html> 
