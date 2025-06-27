@@ -528,4 +528,62 @@
 .projects-swiper .project-card:hover .project-img-overlay {
   background: linear-gradient(180deg, rgba(20,184,166,0.28) 0%, rgba(24,28,42,0.45) 100%);
   filter: blur(1px) brightness(0.88);
+}
+
+/* --- Methodology Section Styles --- */
+.methodology-section {
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+  padding: 0 1.5rem 2rem 1.5rem;
+}
+.methodology-title {
+  text-align: center;
+  font-size: 2.1rem;
+  font-weight: 900;
+  margin-bottom: 2.2rem;
+  color: #181c2a;
+}
+.methodology-images {
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.methodology-image-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 420px;
+  max-width: 540px;
+  min-width: 260px;
+}
+.methodology-img {
+  width: 100%;
+  max-width: 540px;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 32px rgba(20,184,166,0.13);
+  margin-bottom: 1.1rem;
+  background: #f3f6fa;
+  object-fit: contain;
+}
+.methodology-caption {
+  font-size: 1.13rem;
+  font-weight: 700;
+  color: #181c2a;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+@media (max-width: 900px) {
+  .methodology-images {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .methodology-image-block {
+    max-width: 98vw;
+  }
+  .methodology-img {
+    max-width: 98vw;
+  }
 } 
