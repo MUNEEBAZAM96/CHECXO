@@ -198,4 +198,30 @@ document.addEventListener('DOMContentLoaded', () => {
   sidebarLinks.forEach(link => {
     link.addEventListener('click', closeSidebar);
   });
-}); 
+});
+
+// Sticky navbar effect on scroll
+window.addEventListener('scroll', function() {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 10) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+// Fade-in sections on scroll
+if (!window._sectionFadeObserverInitialized) {
+  window._sectionFadeObserverInitialized = true;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.section-fade').forEach(section => {
+    observer.observe(section);
+  });
+} 
