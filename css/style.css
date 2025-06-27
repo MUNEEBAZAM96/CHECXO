@@ -368,6 +368,28 @@ main {
     padding: 0.7rem 1rem;
     margin: 1rem 0 0 0;
     border-radius: 1rem;
+    max-width: 100vw;
+  }
+  .navbar-container {
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: stretch;
+  }
+  .navbar-links {
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: center;
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+  .navbar-links li {
+    width: 100%;
+    text-align: center;
+  }
+  .navbar-actions {
+    justify-content: center;
+    width: 100%;
+    gap: 0.7rem;
   }
   .hero {
     padding: 2rem 0 1.5rem 0;
@@ -396,6 +418,70 @@ main {
   .hero-content p {
     font-size: 1.05rem;
   }
+  .hero.hero-full-bg {
+    min-height: 70vh;
+    padding: 0 0 2rem 0;
+  }
+  .hero-content-overlay {
+    margin-left: 4vw;
+    max-width: 95vw;
+    min-height: 40vh;
+    padding: 2.5rem 0.5rem 1.5rem 0.5rem;
+    align-items: flex-start;
+  }
+  .hero-headline {
+    font-size: 1.5rem;
+    gap: 0.2rem;
+  }
+  .hero-line1 { font-size: 1.5rem; }
+  .hero-line2 { font-size: 1.1rem; }
+  .hero-line3 { font-size: 1.3rem; }
+  .portfolio {
+    padding: 2rem 1rem 1rem 1rem;
+  }
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .contact-section {
+    padding: 2rem 1rem 1rem 1rem;
+  }
+  .services, .industries {
+    padding: 2rem 1rem 1rem 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0.4rem 0.2rem;
+    border-radius: 0.7rem;
+  }
+  .navbar-logo-img {
+    width: 28px;
+    height: 28px;
+    padding: 2px;
+    border-radius: 6px;
+  }
+  .hero-content-overlay {
+    padding: 1.2rem 0.2rem 1.2rem 0.2rem;
+    margin-left: 2vw;
+  }
+  .hero-headline {
+    font-size: 1.1rem;
+  }
+  .hero-line1 { font-size: 1.1rem; }
+  .hero-line2 { font-size: 0.9rem; }
+  .hero-line3 { font-size: 1rem; }
+  .portfolio-card {
+    min-height: 220px;
+    padding: 1rem 0.5rem;
+  }
+  .portfolio-img {
+    height: 120px;
+  }
+}
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 .contact-form {
   display: flex;
