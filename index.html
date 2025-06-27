@@ -14,8 +14,13 @@
   <nav class="navbar animate-fade-in">
     <div class="navbar-container">
       <div class="navbar-logo">
-        <img src="logo.png" alt="CHECXO Logo" class="navbar-logo-img" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bitmap_Logo.png" alt="CHECXO Logo" class="navbar-logo-img" />
       </div>
+      <button class="navbar-hamburger" aria-label="Open menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
       <ul class="navbar-links">
         <li><a href="#hero">Home</a></li>
         <li><a href="#industries">Industries</a></li>
@@ -28,6 +33,25 @@
         <a href="#contact" class="btn btn-outline">Lets Connect</a>
       </div>
     </div>
+    <!-- Mobile Sidebar Nav -->
+    <div class="sidebar-overlay"></div>
+    <nav class="mobile-sidebar" aria-label="Mobile menu">
+      <div class="sidebar-header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bitmap_Logo.png" alt="CHECXO Logo" class="sidebar-logo" />
+        <button class="sidebar-close" aria-label="Close menu">&times;</button>
+      </div>
+      <ul class="sidebar-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#industries">Industries</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+      </ul>
+      <div class="sidebar-actions">
+        <button class="btn btn-primary">Get Started</button>
+        <a href="#contact" class="btn btn-outline">Lets Connect</a>
+      </div>
+    </nav>
   </nav>
   <!-- End Navbar -->
   <main>
