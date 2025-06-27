@@ -164,4 +164,38 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 400);
     });
   }
+});
+
+// --- Mobile Sidebar Menu ---
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.navbar-hamburger');
+  const sidebar = document.querySelector('.mobile-sidebar');
+  const overlay = document.querySelector('.sidebar-overlay');
+  const closeBtn = document.querySelector('.sidebar-close');
+  const sidebarLinks = document.querySelectorAll('.sidebar-links a');
+
+  function openSidebar() {
+    sidebar.classList.add('open');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    hamburger.classList.add('open');
+  }
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    hamburger.classList.remove('open');
+  }
+  if (hamburger) {
+    hamburger.addEventListener('click', openSidebar);
+  }
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeSidebar);
+  }
+  if (overlay) {
+    overlay.addEventListener('click', closeSidebar);
+  }
+  sidebarLinks.forEach(link => {
+    link.addEventListener('click', closeSidebar);
+  });
 }); 
