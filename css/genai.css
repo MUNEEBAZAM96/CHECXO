@@ -1081,14 +1081,25 @@
   width: 100%;
   height: auto;
   border-radius: 0;
-  box-shadow: 0 0 32px 0 #00e3ae55;
   background: none;
   padding: 0;
   position: relative;
   z-index: 1;
-  animation: footerLogoFloat 7s ease-in-out infinite alternate, footerLogoPulse 6s linear infinite, footerLogoGlow 5s linear infinite;
-  transition: transform 0.48s cubic-bezier(.4,0,.2,1), box-shadow 0.48s cubic-bezier(.4,0,.2,1), filter 0.48s cubic-bezier(.4,0,.2,1);
-  will-change: transform, box-shadow, filter;
+  box-shadow: none;
+  filter: none;
+  transition: none;
+  animation: none;
+}
+.footer-logo-img-footer:hover,
+.footer-logo-img-footer:active,
+.footer-logo-img-footer::before,
+.footer-logo-img-footer:active::after,
+.footer-logo-img-footer:hover::after {
+  box-shadow: none;
+  filter: none;
+  animation: none;
+  transform: none;
+  content: none;
 }
 .footer-logo-img-footer:hover {
   transform: scale(1.15) rotate(-6deg) translateY(-16px) rotateY(1turn);

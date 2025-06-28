@@ -2001,3 +2001,27 @@ section {
   from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: none; }
 }
+
+.footer-logo-img-footer {
+  display: block;
+  margin: 0 auto 0 auto;
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  box-shadow: none;
+  filter: none;
+  transition: none;
+  animation: none;
+}
+/* Remove all hover effects */
+.footer-logo-img-footer:hover {
+  box-shadow: none;
+  filter: none;
+  transform: none;
+  animation: none;
+}

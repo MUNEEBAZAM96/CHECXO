@@ -324,33 +324,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// --- Footer Logo Mouse Parallax & Click Animation ---
-document.addEventListener('DOMContentLoaded', function() {
-  const logo = document.querySelector('.footer-logo-img-footer');
-  if (!logo) return;
-  // Mouse parallax tilt
-  logo.addEventListener('mousemove', function(e) {
-    const rect = logo.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const cx = rect.width / 2;
-    const cy = rect.height / 2;
-    const dx = (x - cx) / cx;
-    const dy = (y - cy) / cy;
-    logo.style.transform = `scale(1.15) rotate(-6deg) translateY(-16px) rotateY(1turn) rotateX(${-dy*10}deg) rotateY(${dx*10}deg)`;
-  });
-  logo.addEventListener('mouseleave', function() {
-    logo.style.transform = '';
-  });
-  // Click bounce+spin
-  logo.addEventListener('click', function() {
-    logo.classList.remove('footer-logo-bounce-spin');
-    void logo.offsetWidth; // force reflow
-    logo.classList.add('footer-logo-bounce-spin');
-    setTimeout(() => logo.classList.remove('footer-logo-bounce-spin'), 600);
-  });
-});
-
 // Industries section animation and ripple effect
 function animateIndustryCards() {
   const cards = document.querySelectorAll('.industry-card-figma');
