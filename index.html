@@ -207,7 +207,7 @@
             Share your details, and our team will contact you to schedule a conversation.
           </div>
         </div>
-        <form class="project-form" action="#" method="post" enctype="multipart/form-data">
+        <form class="project-form" action="#" method="POST" enctype="multipart/form-data">
           <div class="form-title">Drop <span class="motivation-gradient">Your Project</span> Details</div>
           <input type="text" name="firstName" placeholder="First Name" required />
           <input type="text" name="lastName" placeholder="Last Name" required />
@@ -227,14 +227,11 @@
             </select>
             <input type="tel" name="phone" placeholder="123456789" required pattern="[0-9\-\s+()]{7,}" />
           </div>
+          <input type="email" name="email" placeholder="Email Address *" required />
           <input type="text" name="companyName" placeholder="Company Name *" required />
-          <input type="url" name="companyDomain" placeholder="Company domain / url *" required />
           <input type="text" name="budget" placeholder="Budget" />
           <input type="text" name="region" placeholder="Region *" required />
           <textarea name="projectDetails" placeholder="Your Query / Project Details" rows="3"></textarea>
-          <div class="form-file-row">
-            <input type="file" name="projectFile" />
-          </div>
           <button type="submit" class="submit-btn">Submit</button>
         </form>
       </div>
@@ -293,7 +290,20 @@
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <!-- Three.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+  <!-- EmailJS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
+    // Initialize EmailJS with proper error handling
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize EmailJS
+      if (typeof emailjs !== 'undefined') {
+        emailjs.init("S8v3MYxKpGGB9rdMh");
+        console.log('EmailJS initialized successfully');
+      } else {
+        console.error('EmailJS not loaded');
+      }
+    });
+
     // Enhanced animated 3D mesh/network background
     document.addEventListener('DOMContentLoaded', function() {
       const canvas = document.getElementById('three-bg');
@@ -430,6 +440,118 @@
       setTimeout(typeWriter, delay);
     }
     typeWriter();
+
+    // EmailJS form handling with better error handling
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('.project-form');
+      const modal = document.getElementById('form-success-modal');
+      const closeBtn = document.querySelector('.form-success-close');
+      
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Check if EmailJS is available
+          if (typeof emailjs === 'undefined') {
+            alert('Email service not available. Please refresh the page and try again.');
+            return;
+          }
+          
+          // Show loading state
+          const submitBtn = form.querySelector('.submit-btn');
+          const originalText = submitBtn.textContent;
+          submitBtn.textContent = 'Sending...';
+          submitBtn.disabled = true;
+          submitBtn.classList.add('loading');
+          
+          // Get form data
+          const formData = new FormData(form);
+          const templateParams = {
+            from_name: formData.get('firstName') + ' ' + formData.get('lastName'),
+            from_email: formData.get('email'),
+            phone: formData.get('countryCode') + ' ' + formData.get('phone'),
+            company: formData.get('companyName'),
+            budget: formData.get('budget') || 'Not specified',
+            region: formData.get('region'),
+            message: formData.get('projectDetails') || 'No details provided',
+            current_date: new Date().toLocaleString(),
+            attachment_name: 'No file attached',
+            attachment_size: 'N/A'
+          };
+          
+          console.log('Template params:', templateParams);
+          
+          // Send email using EmailJS
+          emailjs.send('service_7me2ter', 'template_d4hovjb', templateParams)
+            .then(function(response) {
+              console.log('SUCCESS!', response.status, response.text);
+              
+              // Reset button
+              submitBtn.textContent = originalText;
+              submitBtn.disabled = false;
+              submitBtn.classList.remove('loading');
+              
+              // Show success modal
+              if (modal) {
+                modal.style.display = 'block';
+              }
+              
+              // Reset form
+              form.reset();
+            }, function(error) {
+              console.log('FAILED...', error);
+              console.error('EmailJS Error Details:', error);
+              
+              // Reset button
+              submitBtn.textContent = originalText;
+              submitBtn.disabled = false;
+              submitBtn.classList.remove('loading');
+              
+              // Show detailed error message
+              alert('Email sending failed. Error: ' + error.text + '\n\nPlease check your EmailJS configuration or try again later.');
+            });
+        });
+      }
+      
+      // Close modal functionality
+      if (closeBtn && modal) {
+        closeBtn.addEventListener('click', function() {
+          modal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            modal.style.display = 'none';
+          }
+        });
+      }
+
+      // Add form validation and visual feedback
+      const inputs = document.querySelectorAll('.project-form input, .project-form textarea, .project-form select');
+      
+      inputs.forEach(input => {
+        // Add focus effects
+        input.addEventListener('focus', function() {
+          this.parentElement.style.transform = 'translateY(-2px)';
+        });
+        
+        input.addEventListener('blur', function() {
+          this.parentElement.style.transform = 'translateY(0)';
+        });
+        
+        // Add real-time validation
+        input.addEventListener('input', function() {
+          if (this.checkValidity()) {
+            this.style.borderColor = '#00bcd4';
+            this.style.boxShadow = '0 0 0 4px rgba(0,188,212,0.15)';
+          } else {
+            this.style.borderColor = '#e53935';
+            this.style.boxShadow = '0 0 0 4px rgba(229,57,53,0.15)';
+          }
+        });
+      });
+    });
   </script>
 </body>
-</html> 
+</html>
