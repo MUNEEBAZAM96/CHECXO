@@ -382,4 +382,45 @@ function animateIndustryCards() {
     });
   });
 }
-document.addEventListener('DOMContentLoaded', animateIndustryCards); 
+document.addEventListener('DOMContentLoaded', animateIndustryCards);
+
+// Industries in-place card logic
+document.addEventListener('DOMContentLoaded', function() {
+  // Industries grid in-place popup logic
+  const grid = document.querySelector('.industries-figma-grid');
+  const infoPopups = document.querySelector('.industry-info-popups');
+  const infoCards = infoPopups.querySelectorAll('.industry-info-card');
+  const cards = grid.querySelectorAll('.industry-card-figma');
+
+  cards.forEach(card => {
+    card.addEventListener('click', function() {
+      // Hide the grid
+      grid.style.display = 'none';
+      // Hide all info cards
+      infoCards.forEach(ic => {
+        ic.style.display = 'none';
+        ic.classList.remove('active');
+      });
+      // Show the matching info card
+      const industry = card.getAttribute('data-industry');
+      const infoCard = infoPopups.querySelector(`.industry-info-card[data-industry="${industry}"]`);
+      if (infoCard) {
+        infoCard.style.display = 'flex';
+        infoCard.classList.add('active');
+      }
+    });
+  });
+
+  // Close logic for info cards
+  infoCards.forEach(infoCard => {
+    const closeBtn = infoCard.querySelector('.industry-info-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        infoCard.style.display = 'none';
+        infoCard.classList.remove('active');
+        // Show the grid again
+        grid.style.display = '';
+      });
+    }
+  });
+}); 

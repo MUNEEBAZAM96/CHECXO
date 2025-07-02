@@ -552,6 +552,49 @@
         });
       });
     });
+
+    // --- Industries Info Card Popup Logic ---
+    document.addEventListener('DOMContentLoaded', function() {
+      // Show the corresponding industry info card when an industry card is clicked
+      const industryCards = document.querySelectorAll('.industry-card-figma');
+      const infoCards = document.querySelectorAll('.industry-info-card');
+
+      industryCards.forEach(card => {
+        card.addEventListener('click', function() {
+          const industry = card.getAttribute('data-industry');
+          // Hide all info cards first
+          infoCards.forEach(ic => ic.style.display = 'none');
+          // Show the matching info card
+          const infoCard = document.querySelector(`.industry-info-card[data-industry="${industry}"]`);
+          if (infoCard) {
+            infoCard.style.display = 'block';
+            infoCard.classList.add('active');
+          }
+        });
+      });
+
+      // Close button logic for info cards
+      const closeButtons = document.querySelectorAll('.industry-info-close');
+      closeButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          const infoCard = btn.closest('.industry-info-card');
+          if (infoCard) {
+            infoCard.style.display = 'none';
+            infoCard.classList.remove('active');
+          }
+        });
+      });
+
+      // Optional: Close info card when clicking outside the card (on the overlay)
+      infoCards.forEach(infoCard => {
+        infoCard.addEventListener('click', function(e) {
+          if (e.target === infoCard) {
+            infoCard.style.display = 'none';
+            infoCard.classList.remove('active');
+          }
+        });
+      });
+    });
   </script>
 </body>
 </html>
