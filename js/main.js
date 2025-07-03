@@ -304,15 +304,49 @@ document.addEventListener('DOMContentLoaded', function() {
   const modal = document.getElementById('form-success-modal');
   const closeBtn = document.querySelector('.form-success-close');
   if (!form || !modal || !closeBtn) return;
-  form.addEventListener('submit', function(e) {
-    // If validation failed, do nothing (handled by previous code)
+  form.addEventListener('submit', async function(e) {
     if (!form.checkValidity()) return;
     e.preventDefault();
-    modal.style.display = 'flex';
-    setTimeout(() => { modal.classList.add('show'); }, 10);
-    form.reset();
-    // Remove all error messages
-    form.querySelectorAll('.form-error').forEach(err => err.remove());
+    // Map form fields to backend expected keys
+    const formData = new FormData(form);
+    const data = {
+      name: `${formData.get('firstName') || ''} ${formData.get('lastName') || ''}`.trim(),
+      email: formData.get('email') || '',
+      message: [
+        formData.get('projectDetails') || '',
+        `Company: ${formData.get('companyName') || ''}`,
+        `Phone: ${formData.get('countryCode') || ''} ${formData.get('phone') || ''}`,
+        `Budget: ${formData.get('budget') || ''}`,
+        `Region: ${formData.get('region') || ''}`
+      ].filter(Boolean).join('\n')
+    };
+    try {
+      const response = await fetch('http://localhost:5000/api/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      if (response.ok) {
+        modal.style.display = 'flex';
+        setTimeout(() => { modal.classList.add('show'); }, 10);
+        form.reset();
+        form.querySelectorAll('.form-error').forEach(err => err.remove());
+      } else {
+        const errorMsg = document.createElement('div');
+        errorMsg.className = 'form-error';
+        errorMsg.textContent = 'There was a problem submitting your request. Please try again.';
+        form.appendChild(errorMsg);
+        setTimeout(() => errorMsg.remove(), 4000);
+      }
+    } catch (err) {
+      const errorMsg = document.createElement('div');
+      errorMsg.className = 'form-error';
+      errorMsg.textContent = 'Network error. Please try again later.';
+      form.appendChild(errorMsg);
+      setTimeout(() => errorMsg.remove(), 4000);
+    }
   });
   function closeModal() {
     modal.classList.remove('show');
@@ -322,6 +356,100 @@ document.addEventListener('DOMContentLoaded', function() {
   modal.addEventListener('click', function(e) {
     if (e.target === modal) closeModal();
   });
+});
+
+// --- Admin Panel: Fetch and display contact requests ---
+document.addEventListener('DOMContentLoaded', function() {
+  const adminPanel = document.getElementById('admin-panel');
+  if (!adminPanel) return;
+  const contactSection = adminPanel.querySelector('.admin-section');
+  if (!contactSection) return;
+  function parseMessage(msg) {
+    const lines = msg.split(/\n|<br\s*\/?>/i).map(l => l.trim()).filter(Boolean);
+    let projectDetails = '', company = '', phone = '', budget = '', region = '';
+    lines.forEach(line => {
+      if (line.startsWith('Company:')) company = line.replace('Company:', '').trim();
+      else if (line.startsWith('Phone:')) phone = line.replace('Phone:', '').trim();
+      else if (line.startsWith('Budget:')) budget = line.replace('Budget:', '').trim();
+      else if (line.startsWith('Region:')) region = line.replace('Region:', '').trim();
+      else if (!projectDetails) projectDetails = line;
+    });
+    return { projectDetails, company, phone, budget, region };
+  }
+  function renderContacts(contacts) {
+    let html = '';
+    if (!contacts.length) {
+      html = '<p>No requests yet. (This will show a table of contact form submissions.)</p>';
+    } else {
+      html = `<table class="admin-table" style="width:100%;border-collapse:collapse;">
+        <thead><tr>
+          <th>Name</th><th>Email</th><th>Phone</th><th>Company</th><th>Region</th><th>Budget</th><th>Project Details</th><th>Date</th><th>Action</th>
+        </tr></thead>
+        <tbody>
+        ${contacts.map(c => {
+          const parsed = parseMessage(c.message || '');
+          return `<tr data-id="${c.id}">
+            <td>${c.name}</td>
+            <td>${c.email}</td>
+            <td>${parsed.phone}</td>
+            <td>${parsed.company}</td>
+            <td>${parsed.region}</td>
+            <td>${parsed.budget}</td>
+            <td style="white-space:pre-line;max-width:220px;">${parsed.projectDetails}</td>
+            <td>${new Date(c.date).toLocaleString()}</td>
+            <td>
+              <button class="copy-email-btn" data-email="${c.email}">Copy Email</button>
+              <button class="ok-request-btn" data-id="${c.id}">OK</button>
+            </td>
+          </tr>`;
+        }).join('')}
+        </tbody></table>`;
+    }
+    contactSection.querySelector('.admin-table-placeholder').innerHTML = html;
+    // Add copy email functionality
+    contactSection.querySelectorAll('.copy-email-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const email = btn.getAttribute('data-email');
+        navigator.clipboard.writeText(email);
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = 'Copy Email'; }, 1200);
+      });
+    });
+    // Add OK button functionality
+    contactSection.querySelectorAll('.ok-request-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const id = btn.getAttribute('data-id');
+        fetch(`http://localhost:5000/api/contacts/${id}`, {
+          method: 'DELETE'
+        })
+        .then(res => {
+          if (res.ok) {
+            // Remove the row from the table
+            const row = btn.closest('tr');
+            if (row) row.remove();
+          } else {
+            alert('Failed to delete request.');
+          }
+        })
+        .catch(() => alert('Failed to delete request.'));
+      });
+    });
+  }
+  function fetchContacts() {
+    fetch('http://localhost:5000/api/contacts')
+      .then(res => res.json())
+      .then(renderContacts)
+      .catch(() => {
+        contactSection.querySelector('.admin-table-placeholder').innerHTML = '<p style="color:#c00;">Failed to load contact requests.</p>';
+      });
+  }
+  // Show contacts after login
+  const loginForm = document.getElementById('adminLoginForm');
+  if (loginForm) {
+    loginForm.addEventListener('submit', function(e) {
+      setTimeout(fetchContacts, 500); // fetch after login
+    });
+  }
 });
 
 // Industries section animation and ripple effect
