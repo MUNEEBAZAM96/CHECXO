@@ -27,6 +27,11 @@ function writeContacts(contacts) {
   fs.writeFileSync(CONTACTS_FILE, JSON.stringify(contacts, null, 2));
 }
 
+// ✅ Root route for Railway health check
+app.get('/', (req, res) => {
+  res.send('🚀 CHECXO backend is live on Railway!');
+});
+
 // POST /api/contacts - receive new contact form submission
 app.post('/api/contacts', (req, res) => {
   const { name, email, message } = req.body;
@@ -64,11 +69,12 @@ app.get('/api/contacts', (req, res) => {
   res.json(contacts);
 });
 
-// Fallback: serve index.html for any unknown non-API route (for SPA/deep linking support)
+// Fallback: serve index.html for any unknown non-API route (for SPA support)
 app.get(/^\/(?!api).*/, (req, res) => {
   res.sendFile(path.join(__dirname, '../CHECXO/index.html'));
 });
 
+// Start the server
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-}); 
+  console.log(`🚀 Server running on port ${PORT}`);
+});
