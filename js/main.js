@@ -551,4 +551,76 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   });
+});
+
+// Form submission handling
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('.contact-form');
+  const phoneCodeSelect = document.getElementById('phoneCode');
+  const regionInput = document.getElementById('region');
+  const budgetSelect = document.getElementById('budgetSelect');
+  const budgetCustomInput = document.querySelector('.budget-custom');
+  
+  // Handle phone code change and update region
+  phoneCodeSelect.addEventListener('change', (e) => {
+    const selectedOption = e.target.options[e.target.selectedIndex];
+    const region = selectedOption.getAttribute('data-region');
+    regionInput.value = region;
+  });
+
+  // Handle budget selection
+  budgetSelect.addEventListener('change', (e) => {
+    if (e.target.value === 'custom') {
+      budgetCustomInput.style.display = 'block';
+      budgetCustomInput.required = true;
+    } else {
+      budgetCustomInput.style.display = 'none';
+      budgetCustomInput.required = false;
+    }
+  });
+
+  // Form submission
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Get form data
+    const formData = {
+      firstName: form.querySelector('input[placeholder="First Name"]').value,
+      lastName: form.querySelector('input[placeholder="Last Name"]').value,
+      email: form.querySelector('input[type="email"]').value,
+      phone: `${phoneCodeSelect.value}${form.querySelector('input[type="tel"]').value}`,
+      companyName: form.querySelector('input[placeholder="Company Name"]').value,
+      companyDomain: form.querySelector('input[placeholder="Company domain / url"]').value,
+      budget: budgetSelect.value === 'custom' ? budgetCustomInput.value : budgetSelect.value,
+      region: regionInput.value,
+      projectDetails: form.querySelector('textarea').value
+    };
+
+    try {
+      const response = await fetch('http://localhost:3000/api/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Form submission failed');
+      }
+
+      const result = await response.json();
+      alert('Form submitted successfully!');
+      form.reset();
+      budgetCustomInput.style.display = 'none';
+      
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to submit form. Please try again.');
+    }
+  });
+
+  // Set initial region based on default phone code
+  const defaultOption = phoneCodeSelect.options[phoneCodeSelect.selectedIndex];
+  regionInput.value = defaultOption.getAttribute('data-region');
 }); 

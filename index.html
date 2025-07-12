@@ -12,23 +12,22 @@
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar animate-fade-in">
+  <nav class="navbar">
     <div class="navbar-container">
-      <div class="navbar-logo">
-        <img src="logo.png" alt="CHECXO Logo" class="navbar-logo-img" />
-      </div>
+      <a href="/" class="navbar-logo">
+        <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752101080/image_25_wdnh4o.png" alt="CHECXO">
+      </a>
       <ul class="navbar-links">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#industries">Industries</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="/" class="active">Home</a></li>
+        <li><a href="/industries">Industries</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li><a href="/leadership">Leadership</a></li>
       </ul>
       <div class="navbar-actions">
-        <button class="btn btn-primary">Get Started</button>
-        <a href="#contact" class="btn btn-outline">Lets Connect</a>
+        <button class="btn-get-started">Get Started</button>
+        <button class="btn-lets-connect">Lets Connect</button>
       </div>
-      <a href="admin.html" class="admin-btn">Admin Panel</a>
     </div>
   </nav>
   <!-- End Navbar -->
@@ -58,32 +57,34 @@
 
     <!-- Services Section -->
     <section class="services animate-fade-in-up" id="services">
-      <h2>Transform Your Business</h2>
-      <div class="services-grid">
-        <a href="web.html" class="service-card animate-hover">
-          <img src="Web Development.jpg" alt="Web Development" class="service-img-full" />
-          <span class="service-title">Web Development</span>
-        </a>
-        <a href="app.html" class="service-card animate-hover">
-          <img src="App development.jpg" alt="App Development" class="service-img-full" />
-          <span class="service-title">App Development</span>
-        </a>
-        <a href="uiux.html" class="service-card animate-hover">
-          <img src="UXUI design.jpg" alt="UX/UI Design" class="service-img-full" />
-          <span class="service-title">UX/UI Design</span>
-        </a>
-        <a href="genai.html" class="service-card animate-hover">
-          <img src="Generative AI.jpg" alt="Generative AI" class="service-img-full" />
-          <span class="service-title">Generative AI</span>
-        </a>
-        <a href="cyber.html" class="service-card animate-hover">
-          <img src="Cyber Security.jpg" alt="Cyber Security" class="service-img-full" />
-          <span class="service-title">Cyber Security</span>
-        </a>
-        <a href="blockchain.html" class="service-card animate-hover">
-          <img src="Blockchain_2.jpg" alt="Blockchain" class="service-img-full" />
-          <span class="service-title">Blockchain</span>
-        </a>
+      <div class="services-content">
+        <h2>Transform Your Business</h2>
+        <div class="services-grid">
+          <a href="web.html" class="service-card animate-hover">
+            <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099392/Mask_group_1_ci44p4.png" alt="Web Development" class="service-img-full" />
+            <span class="service-title">Web Development</span>
+          </a>
+          <a href="app.html" class="service-card animate-hover">
+            <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099836/App_Development_rszqxb.png" alt="App Development" class="service-img-full" />
+            <span class="service-title">App Development</span>
+          </a>
+          <a href="uiux.html" class="service-card animate-hover">
+            <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099392/Mask_group_2_anu0uh.png" alt="UX/UI Design" class="service-img-full" />
+            <span class="service-title">UX/UI Design</span>
+          </a>
+          <a href="genai.html" class="service-card animate-hover">
+            <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099391/growtika-nGoCBxiaRO0-unsplash_1_ptmog6.png" alt="Generative AI" class="service-img-full" />
+            <span class="service-title">Generative AI</span>
+          </a>
+          <a href="cyber.html" class="service-card animate-hover">
+            <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099391/Mask_group_4_vq7gni.png" alt="Cyber Security" class="service-img-full" />
+            <span class="service-title">Cyber Security</span>
+          </a>
+          <a href="blockchain.html" class="service-card animate-hover">
+            <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099391/Mask_group_5_joumzb.png" alt="Blockchain" class="service-img-full" />
+            <span class="service-title">Blockchain</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -199,40 +200,75 @@
     </section>
 
     <!-- Motivation & Project Inquiry Section -->
-    <section class="motivation-form-section" id="contact">
-      <div class="motivation-form-container">
-        <div class="motivation-left">
-          <h2 class="motivation-title">Let's Build <span class="motivation-gradient">your business</span></h2>
-          <div class="motivation-subtext">
-            We're here to understand your needs and deliver a solution aligned with your goals.<br><br>
-            Share your details, and our team will contact you to schedule a conversation.
-          </div>
+    <section class="contact-section">
+      <div class="contact-container">
+        <div class="contact-content">
+          <h2 class="contact-title">Let's Build <span>your business</span></h2>
+          <p class="contact-description">We're here to understand your needs and deliver a solution aligned with your goals.</p>
+          <p class="contact-description">Share your details, and our team will contact you to schedule a conversation.</p>
         </div>
-        <form class="project-form" action="#" method="POST" enctype="multipart/form-data">
-          <div class="form-title">Drop <span class="motivation-gradient">Your Project</span> Details</div>
-          <input type="text" name="firstName" placeholder="First Name" required />
-          <input type="text" name="lastName" placeholder="Last Name" required />
-          <div class="phone-field">
-            <select name="countryCode" class="country-code-select" required>
-              <option value="+1" selected>🇺🇸 +1</option>
-              <option value="+44">🇬🇧 +44</option>
-              <option value="+91">🇮🇳 +91</option>
-              <option value="+61">🇦🇺 +61</option>
-              <option value="+971">🇦🇪 +971</option>
-              <option value="+81">🇯🇵 +81</option>
-              <option value="+49">🇩🇪 +49</option>
-              <option value="+33">🇫🇷 +33</option>
-              <option value="+86">🇨🇳 +86</option>
-              <option value="+92">🇵🇰 +92</option>
-              <!-- Add more as needed -->
-            </select>
-            <input type="tel" name="phone" placeholder="123456789" required pattern="[0-9\-\s+()]{7,}" />
+        <form class="contact-form">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="First Name" required>
           </div>
-          <input type="email" name="email" placeholder="Email Address *" required />
-          <input type="text" name="companyName" placeholder="Company Name *" required />
-          <input type="text" name="budget" placeholder="Budget" />
-          <input type="text" name="region" placeholder="Region *" required />
-          <textarea name="projectDetails" placeholder="Your Query / Project Details" rows="3"></textarea>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Last Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="Email" required>
+          </div>
+          <div class="form-group">
+            <div class="phone-input">
+              <select class="country-code" id="phoneCode">
+                <option value="+1" data-region="United States">🇺🇸 +1</option>
+                <option value="+44" data-region="United Kingdom">🇬🇧 +44</option>
+                <option value="+92" data-region="Pakistan">🇵🇰 +92</option>
+                <option value="+61" data-region="Australia">🇦🇺 +61</option>
+                <option value="+971" data-region="UAE">🇦🇪 +971</option>
+                <option value="+91" data-region="India">🇮🇳 +91</option>
+                <option value="+86" data-region="China">🇨🇳 +86</option>
+                <option value="+81" data-region="Japan">🇯🇵 +81</option>
+              </select>
+              <input type="tel" class="form-control" placeholder="Phone Number" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Company Name" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Company domain / url" required>
+          </div>
+          <div class="form-group">
+            <div class="budget-input">
+              <select class="budget-select" id="budgetSelect">
+                <option value="">Select Budget Range</option>
+                <option value="<1k">Less than 1k</option>
+                <option value="1k-2k">1k - 2k</option>
+                <option value="2k-3k">2k - 3k</option>
+                <option value="3k-4k">3k - 4k</option>
+                <option value="4k-5k">4k - 5k</option>
+                <option value="5k-6k">5k - 6k</option>
+                <option value="6k-7k">6k - 7k</option>
+                <option value="7k-8k">7k - 8k</option>
+                <option value="8k-9k">8k - 9k</option>
+                <option value="9k-10k">9k - 10k</option>
+                <option value="custom">Enter Custom Amount</option>
+              </select>
+              <input type="text" class="form-control budget-custom" placeholder="Enter custom budget (e.g., 15k)" style="display: none;">
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="region" placeholder="Region" required>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" placeholder="Your Query / Project Details" rows="4" required></textarea>
+          </div>
+          <div class="form-group">
+            <div class="file-upload">
+              <span>Your Query / Project Details</span>
+              <button type="button">Choose file</button>
+            </div>
+          </div>
           <button type="submit" class="submit-btn">Submit</button>
         </form>
       </div>
@@ -249,14 +285,18 @@
   </main>
 
   <!-- Footer -->
-  <footer class="footer animate-fade-in">
-    <div class="footer-content">
-      <div class="footer-brand">
-        <img src="https://res.cloudinary.com/dibgebv9u/image/upload/v1751025976/samples/logo.png" alt="CHECXO Logo" class="footer-logo-img-footer" />
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo-section">
+        <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752100944/Group_2_otxeg1.png" alt="CHECXO" class="footer-logo">
+        <h1 class="company-name">CHECXO</h1>
+        <p class="company-subtitle">WEB CRAFTERS</p>
+        <p class="footer-description">Crafting the Future of Technology</p>
       </div>
+
       <div class="footer-services">
-        <div class="footer-heading-gradient">Services</div>
-        <ul class="footer-list footer-list-services">
+        <h2 class="footer-heading">Services</h2>
+        <ul class="footer-services-list">
           <li>Web Development</li>
           <li>App Development</li>
           <li>UX/UI Design</li>
@@ -267,23 +307,33 @@
           <li>Ecommerce</li>
         </ul>
       </div>
+
       <div class="footer-contact">
-        <div class="footer-heading-gradient">Let's <span>Connect</span></div>
+        <h2 class="footer-heading">Let's <span>Connect</span></h2>
         <div class="footer-contact-info">
-          <a href="tel:+447745813953" class="footer-contact-link">+44 7745 813953</a><br>
-          <a href="mailto:infochecxo@gmail.com" class="footer-contact-link">infochecxo@gmail.com</a>
+          <a href="tel:+447745813953">+44 7745 813953</a>
+          <a href="mailto:infochecxo@gmail.com">infochecxo@gmail.com</a>
         </div>
-        <div class="footer-divider"></div>
-        <ul class="footer-list footer-list-countries">
-          <li><span class="country-flag">🇬🇧</span> United Kingdom</li>
-          <li><span class="country-flag">🇵🇰</span> Pakistan</li>
-          <li><span class="country-flag">🇦🇺</span> Australia</li>
-        </ul>
-        <div class="footer-socials footer-socials-right">
-          <a href="#" aria-label="X (Twitter)" class="footer-social-link" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="#" aria-label="LinkedIn" class="footer-social-link" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="#" aria-label="Instagram" class="footer-social-link" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+        <div class="footer-locations">
+          <p>United Kingdom</p>
+          <p>Pakistan</p>
+          <p>Australia</p>
         </div>
+      </div>
+
+      <div class="footer-social-heading">Connect with us
+        <div class="footer-social">
+          <a href="https://twitter.com/checxo" target="_blank" class="social-icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/X_logo.jpg/1200px-X_logo.jpg" alt="Twitter" width="24">
+          </a>
+          <a href="https://linkedin.com/company/checxo" target="_blank" class="social-icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/960px-LinkedIn_logo_initials.png" alt="LinkedIn" width="24">
+          </a>
+          <a href="https://instagram.com/checxo" target="_blank" class="social-icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1024px-Instagram_icon.png" alt="Instagram" width="24">
+          </a>
+        </div>
+       
       </div>
     </div>
   </footer>
@@ -444,7 +494,7 @@
 
     // EmailJS form handling with better error handling
     document.addEventListener('DOMContentLoaded', function() {
-      const form = document.querySelector('.project-form');
+      const form = document.querySelector('.contact-form');
       const modal = document.getElementById('form-success-modal');
       const closeBtn = document.querySelector('.form-success-close');
       
@@ -529,7 +579,7 @@
       }
 
       // Add form validation and visual feedback
-      const inputs = document.querySelectorAll('.project-form input, .project-form textarea, .project-form select');
+      const inputs = document.querySelectorAll('.contact-form input, .contact-form textarea, .contact-form select');
       
       inputs.forEach(input => {
         // Add focus effects
