@@ -716,3 +716,63 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 }); 
+
+// ================= TEAM/LEADERSHIP ADVANCED EFFECTS =================
+document.addEventListener('DOMContentLoaded', function() {
+  // Filtering
+  const filterBar = document.querySelector('.team-filter-bar');
+  const filterBtns = document.querySelectorAll('.team-filter-btn');
+  const members = document.querySelectorAll('.team-member');
+  filterBar && filterBar.addEventListener('click', function(e) {
+    if (e.target.classList.contains('team-filter-btn')) {
+      filterBtns.forEach(btn => btn.classList.remove('active'));
+      e.target.classList.add('active');
+      const role = e.target.getAttribute('data-role');
+      members.forEach(member => {
+        if (role === 'all' || member.getAttribute('data-role') === role) {
+          member.style.display = '';
+        } else {
+          member.style.display = 'none';
+        }
+      });
+    }
+  });
+
+  // Card flip (click/tap)
+  members.forEach(member => {
+    member.addEventListener('click', function(e) {
+      // Prevent flip if modal trigger is clicked
+      if (e.target.classList.contains('team-modal-trigger')) return;
+      // Only one card flipped at a time
+      members.forEach(m => m.classList.remove('flipped'));
+      member.classList.toggle('flipped');
+    });
+    // Touch support
+    member.addEventListener('touchstart', function(e) {
+      if (e.target.classList.contains('team-modal-trigger')) return;
+      members.forEach(m => m.classList.remove('flipped'));
+      member.classList.toggle('flipped');
+    });
+  });
+
+  // Modal logic
+  const modal = document.getElementById('team-modal');
+  const modalBody = modal ? modal.querySelector('.team-modal-body') : null;
+  document.querySelectorAll('.team-modal-trigger').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const cardBack = btn.closest('.team-card-back');
+      if (modal && modalBody && cardBack) {
+        modalBody.innerHTML = cardBack.innerHTML.replace(/<button.*button>/, '');
+        modal.classList.add('active');
+      }
+    });
+  });
+  if (modal) {
+    modal.addEventListener('click', function(e) {
+      if (e.target.classList.contains('team-modal') || e.target.classList.contains('team-modal-close')) {
+        modal.classList.remove('active');
+      }
+    });
+  }
+}); 
