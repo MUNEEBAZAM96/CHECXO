@@ -624,3 +624,95 @@ document.addEventListener('DOMContentLoaded', () => {
   const defaultOption = phoneCodeSelect.options[phoneCodeSelect.selectedIndex];
   regionInput.value = defaultOption.getAttribute('data-region');
 }); 
+
+// Team Carousel Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const carousel = document.querySelector('.leadership-grid');
+  const teamMembers = document.querySelectorAll('.team-member');
+  
+  // Clone first 4 items and append to end for smooth infinite loop
+  const firstFourItems = Array.from(teamMembers).slice(0, 4);
+  firstFourItems.forEach(item => {
+    const clone = item.cloneNode(true);
+    carousel.appendChild(clone);
+  });
+  
+  let currentIndex = 0;
+  const itemWidth = 390; // 350px width + 40px gap
+  const totalItems = teamMembers.length;
+  
+  function updateCarousel() {
+    carousel.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+  }
+  
+  function moveCarousel() {
+    currentIndex++;
+    carousel.style.transition = 'transform 0.5s ease-in-out';
+    updateCarousel();
+    
+    // When we reach the cloned items
+    if (currentIndex >= totalItems) {
+      // Wait for transition to finish, then quickly reset to start
+      setTimeout(() => {
+        carousel.style.transition = 'none';
+        currentIndex = 0;
+        updateCarousel();
+        // Re-enable transition after reset
+        setTimeout(() => {
+          carousel.style.transition = 'transform 0.5s ease-in-out';
+        }, 50);
+      }, 500);
+    }
+  }
+  
+  // Auto scroll every 3 seconds
+  let autoScrollInterval = setInterval(moveCarousel, 3000);
+  
+  // Pause auto scroll on hover
+  carousel.addEventListener('mouseenter', () => {
+    clearInterval(autoScrollInterval);
+  });
+  
+  carousel.addEventListener('mouseleave', () => {
+    autoScrollInterval = setInterval(moveCarousel, 3000);
+  });
+  
+  // Touch events for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  carousel.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    clearInterval(autoScrollInterval);
+    carousel.style.transition = 'none';
+  });
+  
+  carousel.addEventListener('touchmove', (e) => {
+    const currentTouch = e.changedTouches[0].screenX;
+    const diff = touchStartX - currentTouch;
+    carousel.style.transform = `translateX(${-currentIndex * itemWidth - diff}px)`;
+  });
+  
+  carousel.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    carousel.style.transition = 'transform 0.5s ease-in-out';
+    handleSwipe();
+    autoScrollInterval = setInterval(moveCarousel, 3000);
+  });
+  
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        currentIndex = Math.min(currentIndex + 1, totalItems);
+      } else {
+        currentIndex = Math.max(currentIndex - 1, 0);
+      }
+      updateCarousel();
+    } else {
+      updateCarousel(); // Reset to current position if swipe wasn't strong enough
+    }
+  }
+}); 

@@ -269,8 +269,8 @@ main {
   }
   
   .service-card {
-    min-height: 240px;
-    height: 240px;
+    min-height: 250px;
+    height: 250px;
   }
 }
 .service-card {
@@ -280,7 +280,7 @@ main {
   justify-content: center;
   min-height: 300px;
   height: 300px;
-  border-radius: 1.2rem;
+  border-radius: 1.1rem;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 4px 16px rgba(20,184,166,0.15);
   cursor: pointer;
@@ -291,7 +291,7 @@ main {
 }
 
 .service-card:hover, .service-card:focus {
-  transform: scale(1.05) translateY(-8px);
+  transform: scale(1.02) translateY(-4px);
   box-shadow: 0 12px 48px rgba(0,0,0,0.5), 0 8px 24px rgba(20,184,166,0.25);
   filter: brightness(1.1) saturate(1.15);
 }
@@ -346,7 +346,7 @@ main {
   position: absolute;
   top: 0; 
   left: 0; 
-  width: 100%; 
+  width: 10%; 
   height: 100%;
   background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.8));
   z-index: 2;
@@ -3191,7 +3191,7 @@ h2, .footer-heading-gradient {
 h3 {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #009688;
+  /* color: #009688; */
   margin-bottom: 1rem;
 }
 
@@ -3382,5 +3382,157 @@ h3 {
 @media (max-width: 768px) {
   .navbar-links {
     display: none;
+  }
+}
+
+/* Leadership Section Styles */
+.leadership-section {
+  background: linear-gradient(135deg, #004d40 0%, #00695c 100%);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.leadership-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(0,77,64,0.2) 0%, rgba(0,77,64,0.8) 100%);
+  z-index: 1;
+}
+
+.leadership-section .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1570px;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.section-title {
+  color: white;
+  font-size: 48px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Carousel Container */
+.carousel-container {
+  position: relative;
+  max-width: 1570px;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.leadership-grid {
+  display: flex;
+  gap: 40px;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.5s ease-in-out;
+  padding: 20px 0;
+  will-change: transform;
+}
+
+/* Update team member styles for carousel */
+.team-member {
+  flex: 0 0 280px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+}
+
+.member-frame {
+  width: 350px;
+  height: 350px;  /* Made equal to width for perfect circle */
+  /* background: white; */
+  padding: 0;     /* Removed padding */
+  margin: 0 auto 20px;
+  border-radius: 50%;  /* Changed to 50% for circle */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: visible;  /* Changed to visible to allow image overflow */
+}
+
+.member-frame img {
+  width: 110%;    /* Increased to allow overflow */
+  height: 110%;   /* Increased to allow overflow */
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 0;  /* Removed border radius from image */
+  filter: none;      /* Removed grayscale filter */
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover .member-frame img {
+  filter: none;    /* Removed filter change on hover */
+  transform: translate(-50%, -50%) scale(1.05);  /* Added slight scale effect instead */
+}
+
+.member-info {
+  color: white;
+  margin-top: 20px;
+}
+
+.member-info h3 {
+  font-size: 24px;
+  margin: 0 0 5px;
+  font-weight: 600;
+}
+
+.member-info p {
+  font-size: 16px;
+  margin: 0 0 15px;
+  opacity: 0.9;
+}
+
+.linkedin-link {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.linkedin-link:hover {
+  transform: scale(1.1);
+}
+
+.linkedin-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .leadership-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .leadership-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .member-frame {
+    width: 240px;
+    height: 280px;
   }
 }
