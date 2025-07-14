@@ -776,3 +776,86 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 }); 
+
+// ================= TESTIMONIALS TICKER AUTO-SCROLL =================
+document.addEventListener('DOMContentLoaded', function() {
+  const ticker = document.querySelector('.testimonials-ticker');
+  const grid = ticker ? ticker.querySelector('.testimonials-grid') : null;
+  if (!ticker || !grid) return;
+
+  // Duplicate cards for seamless infinite scroll
+  const cards = Array.from(grid.children);
+  cards.forEach(card => {
+    const clone = card.cloneNode(true);
+    clone.classList.add('cloned');
+    grid.appendChild(clone);
+  });
+
+  // Pause/resume animation on hover
+  ticker.addEventListener('mouseenter', () => {
+    grid.style.animationPlayState = 'paused';
+  });
+  ticker.addEventListener('mouseleave', () => {
+    grid.style.animationPlayState = 'running';
+  });
+}); 
+
+document.addEventListener("DOMContentLoaded", function() {
+  const carousel = document.getElementById('carousel3d');
+  if (!carousel) return;
+  const cards = carousel.querySelectorAll('.team-card');
+  const cardCount = cards.length;
+  const theta = 360 / cardCount;
+  let currRotation = 0;
+  let dragging = false;
+  let lastX = 0;
+
+  // Position cards in a circle
+  cards.forEach((card, i) => {
+    const angle = theta * i;
+    card.style.transform = `rotateY(${angle}deg) translateZ(520px)`;
+  });
+
+  // Drag to rotate
+  function setRotation(rot) {
+    carousel.style.transform = `translateZ(-300px) rotateY(${rot}deg)`;
+  }
+
+  carousel.addEventListener('mousedown', (e) => {
+    dragging = true;
+    lastX = e.clientX;
+    carousel.style.transition = 'none';
+  });
+  document.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    const delta = e.clientX - lastX;
+    currRotation += delta * 0.4;
+    setRotation(currRotation);
+    lastX = e.clientX;
+  });
+  document.addEventListener('mouseup', () => {
+    dragging = false;
+    carousel.style.transition = '';
+  });
+
+  // Touch support
+  carousel.addEventListener('touchstart', (e) => {
+    dragging = true;
+    lastX = e.touches[0].clientX;
+    carousel.style.transition = 'none';
+  });
+  document.addEventListener('touchmove', (e) => {
+    if (!dragging) return;
+    const delta = e.touches[0].clientX - lastX;
+    currRotation += delta * 0.4;
+    setRotation(currRotation);
+    lastX = e.touches[0].clientX;
+  });
+  document.addEventListener('touchend', () => {
+    dragging = false;
+    carousel.style.transition = '';
+  });
+
+  // Initial transform
+  setRotation(0);
+}); 
