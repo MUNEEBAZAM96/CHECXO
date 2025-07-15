@@ -119,33 +119,6 @@ window.addEventListener('scroll', () => {
     heroContent.style.transform = `translateY(${rate}px)`;
   }
 });
-// Typewriter effect for 'What's Next'
-const words = ["What's Next", "Innovation", "Digital Excellence", "AI Solutions", "Future-ready Tech"];
-let twIndex = 0, charIndex = 0, isDeleting = false;
-const twElem = document.getElementById('typewriter');
-function typeWriter() {
-  if (!twElem) return;
-  const word = words[twIndex];
-  if (isDeleting) {
-    charIndex--;
-    twElem.textContent = word.substring(0, charIndex);
-  } else {
-    charIndex++;
-    twElem.textContent = word.substring(0, charIndex);
-  }
-  let delay = isDeleting ? 60 : 110;
-  if (!isDeleting && charIndex === word.length) {
-    delay = 1200;
-    isDeleting = true;
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    twIndex = (twIndex + 1) % words.length;
-    delay = 600;
-  }
-  setTimeout(typeWriter, delay);
-}
-typeWriter();
-
 // EmailJS form handling with better error handling
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.querySelector('.contact-form');
@@ -299,4 +272,76 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+}); 
+
+// Spline Viewer Debugging and Fallback
+document.addEventListener('DOMContentLoaded', function() {
+  // Check if Spline viewer is loaded
+  setTimeout(() => {
+    const splineViewer = document.querySelector('spline-viewer');
+    if (splineViewer) {
+      console.log('Spline viewer element found:', splineViewer);
+      
+      // Check if the viewer is actually loading
+      splineViewer.addEventListener('load', () => {
+        console.log('Spline viewer loaded successfully');
+      });
+      
+      splineViewer.addEventListener('error', (error) => {
+        console.error('Spline viewer error:', error);
+        // Fallback to Three.js if Spline fails
+        console.log('Falling back to Three.js animation');
+      });
+    } else {
+      console.error('Spline viewer element not found');
+    }
+  }, 1000);
+}); 
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Enhanced Typewriter effect for hero headline and subheadline
+  function typeText(element, text, delay = 40, callback, highlightPop = false) {
+    let i = 0;
+    element.style.opacity = 0;
+    element.style.transition = 'opacity 0.6s cubic-bezier(.4,0,.2,1)';
+    setTimeout(() => { element.style.opacity = 1; }, 100);
+    function type() {
+      if (i <= text.length) {
+        element.innerHTML = text.slice(0, i) + '<span class="typed-cursor enhanced-cursor">|</span>';
+        i++;
+        setTimeout(type, delay);
+      } else {
+        element.innerHTML = text; // Remove cursor
+        if (highlightPop) {
+          // Animate highlight pop
+          const highlight = element.querySelector('.highlight');
+          if (highlight) {
+            highlight.classList.add('pop-highlight');
+            setTimeout(() => highlight.classList.remove('pop-highlight'), 900);
+          }
+        }
+        if (callback) callback();
+      }
+    }
+    type();
+  }
+
+  const headlineEl = document.getElementById('hero-main-headline');
+  const subheadlineEl = document.getElementById('hero-sub-headline');
+
+  if (headlineEl && subheadlineEl) {
+    // Clear initial text
+    headlineEl.innerHTML = '';
+    subheadlineEl.innerHTML = '';
+    headlineEl.style.opacity = 0;
+    subheadlineEl.style.opacity = 0;
+    // Start with a slight delay for a modern feel
+    setTimeout(function() {
+      typeText(headlineEl, 'Creating <span class="highlight">What\'s Next</span>', 38, function() {
+        setTimeout(function() {
+          typeText(subheadlineEl, 'We transform ideas into <span class="highlight">future-ready solutions</span>', 28, null, true);
+        }, 350);
+      }, true);
+    }, 350);
+  }
 }); 
