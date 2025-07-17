@@ -7,7 +7,17 @@
   <!-- Main Stylesheets -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/genai.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/industries.css">
+  <link rel="stylesheet" href="css/leadership.css">
+  <link rel="stylesheet" href="css/portfolio.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/brands-bar.css">
   <script src="js/main.js" defer></script>
+  <script src="js/brands-bar.js"></script>
   <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!-- Tailwind CSS for Utility Classes -->
@@ -48,16 +58,18 @@
       <spline-viewer url="https://prod.spline.design/yVLjp9MD2iyIQjSo/scene.splinecode"></spline-viewer>
       
       <div class="hero-content hero-content-overlay">
-        <h1 class="hero-headline animate-hero-headline" id="hero-main-headline">
-          <span class="hero-line hero-line1"> <span class="highlight"> Creating </span> What's Next </span>
+        <div class="hero-center-content">
+          <h1 class="hero-headline animate-hero-headline" id="hero-main-headline">
+            <span class="hero-line hero-line1"><span class="highlight">Creating</span> What’s Next </span>
         </h1>
-        <p class="hero-subheadline animate-hero-sub" id="hero-sub-headline">
-          We transform ideas into <span class="highlight">future-ready solutions</span>
-        </p>
-        <br>
-        <br>
-
-        <a href="#contact" class="btn-lets-connect">Lets Connect</a>
+          <h8 class="hero-subheadline animate-hero-sub" id="hero-sub-headline">
+            We transform ideas into future-ready solutions</span>
+          </h8>
+          <br>
+          <br>
+        
+          <a href="#contact" class="btn-lets-connect">Lets Connect</a>
+        </div>
       </div>
     </section>
     <!-- =============== END HERO SECTION =============== -->
@@ -94,10 +106,16 @@
         </div>
       </div>
     </section>
+    <br>
+    <br>
+
 
     <!-- Industries Section -->
     <section class="industries animate-fade-in-up" id="industries">
-      <h2>Driving Change Across <span class="highlight">Industries</span></h2>
+      <h1 class="fit-headline">Driving Change Across <span class="highlight" style=" color: #009688;">Industries</span></h1>
+      <br>
+      <br>
+      
       <div class="industries-figma-grid">
         <div class="industry-row">
           <div class="industry-card-figma" data-industry="travel">
@@ -200,10 +218,24 @@
       </div>
     </section>
 
+    <!-- Brands Bar Section -->
+    <section class="brands-bar-section">
+      <div class="brands-bar-heading"><span class="accent">Brands</span> We've Worked With</div>
+      <div class="brands-bar-marquee">
+        <div class="brands-bar-track">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike" class="brand-logo" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="brand-logo" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" class="brand-logo" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" class="brand-logo" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="brand-logo" />
+        </div>
+      </div>
+    </section>
+
     <!-- ================= TEAM/LEADERSHIP SECTION ================= -->
     <section id="leadership" class="leadership-section">
       <div class="container">
-        <p class="section-title">Meet Our Team</p>
+        <p class="section-title" style="font-size: 2.5rem; font-weight: 400;">Meet Our Team</p>
         <div class="team-static-grid">
           <!-- Team Member 1 -->
           <div class="team-card">
@@ -332,9 +364,11 @@
       <!-- ================= TESTIMONIALS SECTION ================= -->
       <section id="testimonials" class="testimonials-section">
         <div class="container">
-          <h2 class="testimonials-title">
+          <h1 class="testimonials-title">
             Our satisfied clients <span class="highlight">Testimonials</span>
-          </h2>
+          </h1>
+          <br>
+          <br>
           <!-- Ticker container for auto-scrolling -->
           <div class="testimonials-ticker">
             <div class="testimonials-grid">
@@ -417,76 +451,85 @@
 
     <!-- Motivation & Project Inquiry Section -->
     <section class="contact-section" id="contact">
-      <div class="contact-container">
-        <div class="contact-content">
-          <h2 class="contact-title">Let's Build <span>your business</span></h2>
+      <div class="contact-container" style="display: flex; flex-wrap: wrap; gap: 5rem;">
+        <!-- Left: Intro Text -->
+        <div class="contact-right" style="flex: 1 1 40%; min-width: 320px;">
+          <h1 class="testimonials-title">
+            Let's Build <span class="highlight">Your Business</span>
+          </h1>
           <p class="contact-description">We're here to understand your needs and deliver a solution aligned with your goals.</p>
           <p class="contact-description">Share your details, and our team will contact you to schedule a conversation.</p>
         </div>
-        <form class="contact-form">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="First Name" required>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Last Name" required>
-          </div>
-          <div class="form-group">
-            <input type="email" class="form-control" placeholder="Email" required>
-          </div>
-          <div class="form-group">
-            <div class="phone-input">
-              <select class="country-code" id="phoneCode">
-                <option value="+1" data-region="United States">🇺🇸 +1</option>
-                <option value="+44" data-region="United Kingdom">🇬🇧 +44</option>
-                <option value="+92" data-region="Pakistan">🇵🇰 +92</option>
-                <option value="+61" data-region="Australia">🇦🇺 +61</option>
-                <option value="+971" data-region="UAE">🇦🇪 +971</option>
-                <option value="+91" data-region="India">🇮🇳 +91</option>
-                <option value="+86" data-region="China">🇨🇳 +86</option>
-                <option value="+81" data-region="Japan">🇯🇵 +81</option>
-              </select>
-              <input type="tel" class="form-control" placeholder="Phone Number" required>
+        <!-- Right: Form and Heading -->
+        <div class="contact-form-wrapper" style="flex: 1 1 60%; min-width: 370px; max-width: 600px;">
+          <h1 class="testimonials-title">
+            Drop Your <span class="highlight">Project Details</span>
+          </h1>
+          <form class="contact-form">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="First Name" required>
             </div>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Company Name" required>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Company domain / url" required>
-          </div>
-          <div class="form-group">
-            <div class="budget-input">
-              <select class="budget-select" id="budgetSelect">
-                <option value="">Select Budget Range</option>
-                <option value="<1k">Less than 1k</option>
-                <option value="1k-2k">1k - 2k</option>
-                <option value="2k-3k">2k - 3k</option>
-                <option value="3k-4k">3k - 4k</option>
-                <option value="4k-5k">4k - 5k</option>
-                <option value="5k-6k">5k - 6k</option>
-                <option value="6k-7k">6k - 7k</option>
-                <option value="7k-8k">7k - 8k</option>
-                <option value="8k-9k">8k - 9k</option>
-                <option value="9k-10k">9k - 10k</option>
-                <option value="custom">Enter Custom Amount</option>
-              </select>
-              <input type="text" class="form-control budget-custom" placeholder="Enter custom budget (e.g., 15k)" style="display: none;">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Last Name" required>
             </div>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" id="region" placeholder="Region" required>
-          </div>
-          <div class="form-group">
-            <textarea class="form-control" placeholder="Your Query / Project Details" rows="4" required></textarea>
-          </div>
-          <div class="form-group">
-            <div class="file-upload">
-              <span>Your Query / Project Details</span>
-              <button type="button">Choose file</button>
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Email" required>
             </div>
-          </div>
-          <button type="submit" class="submit-btn">Submit</button>
-        </form>
+            <div class="form-group">
+              <div class="phone-input">
+                <select class="country-code" id="phoneCode">
+                  <option value="+1" data-region="United States">🇺🇸 +1</option>
+                  <option value="+44" data-region="United Kingdom">🇬🇧 +44</option>
+                  <option value="+92" data-region="Pakistan">🇵🇰 +92</option>
+                  <option value="+61" data-region="Australia">🇦🇺 +61</option>
+                  <option value="+971" data-region="UAE">🇦🇪 +971</option>
+                  <option value="+91" data-region="India">🇮🇳 +91</option>
+                  <option value="+86" data-region="China">🇨🇳 +86</option>
+                  <option value="+81" data-region="Japan">🇯🇵 +81</option>
+                </select>
+                <input type="tel" class="form-control" placeholder="Phone Number" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Company Name" required>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Company domain / url" required>
+            </div>
+            <div class="form-group">
+              <div class="budget-input">
+                <select class="budget-select" id="budgetSelect">
+                  <option value="">Select Budget Range</option>
+                  <option value="<1k">Less than 1k</option>
+                  <option value="1k-2k">1k - 2k</option>
+                  <option value="2k-3k">2k - 3k</option>
+                  <option value="3k-4k">3k - 4k</option>
+                  <option value="4k-5k">4k - 5k</option>
+                  <option value="5k-6k">5k - 6k</option>
+                  <option value="6k-7k">6k - 7k</option>
+                  <option value="7k-8k">7k - 8k</option>
+                  <option value="8k-9k">8k - 9k</option>
+                  <option value="9k-10k">9k - 10k</option>
+                  <option value="custom">Enter Custom Amount</option>
+                </select>
+                <input type="text" class="form-control budget-custom" placeholder="Enter custom budget (e.g., 15k)" style="display: none;">
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="region" placeholder="Region" required>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" placeholder="Your Query / Project Details" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+              <div class="file-upload">
+                <span>Your Query / Project Details</span>
+                <button type="button">Choose file</button>
+              </div>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+          </form>
+        </div>
       </div>
     </section>
     <!-- Success Modal -->

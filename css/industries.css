@@ -1,0 +1,135 @@
+/* --- Enhanced Figma-Inspired Industries Section (with advanced hover/active effects) --- */
+.industries {
+  position: relative;
+  overflow: hidden;
+}
+.industries::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: linear-gradient(120deg, #e0f7fa 0%, #f8fafc 50%, #b2f0e6 100%);
+  background-size: 200% 200%;
+  opacity: 0.45;
+  animation: industriesBGmove 12s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes industriesBGmove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.industries > * {
+  position: relative;
+  z-index: 1;
+}
+.industries h2 {
+   color: black;
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 900;
+  margin-bottom: 1.2rem;
+  letter-spacing: -1px;
+}
+
+.industries-figma-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+.industry-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+.industry-card-figma {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 2.5px solid #009688;
+  border-radius: 22px;
+  padding: 1.05rem 2.4rem 1.05rem 1.3rem;
+  min-width: 420px;
+  max-width: 520px;
+  flex: 1 1 0;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.04);
+  transition: box-shadow 0.25s, border-color 0.25s, background 0.25s, transform 0.22s cubic-bezier(.4,0,.2,1);
+  cursor: pointer;
+  gap: 1.1rem;
+  position: relative;
+  overflow: hidden;
+  will-change: transform, box-shadow, background;
+}
+.industry-icon-figma {
+  background: #009688;
+  color: #fff;
+  border-radius: 14px;
+  font-size: 1.95rem;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  box-shadow: 0 2px 8px 0 rgba(0,150,136,0.10);
+  transition: box-shadow 0.25s, transform 0.22s cubic-bezier(.4,0,.2,1);
+}
+.industry-label-figma {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #009688;
+  flex: 1;
+  letter-spacing: 0.01em;
+  transition: color 0.22s cubic-bezier(.4,0,.2,1);
+}
+.industry-chevron-figma {
+  color: #009688;
+  font-size: 1.2rem;
+  margin-left: 1.1rem;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+@media (max-width: 1200px) {
+  .industry-card-figma {
+    min-width: 220px;
+    max-width: 100%;
+    padding: 0.9rem 1.2rem 0.9rem 1rem;
+  }
+  .industry-label-figma {
+    font-size: 1rem;
+  }
+  .industry-icon-figma {
+    font-size: 1.35rem;
+    width: 32px;
+    height: 32px;
+    margin-right: 0.6rem;
+  }
+}
+@media (max-width: 900px) {
+  .industry-row {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .industries-figma-grid {
+    gap: 0.7rem;
+  }
+  .industry-card-figma {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+} 
+
+.fit-headline {
+  color: black;
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 900;
+  margin-bottom: 1.2rem;
+  letter-spacing: -1px;
+}
