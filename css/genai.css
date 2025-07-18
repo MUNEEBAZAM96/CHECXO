@@ -176,7 +176,7 @@
   content: '';
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(18, 24, 38, 0.48); /* dark overlay */
+  background: none; /* Removed dark/blue overlay */
   z-index: 2;
   pointer-events: none;
   transition: background 0.3s;
@@ -193,22 +193,22 @@
   object-fit: cover;
   z-index: 1;
   transition: filter 0.35s, transform 0.5s cubic-bezier(.4,0,.2,1);
-  filter: blur(1.2px) brightness(0.82) saturate(1.1);
+  filter: none; /* Remove blur/brightness/saturate for clarity */
 }
 .solution-card:hover .solution-img-full {
-  filter: brightness(0.85) blur(1px) saturate(1.2);
+  filter: none;
   transform: scale(1.08);
 }
 .solution-overlay {
   content: '';
   position: absolute;
   left: 0; top: 0; width: 100%; height: 100%;
-  background: linear-gradient(120deg, rgba(24,28,42,0.68) 0%, rgba(20,184,166,0.32) 100%);
+  background: none; /* Removed blue gradient overlay */
   z-index: 2;
   transition: background 0.35s;
 }
 .solution-card:hover .solution-overlay {
-  background: linear-gradient(120deg, rgba(20,184,166,0.38) 0%, rgba(24,28,42,0.65) 100%);
+  background: none; /* No overlay on hover */
 }
 .solution-card-content {
   position: relative;
@@ -564,17 +564,17 @@
 .project-img-overlay {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 180px;
-  background: linear-gradient(180deg, rgba(24,28,42,0.32) 0%, rgba(20,184,166,0.18) 100%);
+  background: none; /* Removed blue gradient overlay */
   z-index: 2;
   pointer-events: none;
   transition: background 0.35s;
   border-top-left-radius: 1.3rem;
   border-top-right-radius: 1.3rem;
-  filter: blur(0.5px) brightness(0.92);
+  filter: none;
 }
 .projects-swiper .project-card:hover .project-img-overlay {
-  background: linear-gradient(180deg, rgba(20,184,166,0.28) 0%, rgba(24,28,42,0.45) 100%);
-  filter: blur(1px) brightness(0.88);
+  background: none;
+  filter: none;
 }
 
 /* --- Methodology Section Styles --- */
