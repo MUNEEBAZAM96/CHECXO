@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="css/brands-bar.css">
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papm6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papm6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Swiper.js CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
@@ -196,24 +196,15 @@
     <!-- Methodology Section -->
     <section class="methodology-section" id="methodology">
       <h2 class="methodology-title">Our Methodology</h2>
-      <div class="swiper methodology-swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="methodology-image-block">
-              <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752491240/ChatGPT_Image_Jun_18_2025_06_27_03_PM_1_beyoyr.png" alt="Advanced Model Deployment Process" class="methodology-img" />
-              <div class="methodology-caption">Agile Web Development Process</div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="methodology-image-block">
-              <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752491243/Group_504_fawpj0.png" alt="Checxo Web: Catalyze Enterprise Operation on the Go" class="methodology-img" />
-              <div class="methodology-caption">Checxo Web: Catalyze Enterprise Operation on the Go</div>
-            </div>
-          </div>
+      <div class="methodology-images">
+        <div class="methodology-image-block">
+          <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752491240/ChatGPT_Image_Jun_18_2025_06_27_03_PM_1_beyoyr.png" alt="Advanced Model Deployment Process" class="methodology-img" />
+          <div class="methodology-caption">Agile Web Development Process</div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
+        <div class="methodology-image-block">
+          <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752491243/Group_504_fawpj0.png" alt="Checxo Web: Catalyze Enterprise Operation on the Go" class="methodology-img" />
+          <div class="methodology-caption">Checxo Web: Catalyze Enterprise Operation on the Go</div>
+        </div>
       </div>
     </section>
         <!-- Motivation & Project Inquiry Section -->
@@ -541,21 +532,8 @@
   <script>
     // Swiper for Methodology Section
     document.addEventListener('DOMContentLoaded', function() {
-      new Swiper('.methodology-swiper', {
-        effect: 'fade',
-        fadeEffect: { crossFade: true },
-        slidesPerView: 1,
-        loop: true,
-        navigation: {
-          nextEl: '.methodology-section .swiper-button-next',
-          prevEl: '.methodology-section .swiper-button-prev',
-        },
-        pagination: {
-          el: '.methodology-section .swiper-pagination',
-          clickable: true,
-        },
-        speed: 700,
-      });
+      // This script block is no longer needed as the Methodology section is now static.
+      // Keeping it for now, but it will not execute.
     });
   </script>
 </body>

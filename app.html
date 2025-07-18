@@ -185,24 +185,15 @@
     <!-- Methodology Section -->
     <section class="methodology-section" id="methodology">
       <h2 class="methodology-title">Our Methodology</h2>
-      <div class="swiper methodology-swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="methodology-image-block">
-              <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752836926/ChatGPT_Image_Jun_19_2025_03_38_40_AM_1_luznfj.png" alt="Advanced Model Deployment Process" class="methodology-img" />
-              <div class="methodology-caption">Agile App Development Process</div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="methodology-image-block">
-              <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752836926/ChatGPT_Image_Jun_19_2025_03_41_10_AM_1_mag9e4.png" alt="Checxo App: Catalyze Enterprise Operation on the Go" class="methodology-img" />
-              <div class="methodology-caption">Checxo App: Catalyze Enterprise Operation on the Go</div>
-            </div>
-          </div>
+      <div class="methodology-images">
+        <div class="methodology-image-block">
+          <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752836926/ChatGPT_Image_Jun_19_2025_03_38_40_AM_1_luznfj.png" alt="Advanced Model Deployment Process" class="methodology-img" />
+          <div class="methodology-caption">Agile App Development Process</div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
+        <div class="methodology-image-block">
+          <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752836926/ChatGPT_Image_Jun_19_2025_03_41_10_AM_1_mag9e4.png" alt="Checxo App: Catalyze Enterprise Operation on the Go" class="methodology-img" />
+          <div class="methodology-caption">Checxo App: Catalyze Enterprise Operation on the Go</div>
+        </div>
       </div>
     </section>
         <!-- Motivation & Project Inquiry Section -->
@@ -530,21 +521,8 @@
   <script>
     // Swiper for Methodology Section
     document.addEventListener('DOMContentLoaded', function() {
-      new Swiper('.methodology-swiper', {
-        effect: 'fade',
-        fadeEffect: { crossFade: true },
-        slidesPerView: 1,
-        loop: true,
-        navigation: {
-          nextEl: '.methodology-section .swiper-button-next',
-          prevEl: '.methodology-section .swiper-button-prev',
-        },
-        pagination: {
-          el: '.methodology-section .swiper-pagination',
-          clickable: true,
-        },
-        speed: 700,
-      });
+      // This script block is no longer needed as the Methodology section is now static.
+      // Keeping it for now, but it will not execute.
     });
   </script>
 </body>
