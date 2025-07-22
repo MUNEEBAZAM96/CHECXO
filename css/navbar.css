@@ -45,3 +45,43 @@
   color: #fff;
   box-shadow: none;
 } 
+
+.navbar {
+  height: 15px;
+  min-height: 56px;
+  padding: 0 2vw;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.navbar-container {
+  height: 56px;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.navbar-logo img {
+  height: 38px;
+  max-height: 38px;
+  width: auto;
+}
+.navbar-links li a, .navbar-actions a {
+  padding: 0.3rem 1.1rem;
+  font-size: 1.08rem;
+}
+@media (max-width: 600px) {
+  .navbar, .navbar-container {
+    height: 44px;
+    min-height: 44px;
+  }
+  .navbar-logo img {
+    height: 28px;
+    max-height: 28px;
+  }
+} 

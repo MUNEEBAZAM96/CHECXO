@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/brands-bar.css">
+  <link rel="stylesheet" href="css/hero-custom.css">
   <script src="js/main.js" defer></script>
   <script src="js/brands-bar.js"></script>
   <!-- Font Awesome for Icons -->
@@ -24,6 +25,38 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <!-- Animate.css for Animations -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    .morph-on-hover .btn-text {
+      transition: all 0.3s cubic-bezier(.4,2,.6,1);
+      display: inline-block;
+    }
+    .morph-on-hover:hover .btn-text {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.9);
+    }
+    .morph-on-hover::after {
+      content: 'Get Started';
+      display: inline-block;
+      position: absolute;
+      left: 0; right: 0;
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      color: inherit;
+      font-weight: inherit;
+      font-size: inherit;
+      transition: all 0.3s cubic-bezier(.4,2,.6,1);
+      transform: translateY(10px) scale(0.9);
+    }
+    .morph-on-hover:hover::after {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .morph-on-hover {
+      position: relative;
+      overflow: hidden;
+    }
+  </style>
 </head>
 <body>
   <!-- ================= NAVBAR ================= -->
@@ -43,31 +76,29 @@
       </ul>
       <!-- Call-to-Action Buttons -->
       <div class="navbar-actions">
-        <a href="#contact" class="btn-get-started">Get Started</a>
-        <a href="#contact" class="btn-lets-connect">Lets Connect</a>
+        <a href="#contact" class="btn-lets-connect morph-on-hover"><span class="btn-text">Lets Connect</span></a>
       </div>
     </div>
   </nav>
   <!-- =============== END NAVBAR =============== -->
-  <main>
-    <!-- ================= HERO SECTION ================= -->
-    <section class="hero hero-full-bg animate-fade-in" id="hero">
+  <section class="hero hero-full-bg animate-fade-in" id="hero">
       
-      <!-- Portfolio Video Animation -->
-      <video src="172529-847499878_small.mp4" autoplay loop muted playsinline style="width: 100%; height: auto; display: block;"></video>
+      <div class="hero-video-wrapper">
+        <video src="172529-847499878_medium.mp4" autoplay loop muted playsinline class="hero-video"></video>
+        <div class="hero-video-overlay"></div>
+        <!-- Optional: Add an image overlay for text effect -->
+        <!-- <div class="hero-image-overlay"></div> -->
+      </div>
       
       <div class="hero-content hero-content-overlay">
         <div class="hero-center-content">
           <h1 class="hero-headline animate-hero-headline" id="hero-main-headline">
-            <span class="hero-line hero-line1"><span class="highlight">Creating</span> What’s Next </span>
-        </h1>
-          <h8 class="hero-subheadline animate-hero-sub" id="hero-sub-headline">
-            We transform ideas into future-ready solutions</span>
-          </h8>
-          <br>
-          <br>
-        
-          <a href="#contact" class="btn-lets-connect">Lets Connect</a>
+            <span style="color: #00b6a9; font-weight: 800;">Creating</span> <span style="color: #fff; font-weight: 800;">What’s Next</span>
+          </h1>
+          <div class="hero-subheadline animate-hero-sub" id="hero-sub-headline" style="color: #fff; font-size: 2.1rem; font-weight: 400; margin-bottom: 2.2rem; line-height: 1.15;">
+            We transform ideas into<br>future-ready solutions.
+          </div>
+          <a href="#contact" class="hero-btn" style="background: #00b6a9; color: #fff; font-size: 1.7rem; font-weight: 500; border-radius: 32px; padding: 0.7rem 2.5rem; box-shadow: 0 4px 24px rgba(0,230,195,0.18); border: none;">Let’s Connect</a>
         </div>
       </div>
     </section>
@@ -602,9 +633,5 @@
   <!-- EmailJS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="js/inline-scripts.js" defer></script>
-  <!-- Black box to cover Spline logo -->
-  <div class="spline-logo-cover"></div>
-  <!-- Black box to cover Spline logo (bottom left) -->
-  <div class="spline-logo-cover-left"></div>
 </body>
 </html>

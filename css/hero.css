@@ -114,3 +114,27 @@
   transform: translateY(-2px) scale(1.04);
   outline: none;
 } 
+
+.hero,
+.hero-video-wrapper,
+.hero-video {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  border: none !important;
+}
+.hero {
+  /* Remove any default margin or padding */
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.hero-video-wrapper {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.hero-video {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block;
+} 
