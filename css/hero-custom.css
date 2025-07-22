@@ -9,7 +9,6 @@
   display: flex;
   align-items: stretch;
   justify-content: stretch;
-  top: 56px;
 }
 .hero-video-wrapper {
   position: absolute;

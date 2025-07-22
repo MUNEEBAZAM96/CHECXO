@@ -20,22 +20,7 @@ main {
   background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
 }
 
-spline-viewer, .hero-spline-viewer {
-  position: absolute !important;
-  top: 0;
-  left: 0;
-  width: 100vw !important;
-  min-width: 100vw !important;
-  max-width: 100vw !important;
-  height: 100vh !important;
-  min-height: 600px;
-  max-height: 100vh;
-  z-index: 1;
-  pointer-events: none;
-  background: transparent !important;
-  transition: filter 0.4s cubic-bezier(.4,0,.2,1);
-  overflow: hidden;
-}
+
 
 .hero-content {
   position: relative;
@@ -561,77 +546,6 @@ spline-viewer, .hero-spline-viewer {
   .industries-grid-fa {
     grid-template-columns: 1fr;
     gap: 1rem;
-  }
-  .navbar {
-    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
-    border-radius: 1.2rem;
-    max-width: 100vw;
-    box-shadow: 0 4px 24px rgba(20,184,166,0.13);
-  }
-  .navbar-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.2rem;
-  }
-  .navbar-logo {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 0.5rem;
-  }
-  .navbar-logo-img {
-    width: 90px;
-    height: 90px;
-    border-radius: 20px;
-    box-shadow: 0 8px 32px #0ea5e933, 0 0 0 4px #e0f7f4;
-    margin: 0 auto;
-    background: #fff;
-    padding: 10px;
-  }
-  .navbar-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.7rem;
-    width: 100%;
-    margin: 0.5rem 0 0.5rem 0;
-    animation: fadeSlideIn 0.7s cubic-bezier(.4,0,.2,1) both;
-  }
-  .navbar-links li {
-    width: 100%;
-    text-align: center;
-  }
-  .navbar-links a {
-    display: inline-block;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #181c2a;
-    padding: 0.6rem 0.2rem;
-    border-radius: 0.6rem;
-    position: relative;
-    transition: color 0.2s;
-    background: none;
-  }
-  .navbar-links a::after {
-    content: '';
-    display: block;
-    height: 3px;
-    width: 0;
-    background: linear-gradient(90deg, #0ea5e9 10%, #14b8a6 90%);
-    border-radius: 2px;
-    transition: width 0.35s cubic-bezier(.4,0,.2,1);
-    margin: 0.2rem auto 0 auto;
-  }
-  .navbar-links a:hover::after, .navbar-links a:focus::after {
-    width: 80%;
-  }
-  .navbar-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    width: 100%;
-    align-items: center;
-    animation: fadeSlideIn 0.9s 0.2s cubic-bezier(.4,0,.2,1) both;
   }
   .btn, .btn-primary, .btn-outline {
     width: 90%;
@@ -7232,7 +7146,7 @@ h3 {
   box-shadow: 0 8px 32px 0 rgba(20,184,166,0.18);
   backdrop-filter: blur(10px);
   min-height: 68px;
-  padding: 0.5rem 2.2rem;
+  padding: 0;
   border-radius: 1.5rem;
   transition: min-height 0.3s, padding 0.3s, box-shadow 0.3s, background 0.3s, backdrop-filter 0.3s;
 }

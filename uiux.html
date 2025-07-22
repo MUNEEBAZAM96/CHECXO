@@ -17,31 +17,64 @@
   <link rel="stylesheet" href="css/brands-bar.css">
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papm6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papm6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Swiper.js CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <style>
+    .morph-on-hover .btn-text {
+      transition: all 0.3s cubic-bezier(.4,2,.6,1);
+      display: inline-block;
+    }
+    .morph-on-hover:hover .btn-text {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.9);
+    }
+    .morph-on-hover::after {
+      content: 'Get Started';
+      display: inline-block;
+      position: absolute;
+      left: 0; right: 0;
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      color: inherit;
+      font-weight: inherit;
+      font-size: inherit;
+      transition: all 0.3s cubic-bezier(.4,2,.6,1);
+      transform: translateY(10px) scale(0.9);
+    }
+    .morph-on-hover:hover::after {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .morph-on-hover {
+      position: relative;
+      overflow: hidden;
+    }
+  </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar animate-fade-in">
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
     <div class="navbar-container">
-      <div class="navbar-logo">
-        <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752101080/image_25_wdnh4o.png" alt="CHECXO Logo" class="navbar-logo-img" />
-      </div>
+      <!-- Logo -->
+      <a href="/" class="navbar-logo">
+        <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752101080/image_25_wdnh4o.png" alt="CHECXO">
+      </a>
+      <!-- Navigation Links -->
       <ul class="navbar-links">
-        <li><a href="index.html#hero">Home</a></li>
-        <li><a href="index.html#industries">Industries</a></li>
-        <li><a href="index.html#services">Services</a></li>
-        <li><a href="index.html#portfolio">Portfolio</a></li>
-        <li><a href="index.html#leadership">Leadership</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#industries">Industries</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#leadership">Leadership</a></li>
       </ul>
+      <!-- Call-to-Action Buttons -->
       <div class="navbar-actions">
-        <button class="btn btn-primary">Get Started</button>
-        <a href="index.html#contact" class="btn btn-outline">Lets Connect</a>
+        <a href="#contact" class="btn-lets-connect morph-on-hover"><span class="btn-text">Lets Connect</span></a>
       </div>
     </div>
   </nav>
-  <!-- End Navbar -->
   <main>
     <!-- Hero Section -->
     <section class="hero hero-genai animate-fade-in" id="hero">
