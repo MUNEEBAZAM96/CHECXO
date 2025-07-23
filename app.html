@@ -16,9 +16,11 @@
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/brands-bar.css">
   
+  
+  
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papm6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papm6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Swiper.js CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <style>
@@ -209,6 +211,37 @@
               </div>
             </a>
           </div>
+          <!-- Added projects -->
+          <div class="swiper-slide">
+            <a class="project-card" href="#" target="_blank">
+              <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="App Project 4" class="project-img" />
+              <div class="project-img-overlay"></div>
+              <div class="project-info">
+                <div class="project-title">E-Learning Platform</div>
+                <div class="project-desc">Interactive mobile e-learning app with video courses and quizzes.</div>
+              </div>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a class="project-card" href="#" target="_blank">
+              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="App Project 5" class="project-img" />
+              <div class="project-img-overlay"></div>
+              <div class="project-info">
+                <div class="project-title">Food Delivery App</div>
+                <div class="project-desc">On-demand food delivery app with real-time order tracking.</div>
+              </div>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a class="project-card" href="#" target="_blank">
+              <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="App Project 6" class="project-img" />
+              <div class="project-img-overlay"></div>
+              <div class="project-info">
+                <div class="project-title">Social Networking App</div>
+                <div class="project-desc">A vibrant social platform for connecting and sharing moments.</div>
+              </div>
+            </a>
+          </div>
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -247,17 +280,17 @@
               </h1>
               <form class="contact-form">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="First Name" required>
+                  <input type="text" class="form-control" name="firstName" placeholder="First Name" required>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Last Name" required>
+                  <input type="text" class="form-control" name="lastName" placeholder="Last Name" required>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control" placeholder="Email" required>
+                  <input type="email" class="form-control" name="email" placeholder="Email" required>
                 </div>
                 <div class="form-group">
                   <div class="phone-input">
-                    <select class="country-code" id="phoneCode">
+                    <select class="country-code" id="phoneCode" name="countryCode">
                       <option value="+1" data-region="United States">🇺🇸 +1</option>
                       <option value="+44" data-region="United Kingdom">🇬🇧 +44</option>
                       <option value="+92" data-region="Pakistan">🇵🇰 +92</option>
@@ -267,18 +300,15 @@
                       <option value="+86" data-region="China">🇨🇳 +86</option>
                       <option value="+81" data-region="Japan">🇯🇵 +81</option>
                     </select>
-                    <input type="tel" class="form-control" placeholder="Phone Number" required>
+                    <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Company Name" required>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Company domain / url" required>
+                  <input type="text" class="form-control" name="companyName" placeholder="Company Name" required>
                 </div>
                 <div class="form-group">
                   <div class="budget-input">
-                    <select class="budget-select" id="budgetSelect">
+                    <select class="budget-select" id="budgetSelect" name="budget">
                       <option value="">Select Budget Range</option>
                       <option value="<1k">Less than 1k</option>
                       <option value="1k-2k">1k - 2k</option>
@@ -292,20 +322,14 @@
                       <option value="9k-10k">9k - 10k</option>
                       <option value="custom">Enter Custom Amount</option>
                     </select>
-                    <input type="text" class="form-control budget-custom" placeholder="Enter custom budget (e.g., 15k)" style="display: none;">
+                    <input type="text" class="form-control budget-custom" name="budgetCustom" placeholder="Enter custom budget (e.g., 15k)" style="display: none;">
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="region" placeholder="Region" required>
+                  <input type="text" class="form-control" id="region" name="region" placeholder="Region" required>
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" placeholder="Your Query / Project Details" rows="4" required></textarea>
-                </div>
-                <div class="form-group">
-                  <div class="file-upload">
-                    <span>Your Query / Project Details</span>
-                    <button type="button">Choose file</button>
-                  </div>
+                  <textarea class="form-control" name="projectDetails" placeholder="Your Query / Project Details" rows="4" required></textarea>
                 </div>
                 <button type="submit" class="submit-btn">Submit</button>
               </form>
