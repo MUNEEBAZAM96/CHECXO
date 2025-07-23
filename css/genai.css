@@ -2,7 +2,7 @@
 .hero-genai {
   position: relative;
   min-height: 100vh;
-  height: 100vh;
+  height: 200vh;
   max-height: none;
   display: flex;
   align-items: center;

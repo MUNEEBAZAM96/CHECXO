@@ -7,7 +7,7 @@ body {
 }
 main {
   min-height: 100vh;
-  margin-top: 72px; /* Adjust this based on navbar height */
+  margin-top: 0 !important;
 }
 .hero {
   position: relative;
@@ -6320,8 +6320,8 @@ section {
 /* --- Generative AI Hero Section --- */
 .hero-genai {
   position: relative;
-  min-height: 380px;
-  max-height: 420px;
+  min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6331,7 +6331,7 @@ section {
 }
 .hero-genai-img {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 380px;
+  top: 0; left: 0; width: 100%; height: 100vh;
   object-fit: cover;
   z-index: 1;
   filter: brightness(0.62) saturate(1.1) blur(0.5px);
@@ -6339,10 +6339,10 @@ section {
 }
 @media (max-width: 600px) {
   .hero-genai {
-    min-height: 220px;
+    min-height: 60vh;
   }
   .hero-genai-img {
-    height: 220px;
+    height: 60vh;
   }
 }
 
