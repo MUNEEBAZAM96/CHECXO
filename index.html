@@ -1,629 +1,1232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CHECXO Web Crafters | Agency Portfolio</title>
-  <!-- Main Stylesheets -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/genai.css">
-  <link rel="stylesheet" href="css/services.css">
-  <link rel="stylesheet" href="css/industries.css">
-  <link rel="stylesheet" href="css/leadership.css">
-  <link rel="stylesheet" href="css/portfolio.css">
-  <link rel="stylesheet" href="css/contact.css">
-  <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/hero.css">
-  <link rel="stylesheet" href="css/navbar.css">
-  <link rel="stylesheet" href="css/brands-bar.css">
-  <link rel="stylesheet" href="css/hero-custom.css">
-  <script src="js/main.js" defer></script>
-  <script src="js/brands-bar.js"></script>
-  <!-- Font Awesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <!-- Tailwind CSS for Utility Classes -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <!-- Animate.css for Animations -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- =================== [SECTION: META & HEAD] =================== -->
+  <meta charset="UTF-8" />
+  <title>CHECXO | Landing Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- =================== [SECTION: TEL INPUT CSS/JS] =================== -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+</head>
+
+<body class="bg-gray-50">
+
+  <!-- =================== [SECTION: CORE CSS STYLES] =================== -->
   <style>
-    .morph-on-hover .btn-text {
-      transition: all 0.3s cubic-bezier(.4,2,.6,1);
-      display: inline-block;
+    body { font-family: 'Inter', Arial, sans-serif; }
+    .brand-color { color: #02847E !important; }
+    .navbar-blur { background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid #e1e4e8;}
+    .nav-link { color: #222; font-weight: 500; transition: color .2s; }
+    .nav-link.active, .nav-link:hover { color: #02847E !important;}
+    .nav-btn-outline { border: 2px solid #02847E; color: #02847E; background: transparent; }
+    .nav-btn-outline:hover { background: #02847E; color: #fff !important; }
+    .no-scroll { overflow: hidden !important; }
+    @media (max-width: 640px) {
+      .mobile-btn {
+        width: 100%;
+        margin-top: 0.5rem;
+        font-size: 1rem;
+        display: block;
+      }
+      .mobile-btn:first-child { margin-top: 1rem; }
+      .leadership-card { min-width: 90vw !important; max-width: 95vw !important; }
     }
-    .morph-on-hover:hover .btn-text {
-      opacity: 0;
-      transform: translateY(-10px) scale(0.9);
+    @media (min-width: 641px) and (max-width: 900px) {
+      .leadership-card { min-width: 46vw !important; max-width: 55vw !important; }
     }
-    .morph-on-hover::after {
-      content: 'Get Started';
-      display: inline-block;
-      position: absolute;
-      left: 0; right: 0;
-      text-align: center;
-      opacity: 0;
-      pointer-events: none;
-      color: inherit;
-      font-weight: inherit;
-      font-size: inherit;
-      transition: all 0.3s cubic-bezier(.4,2,.6,1);
-      transform: translateY(10px) scale(0.9);
+    @media (min-width: 901px) {
+      .leadership-card { min-width: 350px !important; max-width: 400px !important; }
     }
-    .morph-on-hover:hover::after {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-    .morph-on-hover {
-      position: relative;
-      overflow: hidden;
+    /* Hide horizontal scrollbar for navbar on desktop only */
+    @media (min-width: 768px) {
+      .navbar-scrollbar::-webkit-scrollbar { display: none; }
+      .navbar-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     }
   </style>
-</head>
-<body>
-  <!-- ================= NAVBAR ================= -->
-  <nav class="navbar">
-    <div class="navbar-container">
-      <!-- Logo -->
-      <a href="/" class="navbar-logo">
-        <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752101080/image_25_wdnh4o.png" alt="CHECXO">
-      </a>
-      <!-- Navigation Links -->
-      <ul class="navbar-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#industries">Industries</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#leadership">Leadership</a></li>
-      </ul>
-      <!-- Call-to-Action Buttons -->
-      <div class="navbar-actions">
-        <a href="#contact" class="btn-lets-connect morph-on-hover"><span class="btn-text">Lets Connect</span></a>
-      </div>
+
+  <!-- =================== [SECTION: MOBILE MODAL OVERLAY] =================== -->
+  <div id="mobile-overlay"
+    class="hidden fixed inset-0 z-30 md:hidden"
+    style="background: #fff; opacity: 1; pointer-events: auto;">
+  </div>
+
+  <!-- =================== [SECTION: NAVIGATION BAR] =================== -->
+  <nav class="fixed left-0 right-0 top-1 z-50 bg-white/80 backdrop-blur shadow-xl rounded-full w-full px-8 py-1 flex items-center justify-between max-w-[99vw] mx-auto" style="min-height: 64px;">
+    <!-- Logo -->
+    <a href="#hero" class="flex items-center min-w-[140px] -my-2 mr-2">
+      <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1753196260/Logo-removebg-preview_oti56g.png" 
+           alt="CHECXO Logo"
+           class="w-44 h-16 object-contain -my-2"
+           style="max-height:48px; min-width:120px;" />
+    </a>
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center justify-end w-full gap-2 lg:gap-6">
+      <a href="#hero" class="nav-link px-4 py-2" data-section="hero">Home</a>
+      <a href="#services" class="nav-link px-4 py-2" data-section="services">Services</a>
+      <a href="#industries" class="nav-link px-4 py-2" data-section="industries">Industries</a>
+      <a href="#leadership" class="nav-link px-4 py-2" data-section="leadership">Leadership</a>
+      <a href="#testimonial" class="nav-link px-4 py-2" data-section="testimonial">Testimonial</a>
+      <a href="#contact" class="ml-6 nav-btn-outline px-6 py-2 rounded-full font-semibold text-base border-2 border-[#02847E] text-[#02847E]" data-section="contact">Contact Us</a>
+    </div>
+    <!-- Hamburger Button (mobile only) -->
+    <button id="nav-toggle" class="md:hidden flex items-center z-50 ml-2" aria-label="Open Menu">
+      <svg class="w-9 h-9 text-[#02847E]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <!-- MOBILE MENU - 100% OPAQUE SOLID WHITE -->
+    <div
+      id="mobile-menu"
+      class="hidden fixed inset-0 z-40 pt-24 flex flex-col items-center md:hidden"
+      style="background: #fff !important;">
+      <a href="#hero" class="nav-link-mobile text-lg mb-2" data-section="hero">Home</a>
+      <a href="#services" class="nav-link-mobile text-lg mb-2" data-section="services">Services</a>
+      <a href="#industries" class="nav-link-mobile text-lg mb-2" data-section="industries">Industries</a>
+      <a href="#leadership" class="nav-link-mobile text-lg mb-2" data-section="leadership">Leadership</a>
+      <a href="#testimonial" class="nav-link-mobile text-lg mb-4" data-section="testimonial">Testimonial</a>
+      <a href="#contact" class="nav-btn-outline w-11/12 text-center px-4 py-3 rounded-full font-semibold text-base border-2 border-[#02847E] text-[#02847E] mb-2" data-section="contact">Contact Us</a>
     </div>
   </nav>
-  <!-- =============== END NAVBAR =============== -->
-  <section class="hero hero-full-bg animate-fade-in" id="hero">
-      
-      <div class="hero-video-wrapper">
-        <video src="172529-847499878_medium.mp4" autoplay loop muted playsinline class="hero-video"></video>
-        <div class="hero-video-overlay"></div>
-        <!-- Optional: Add an image overlay for text effect -->
-        <!-- <div class="hero-image-overlay"></div> -->
-      </div>
-      
-      <div class="hero-content hero-content-overlay">
-        <div class="hero-center-content">
-          <h1 class="hero-headline animate-hero-headline" id="hero-main-headline">
-            <span style="color: #00b6a9; font-weight: 800;">Creating</span> <span style="color: #fff; font-weight: 800;">What’s Next</span>
-          </h1>
-          <div class="hero-subheadline animate-hero-sub" id="hero-sub-headline" style="color: #fff; font-size: 2.1rem; font-weight: 400; margin-bottom: 2.2rem; line-height: 1.15;">
-            We transform ideas into<br>future-ready solutions.
-          </div>
-          <a href="#contact" class="hero-btn" style="background: #00b6a9; color: #fff; font-size: 1.7rem; font-weight: 500; border-radius: 32px; padding: 0.7rem 2.5rem; box-shadow: 0 4px 24px rgba(0,230,195,0.18); border: none;">Let’s Connect</a>
-        </div>
-      </div>
-    </section>
-    <!-- =============== END HERO SECTION =============== -->
 
-    <!-- Services Section -->
-    <section class="services animate-fade-in-up" id="services">
-      <div class="services-content">
-        <h2>Transform Your Business</h2>
-        <div class="services-grid">
-          <a href="web.html" class="service-card animate-hover">
-            <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099392/Mask_group_1_ci44p4.png" alt="Web Development" class="service-img-full" />
-            <span class="service-title">Web Development</span>
-          </a>
-          <a href="app.html" class="service-card animate-hover">
-            <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099836/App_Development_rszqxb.png" alt="App Development" class="service-img-full" />
-            <span class="service-title">App Development</span>
-          </a>
-          <a href="uiux.html" class="service-card animate-hover">
-            <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099392/Mask_group_2_anu0uh.png" alt="UX/UI Design" class="service-img-full" />
-            <span class="service-title">UX/UI Design</span>
-          </a>
-          <a href="genai.html" class="service-card animate-hover">
-            <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099391/growtika-nGoCBxiaRO0-unsplash_1_ptmog6.png" alt="Generative AI" class="service-img-full" />
-            <span class="service-title">Generative AI</span>
-          </a>
-          <a href="cyber.html" class="service-card animate-hover">
-            <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099391/Mask_group_4_vq7gni.png" alt="Cyber Security" class="service-img-full" />
-            <span class="service-title">Cyber Security</span>
-          </a>
-          <a href="blockchain.html" class="service-card animate-hover">
-            <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099391/Mask_group_5_joumzb.png" alt="Blockchain" class="service-img-full" />
-            <span class="service-title">Blockchain</span>
-          </a>
-        </div>
-      </div>
-    </section>
-    <br>
-    <br>
+  <!-- =================== [SECTION: NAVIGATION JS] =================== -->
+  <script>
+    // DOM refs
+    const navToggle = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileOverlay = document.getElementById('mobile-overlay');
+
+    function openMobileMenu() {
+      mobileMenu.classList.remove('hidden');
+      mobileOverlay.classList.remove('hidden');
+      document.body.style.overflow = "hidden";
+    }
+    function closeMobileMenu() {
+      mobileMenu.classList.add('hidden');
+      mobileOverlay.classList.add('hidden');
+      document.body.style.overflow = "";
+    }
+    navToggle.onclick = function() {
+      if (mobileMenu.classList.contains('hidden')) {
+        openMobileMenu();
+      } else {
+        closeMobileMenu();
+      }
+    };
+
+    document.querySelectorAll('.nav-link-mobile, #mobile-menu .nav-btn-outline').forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+    mobileOverlay.onclick = closeMobileMenu;
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) closeMobileMenu();
+    });
+
+    // Style (active underline, etc.)
+    const style = document.createElement('style');
+    style.innerHTML = `
+      .nav-link, .nav-link-mobile {
+        font-weight: 500;
+        color: #222;
+        border-bottom: 2.5px solid transparent;
+        transition: color 0.18s, border 0.18s;
+        background: transparent !important;
+        text-align: center;
+      }
+      .nav-link.active, .nav-link-mobile.active {
+        color: #02847E !important;
+        border-bottom: 2.5px solid #02847E;
+        background: transparent !important;
+      }
+      .nav-btn-outline {
+        font-weight: 600;
+        color: #02847E;
+        border: 2px solid #02847E;
+        background: transparent;
+        transition: background 0.18s, color 0.18s;
+      }
+      .nav-btn-outline:hover, .nav-btn-outline.active {
+        background: #e3f7f6 !important;
+        color: #02847E !important;
+      }
+      @media (min-width: 768px) {
+        #mobile-menu { display: none !important; }
+        #mobile-overlay { display: none !important; }
+        #nav-toggle { display: none !important; }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+
+ 
 
 
-    <!-- Industries Section -->
-    <section class="industries animate-fade-in-up" id="industries">
-      <h1 class="fit-headline">Driving Change Across <span class="highlight" style=" color: #009688;">Industries</span></h1>
-      <br>
-      <br>
-      
-      <div class="industries-figma-grid">
-        <div class="industry-row">
-          <div class="industry-card-figma" data-industry="travel">
-            <span class="industry-icon-figma"><i class="fas fa-plane-departure"></i></span>
-            <span class="industry-label-figma">Travel & Hospitality</span>
-            <span class="industry-chevron-figma"><i class="fas fa-chevron-down"></i></span>
-          </div>
-          <div class="industry-card-figma" data-industry="ecommerce">
-            <span class="industry-icon-figma"><i class="fas fa-cart-shopping"></i></span>
-            <span class="industry-label-figma">E-commerce</span>
-            <span class="industry-chevron-figma"><i class="fas fa-chevron-down"></i></span>
-          </div>
-        </div>
-        <div class="industry-row">
-          <div class="industry-card-figma" data-industry="software">
-            <span class="industry-icon-figma"><i class="fas fa-desktop"></i></span>
-            <span class="industry-label-figma">Software Solution</span>
-            <span class="industry-chevron-figma"><i class="fas fa-chevron-down"></i></span>
-          </div>
-          <div class="industry-card-figma" data-industry="gaming">
-            <span class="industry-icon-figma"><i class="fas fa-gamepad"></i></span>
-            <span class="industry-label-figma">Gaming</span>
-            <span class="industry-chevron-figma"><i class="fas fa-chevron-down"></i></span>
-          </div>
-        </div>
-        <div class="industry-row">
-          <div class="industry-card-figma" data-industry="health">
-            <span class="industry-icon-figma"><i class="fas fa-shield-heart"></i></span>
-            <span class="industry-label-figma">Health</span>
-            <span class="industry-chevron-figma"><i class="fas fa-chevron-down"></i></span>
-          </div>
-          <div class="industry-card-figma" data-industry="startups">
-            <span class="industry-icon-figma"><i class="fas fa-rocket"></i></span>
-            <span class="industry-label-figma">Startups</span>
-            <span class="industry-chevron-figma"><i class="fas fa-chevron-down"></i></span>
-          </div>
-        </div>
-        <div class="industry-row">
-          <div class="industry-card-figma" data-industry="blockchain">
-            <span class="industry-icon-figma"><i class="fas fa-cubes"></i></span>
-            <span class="industry-label-figma">web-3 Blockchain</span>
-            <span class="industry-chevron-figma"><i class="fas fa-chevron-down"></i></span>
-          </div>
-          <div class="industry-card-figma" data-industry="retail">
-            <span class="industry-icon-figma"><i class="fas fa-store"></i></span>
-            <span class="industry-label-figma">Retail & CPG</span>
-            <span class="industry-chevron-figma"><i class="fas fa-chevron-down"></i></span>
-          </div>
-        </div>
-      </div>
-      <div class="industry-info-popups">
-        <div class="industry-info-card" data-industry="travel">
-          <button class="industry-info-close" aria-label="Close">&times;</button>
-          <div class="industry-info-header"><span class="industry-info-icon"><i class="fas fa-plane-departure"></i></span> <span class="industry-info-title">Travel & Hospitality</span></div>
-          <div class="industry-info-desc">Digital transformation is redefining the travel and hospitality sector — and CHECXO is at the forefront. We build smart, user-focused platforms that streamline the entire customer journey. Whether it's a hotel reservation system, a real-time tour booking app, or a centralized guest management platform, we ensure seamless integration between user experience and operational backend. Our custom solutions also include AI-powered recommendation engines, chatbots for 24/7 support, and mobile-first travel guides that enhance customer satisfaction and loyalty. For airlines, cruise services, and travel agencies, we offer data-driven dashboards, automated CRM systems, and scalable solutions that reduce cost and maximize service efficiency.</div>
-          <a href="#contact" class="btn btn-primary industry-info-btn">Talk with experts</a>
-        </div>
-        <div class="industry-info-card" data-industry="ecommerce">
-          <button class="industry-info-close" aria-label="Close">&times;</button>
-          <div class="industry-info-header"><span class="industry-info-icon"><i class="fas fa-cart-shopping"></i></span> <span class="industry-info-title">Ecommerce</span></div>
-          <div class="industry-info-desc">In a world where first impressions happen online, your e-commerce experience needs to be flawless. We build fully customized online stores with intuitive navigation, fast load times, secure payments, and powerful admin dashboards. Our e-commerce solutions support B2B, B2C, and D2C models, and include features like AI-driven product recommendations, customer analytics, promotional tools, and seamless mobile experiences. Whether you're launching a new brand or scaling to a global market, CHECXO ensures your store is not only beautiful but also built to convert. We also integrate leading platforms like Shopify, WooCommerce, and Magento — or create fully bespoke solutions from scratch.</div>
-          <a href="#contact" class="btn btn-primary industry-info-btn">Talk with experts</a>
-        </div>
-        <div class="industry-info-card" data-industry="software">
-          <button class="industry-info-close" aria-label="Close">&times;</button>
-          <div class="industry-info-header"><span class="industry-info-icon"><i class="fas fa-desktop"></i></span> <span class="industry-info-title">Software Solution</span></div>
-          <div class="industry-info-desc">Some businesses don't fit a mold — and neither should their software. CHECXO specializes in crafting custom software that solves specific, often complex business problems. Whether it's an enterprise ERP system, a mobile workforce solution, a customer portal, or AI-enhanced analytics software — we align every feature with your operations, goals, and user needs. Our full-stack development capabilities span web, mobile, desktop, and cloud, using modern frameworks and scalable architectures. Plus, we ensure long-term reliability through robust QA, documentation, and post-launch support.</div>
-          <a href="#contact" class="btn btn-primary industry-info-btn">Talk with experts</a>
-        </div>
-        <div class="industry-info-card" data-industry="gaming">
-          <button class="industry-info-close" aria-label="Close">&times;</button>
-          <div class="industry-info-header"><span class="industry-info-icon"><i class="fas fa-gamepad"></i></span> <span class="industry-info-title">Gaming</span></div>
-          <div class="industry-info-desc">Gaming is more than fun — it's a serious business, and we take it seriously. At CHECXO, we develop performance-optimized, scalable gaming platforms that support both casual and competitive audiences. Our team specializes in game logic, UI/UX design, cloud hosting, and multiplayer infrastructure with real-time interactions. From arcade-style mobile games to full-scale fantasy worlds, we provide cross-platform compatibility, integrated payment gateways, and community management tools. We also help gaming startups launch Web3-integrated games with NFT features, token economies, and blockchain-based achievements — giving players more value and ownership.</div>
-          <a href="#contact" class="btn btn-primary industry-info-btn">Talk with experts</a>
-        </div>
-        <div class="industry-info-card" data-industry="health">
-          <button class="industry-info-close" aria-label="Close">&times;</button>
-          <div class="industry-info-header"><span class="industry-info-icon"><i class="fas fa-shield-heart"></i></span> <span class="industry-info-title">Health</span></div>
-          <div class="industry-info-desc">The healthcare industry demands precision, security, and empathy — all of which are built into CHECXO's custom healthtech solutions. We develop telehealth platforms with high-quality video consultations, HIPAA-compliant data handling, and secure patient portals. Clinics and hospitals benefit from our EHR/EMR systems that streamline patient records, billing, and diagnostics. For wellness brands, we create fitness tracking apps, diet management tools, and mental health platforms that empower users to take control of their well-being. Our technology is backed by a deep understanding of regulatory compliance, medical workflows, and data protection, ensuring trust at every level.</div>
-          <a href="#contact" class="btn btn-primary industry-info-btn">Talk with experts</a>
-        </div>
-        <div class="industry-info-card" data-industry="startups">
-          <button class="industry-info-close" aria-label="Close">&times;</button>
-          <div class="industry-info-header"><span class="industry-info-icon"><i class="fas fa-rocket"></i></span> <span class="industry-info-title">Startups</span></div>
-          <div class="industry-info-desc">CHECXO is more than a software provider — we're a growth partner for startups. We help early-stage companies move from idea to execution with speed, clarity, and technical excellence. Whether you need a prototype, MVP, or full-scale product, our agile development process adapts to your vision and your market. We offer product strategy, UI/UX design, backend engineering, cloud setup, and iterative testing — so your startup can launch quickly and scale confidently. Our experience spans across fintech, edtech, healthtech, social platforms, and Saas, making us the perfect partner for ambitious entrepreneurs.</div>
-          <a href="#contact" class="btn btn-primary industry-info-btn">Talk with experts</a>
-        </div>
-        <div class="industry-info-card" data-industry="blockchain">
-          <button class="industry-info-close" aria-label="Close">&times;</button>
-          <div class="industry-info-header"><span class="industry-info-icon"><i class="fas fa-cubes"></i></span> <span class="industry-info-title">web-3 Blockchain</span></div>
-          <div class="industry-info-desc">Blockchain is transforming trust and transparency — and CHECXO helps you take full advantage. We develop decentralized applications (DApps), smart contracts, crypto wallets, NFT platforms, DAO tools, and token ecosystems tailored to your vision. Our blockchain experts understand the technical depth and real-world use cases that drive adoption — whether it's securing supply chains, creating digital assets, or enabling peer-to-peer payments. We work with Ethereum, Binance Smart Chain, Polygon, and Solana to build efficient and secure systems. From ideation to audit-ready deployment, we help you launch confidently in the Web3 world.</div>
-          <a href="#contact" class="btn btn-primary industry-info-btn">Talk with experts</a>
-        </div>
-        <div class="industry-info-card" data-industry="retail">
-          <button class="industry-info-close" aria-label="Close">&times;</button>
-          <div class="industry-info-header"><span class="industry-info-icon"><i class="fas fa-store"></i></span> <span class="industry-info-title">Retail & CPG</span></div>
-          <div class="industry-info-desc">Today's retail landscape is digital, fast-paced, and hyper-competitive. CHECXO equips CPG brands and retailers with the tools to meet modern customer expectations — from smart inventory systems and POS integrations to custom e-commerce platforms and data analytics dashboards. We create solutions that personalize user experiences, automate marketing, and manage logistics across channels. Whether it's an in-store tablet solution or a full-fledged D2C website, we focus on seamless UX, strong branding, and operational visibility. With mobile commerce and AI-driven insights, we help you stay one step ahead in an evolving marketplace.</div>
-          <a href="#contact" class="btn btn-primary industry-info-btn">Talk with experts</a>
-        </div>
-      </div>
-    </section>
 
-    <!-- Brands Bar Section -->
-    <section class="brands-bar-section">
-      <div class="brands-bar-heading"><span class="accent">Brands</span> We've Worked With</div>
-      <div class="brands-bar-marquee">
-        <div class="brands-bar-track">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike" class="brand-logo" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="brand-logo" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" class="brand-logo" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" class="brand-logo" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="brand-logo" />
+
+
+
+<!-- =================== [SECTION: HERO] =================== -->
+<section id="hero" class="relative w-full h-[100vh] min-h-[520px] flex items-center justify-start overflow-hidden pt-12">
+
+  <!-- VIDEO BACKGROUND -->
+  <video autoplay loop muted playsinline preload="auto"
+    class="absolute inset-0 w-full h-full object-cover z-0">
+    <source src="https://res.cloudinary.com/dxqmakjxj/video/upload/v1753180072/dfad0fdd-9721-4349-a1f0-828a6b4342c0.mp4_c9qssg.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- BACKGROUND OVERLAY -->
+  <div class="absolute inset-0 z-10" style="background: linear-gradient(180deg,rgba(2,36,44,0.46) 50%,rgba(2,132,126,0.18) 100%);"></div>
+
+  <!-- HERO CONTENT -->
+  <div class="relative z-20 px-4 md:px-12 lg:px-16 max-w-xl mt-10 md:mt-24">
+    <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-white drop-shadow-md leading-tight">
+      <span class="text-[#02847E]">Creating</span> <span class="text-white">What’s Next</span>
+    </h1>
+    <p class="text-base sm:text-lg md:text-2xl mb-8 text-white font-light drop-shadow">
+      We transform ideas into<br>future-ready solutions.
+    </p>
+    <a href="#contact" class="inline-block px-8 py-3 rounded-full bg-[#02847E] text-white font-bold shadow-lg hover:bg-[#029e96] transition text-lg md:text-xl" style="box-shadow: 0 4px 24px rgba(0,230,195,0.18); border-radius: 32px;">
+      Let’s Connect
+    </a>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =================== [SECTION: SERVICES] =================== -->
+<section id="services" 
+  class="py-20" 
+  style="background: url('https://res.cloudinary.com/dxqmakjxj/image/upload/v1753195398/Group_511_pdjzzb.png') center/cover no-repeat;"
+>
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-4xl md:text-5xl font-extrabold mb-12 text-left tracking-tight text-white drop-shadow-lg">
+      Our Services
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Service 1 -->
+      <a href="web.html" class="servicecard group" style="background-image: url('https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099392/Mask_group_1_ci44p4.png'); text-decoration: none;">
+        <div class="card-gradient"></div>
+        <div class="service-text">
+          <div class="title">Web Development</div>
+          <div class="desc">Enterprise-grade websites and portals for the modern web.</div>
+        </div>
+      </a>
+      <!-- Service 2 -->
+      <a href="app.html" class="servicecard group" style="background-image: url('https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099836/App_Development_rszqxb.png'); text-decoration: none;">
+        <div class="card-gradient"></div>
+        <div class="service-text">
+          <div class="title">App Development</div>
+          <div class="desc">iOS, Android & cross-platform mobile apps.</div>
+        </div>
+      </a>
+      <!-- Service 3 -->
+      <a href="uiux.html" class="servicecard group" style="background-image: url('https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099392/Mask_group_2_anu0uh.png'); text-decoration: none;">
+        <div class="card-gradient"></div>
+        <div class="service-text">
+          <div class="title">UI/UX Design</div>
+          <div class="desc">Pixel-perfect product & web design with real user experience.</div>
+        </div>
+      </a>
+      <!-- Service 4 -->
+      <a href="genai.html" class="servicecard group" style="background-image: url('https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099391/growtika-nGoCBxiaRO0-unsplash_1_ptmog6.png'); text-decoration: none;">
+        <div class="card-gradient"></div>
+        <div class="service-text">
+          <div class="title">Generative AI</div>
+          <div class="desc">AI-driven automations, chatbots, & content creation.</div>
+        </div>
+      </a>
+      <!-- Service 5 -->
+      <a href="cyber.html" class="servicecard group" style="background-image: url('https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099391/Mask_group_4_vq7gni.png'); text-decoration: none;">
+        <div class="card-gradient"></div>
+        <div class="service-text">
+          <div class="title">Cyber Security</div>
+          <div class="desc">Safeguard your business & customer data with next-gen security.</div>
+        </div>
+      </a>
+      <!-- Service 6 -->
+      <a href="blockchain.html" class="servicecard group" style="background-image: url('https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099391/Mask_group_5_joumzb.png'); text-decoration: none;">
+        <div class="card-gradient"></div>
+        <div class="service-text">
+          <div class="title">Blockchain</div>
+          <div class="desc">Decentralized, secure platforms for new business models.</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =================== [SECTION: SERVICES CARD CSS] =================== -->
+<style>
+.servicecard {
+  position: relative;
+  aspect-ratio: 10 / 11;
+  width: 100%;
+  border-radius: 1.3rem;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: 0 7px 24px 0 rgba(12,36,36,0.16);
+  transition: transform .24s cubic-bezier(.44,1.3,.64,1), box-shadow .22s;
+  cursor: pointer;
+  min-height: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-gradient {
+  position: absolute;
+  left: 0; right: 0; bottom: 0; top: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    to top, 
+    rgba(2,30,42,0.81) 0%, 
+    rgba(2,30,42,0.6) 40%, 
+    rgba(0,0,0,0.18) 70%, 
+    rgba(0,0,0,0) 100%
+  );
+  opacity: 1;
+  transition: background 0.25s, opacity 0.24s;
+  z-index: 1;
+}
+
+.servicecard:hover, .servicecard:focus-within {
+  transform: translateY(-16px) scale(1.03);
+  box-shadow: 0 24px 62px 0 rgba(2,132,126,0.18), 0 12px 48px 0 rgba(0,0,0,0.13);
+  z-index: 2;
+}
+.servicecard:hover .card-gradient,
+.servicecard:focus-within .card-gradient {
+  background: linear-gradient(
+    to bottom, 
+    rgba(2,30,42,0.88) 0%,
+    rgba(2,30,42,0.88) 100%
+  );
+  opacity: 0.88;
+}
+
+.service-text {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 0.2rem;
+  z-index: 2;
+  padding: 1.4rem 1.6rem 1.2rem 1.6rem;
+  color: #fff;
+  pointer-events: none;
+}
+
+/* Ensure service cards are properly clickable */
+a.servicecard {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.service-text .title {
+  font-size: 1.28rem;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 1.5px 12px rgba(0,0,0,0.23);
+  margin-bottom: 0.25rem;
+}
+.service-text .desc {
+  font-size: 1.04rem;
+  color: #f1f8fa;
+  text-shadow: 0 1px 7px rgba(0,0,0,0.14);
+  font-weight: 400;
+  margin-bottom: 0;
+}
+@media (max-width: 1024px) {
+  .service-text .title { font-size: 1.06rem; }
+  /* .card-gradient { } <-- REMOVE THIS LINE */
+  .service-text { padding: 0.85rem 1.1rem 0.92rem 1.1rem; }
+}
+
+@media (max-width: 640px) {
+  .service-text .title { font-size: 0.97rem; }
+  .service-text .desc { font-size: 0.83rem; }
+  .service-text { padding: 0.58rem 0.6rem 0.53rem 0.7rem; }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+<!-- =================== [SECTION: INDUSTRIES] =================== -->
+<section id="industries" class="py-20 bg-white relative">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-10 text-left tracking-tight">
+      Driving Change Across <span class="text-[#02847E]">Industries</span>
+    </h2>
+    <div x-data="{ open: null }" class="relative">
+
+      <!-- INDUSTRY GRID (Visible when no detail open) -->
+      <div x-show="open === null" x-transition
+           class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <!-- Travel & Hospitality -->
+        <div class="bg-white shadow-xl rounded-2xl border p-6 transition-all duration-300 hover:shadow-2xl cursor-pointer"
+             @click="open = 1">
+          <span class="mr-3 flex-shrink-0">
+            <img src="https://img.icons8.com/ios-filled/48/02847E/suitcase.png" class="w-7 h-7" alt="Travel">
+          </span>
+          <span class="text-lg font-bold text-[#02847E]">Travel & Hospitality</span>
+        </div>
+        <!-- E-commerce -->
+        <div class="bg-white shadow-xl rounded-2xl border p-6 transition-all duration-300 hover:shadow-2xl cursor-pointer"
+             @click="open = 2">
+          <span class="mr-3 flex-shrink-0">
+            <img src="https://img.icons8.com/ios-filled/48/02847E/shopping-cart.png" class="w-7 h-7" alt="Ecommerce">
+          </span>
+          <span class="text-lg font-bold text-[#02847E]">E-commerce</span>
+        </div>
+        <!-- Software Solution -->
+        <div class="bg-white shadow-xl rounded-2xl border p-6 transition-all duration-300 hover:shadow-2xl cursor-pointer"
+             @click="open = 3">
+          <span class="mr-3 flex-shrink-0">
+            <img src="https://img.icons8.com/ios-filled/48/02847E/source-code.png" class="w-7 h-7" alt="Software">
+          </span>
+          <span class="text-lg font-bold text-[#02847E]">Software Solution</span>
+        </div>
+        <!-- Gaming -->
+        <div class="bg-white shadow-xl rounded-2xl border p-6 transition-all duration-300 hover:shadow-2xl cursor-pointer"
+             @click="open = 4">
+          <span class="mr-3 flex-shrink-0">
+            <img src="https://img.icons8.com/ios-filled/48/02847E/controller.png" class="w-7 h-7" alt="Gaming">
+          </span>
+          <span class="text-lg font-bold text-[#02847E]">Gaming</span>
+        </div>
+        <!-- Software Solutions -->
+        <div class="bg-white shadow-xl rounded-2xl border p-6 transition-all duration-300 hover:shadow-2xl cursor-pointer"
+             @click="open = 5">
+          <span class="mr-3 flex-shrink-0">
+            <img src="https://img.icons8.com/ios-filled/48/02847E/settings--v1.png" class="w-7 h-7" alt="Software Solutions">
+          </span>
+          <span class="text-lg font-bold text-[#02847E]">Software Solutions</span>
+        </div>
+        <!-- Blockchain -->
+        <div class="bg-white shadow-xl rounded-2xl border p-6 transition-all duration-300 hover:shadow-2xl cursor-pointer"
+             @click="open = 6">
+          <span class="mr-3 flex-shrink-0">
+            <img src="https://img.icons8.com/ios-filled/48/02847E/blockchain-technology.png" class="w-7 h-7" alt="Blockchain">
+          </span>
+          <span class="text-lg font-bold text-[#02847E]">web-3 Blockchain</span>
+        </div>
+        <!-- Retail & CPG -->
+        <div class="bg-white shadow-xl rounded-2xl border p-6 transition-all duration-300 hover:shadow-2xl cursor-pointer"
+             @click="open = 7">
+          <span class="mr-3 flex-shrink-0">
+            <img src="https://img.icons8.com/ios-filled/48/02847E/department.png" class="w-7 h-7" alt="Retail">
+          </span>
+          <span class="text-lg font-bold text-[#02847E]">Retail & CPG</span>
+        </div>
+        <!-- Startups -->
+        <div class="bg-white shadow-xl rounded-2xl border p-6 transition-all duration-300 hover:shadow-2xl cursor-pointer"
+             @click="open = 8">
+          <span class="mr-3 flex-shrink-0">
+            <img src="https://img.icons8.com/ios-filled/48/02847E/rocket--v1.png" class="w-7 h-7" alt="Startups">
+          </span>
+          <span class="text-lg font-bold text-[#02847E]">Startups</span>
         </div>
       </div>
-    </section>
 
-    <!-- ================= TEAM/LEADERSHIP SECTION ================= -->
-    <section id="leadership" class="leadership-section">
-      <div class="container">
-        <p class="section-title" style="font-size: 2.5rem; font-weight: 400;">Meet Our Team</p>
-        <div class="team-static-grid">
-          <!-- Team Member 1 -->
-          <div class="team-card">
-            <div class="team-photo-frame">
-              <div class="team-photo">
-                <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752314509/052d6242fa86ca0675f7be0c4bdb5ee215bee29b_ckcejl.png" alt="Shayan Yousaf">
-              </div>
+      <!-- INDUSTRY DETAIL MODAL -->
+      <div x-show="open !== null" x-transition
+           class="max-w-xl mx-auto bg-white shadow-2xl rounded-2xl border p-6 mt-8 relative">
+        <button class="absolute top-4 right-4 text-3xl font-bold text-gray-400 hover:text-gray-600 focus:outline-none z-10"
+                @click="open = null"
+                aria-label="Back">&times;</button>
+        
+        <!-- 1: Travel & Hospitality -->
+        <template x-if="open === 1">
+          <div>
+            <div class="flex items-center mb-4">
+              <img src="https://img.icons8.com/ios-filled/48/02847E/suitcase.png" class="w-8 h-8 mr-2" alt="Travel">
+              <span class="text-xl font-bold text-[#02847E]">Travel & Hospitality</span>
             </div>
-            <div class="team-info">
-              <h3>Shayan Yousaf</h3>
-              <p>Founder & CEO</p>
-              <a href="https://linkedin.com" target="_blank" class="linkedin-link">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/960px-LinkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon">
-              </a>
+            <div class="text-gray-700 text-[15px] leading-relaxed">
+              Digital transformation is redefining the travel and hospitality sector — and CHECXO is at the forefront. We build smart, user-focused platforms that streamline the entire customer journey. Whether it’s a hotel reservation system, a real-time tour booking app, or a centralized guest management platform, we ensure seamless integration between user experience and operational backend. Our custom solutions also include AI-powered recommendation engines, chatbots for 24/7 support, and mobile-first travel guides that enhance customer satisfaction and loyalty. For airlines, cruise services, and travel agencies, we offer data-driven dashboards, automated CRM systems, and scalable solutions that reduce cost and maximize service efficiency.
             </div>
-          </div>
-          <!-- Team Member 2 -->
-          <div class="team-card">
-            <div class="team-photo-frame">
-              <div class="team-photo">
-                <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752314509/052d6242fa86ca0675f7be0c4bdb5ee215bee29b_ckcejl.png" alt="Muneeb Ahmed">
-              </div>
-            </div>
-            <div class="team-info">
-              <h3>Muneeb Ahmed</h3>
-              <p>CTO</p>
-              <a href="https://linkedin.com" target="_blank" class="linkedin-link">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/960px-LinkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon">
-              </a>
+            <div class="mt-4">
+              <a href="#contact" class="inline-block bg-[#02847E] text-white px-5 py-2 rounded-lg font-semibold shadow hover:bg-[#026963] transition">Talk with experts</a>
             </div>
           </div>
-          <!-- Team Member 3 -->
-          <div class="team-card">
-            <div class="team-photo-frame">
-              <div class="team-photo">
-                <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752314509/8d798ac57b9948b6908595eb0cb93ba7e19c74dd_gavzgn.png" alt="Aqsa Khalid">
-              </div>
+        </template>
+        <!-- 2: E-commerce -->
+        <template x-if="open === 2">
+          <div>
+            <div class="flex items-center mb-4">
+              <img src="https://img.icons8.com/ios-filled/48/02847E/shopping-cart.png" class="w-8 h-8 mr-2" alt="Ecommerce">
+              <span class="text-xl font-bold text-[#02847E]">E-commerce</span>
             </div>
-            <div class="team-info">
-              <h3>Aqsa Khalid</h3>
-              <p>UI/UX Designer</p>
-              <a href="https://linkedin.com" target="_blank" class="linkedin-link">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/960px-LinkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon">
-              </a>
+            <div class="text-gray-700 text-[15px] leading-relaxed">
+              In a world where first impressions happen online, your e-commerce experience needs to be flawless. We build fully customized online stores with intuitive navigation, fast load times, secure payments, and powerful admin dashboards. Our e-commerce solutions support B2B, B2C, and D2C models, and include features like AI-driven product recommendations, customer analytics, promotional tools, and seamless mobile experiences. Whether you’re launching a new brand or scaling to a global market, CHECXO ensures your store is not only beautiful but also built to convert. We also integrate leading platforms like Shopify, WooCommerce, and Magento — or create fully bespoke solutions from scratch.
             </div>
-          </div>
-          <!-- Team Member 4 -->
-          <div class="team-card">
-            <div class="team-photo-frame">
-              <div class="team-photo">
-                <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752314681/f7288189c920ca97ac7a0e2165d7cf05b493b000_1_c7jlv7.png" alt="Ali Raza">
-              </div>
-            </div>
-            <div class="team-info">
-              <h3>Ali Raza</h3>
-              <p>Project Manager</p>
-              <a href="https://linkedin.com" target="_blank" class="linkedin-link">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/960px-LinkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon">
-              </a>
+            <div class="mt-4">
+              <a href="#contact" class="inline-block bg-[#02847E] text-white px-5 py-2 rounded-lg font-semibold shadow hover:bg-[#026963] transition">Talk with experts</a>
             </div>
           </div>
-          <!-- Team Member 5 -->
-          <div class="team-card">
-            <div class="team-photo-frame">
-              <div class="team-photo">
-                <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752314681/f7288189c920ca97ac7a0e2165d7cf05b493b000_1_c7jlv7.png" alt="Sara Khan">
-              </div>
+        </template>
+        <!-- 3: Software Solution -->
+        <template x-if="open === 3">
+          <div>
+            <div class="flex items-center mb-4">
+              <img src="https://img.icons8.com/ios-filled/48/02847E/source-code.png" class="w-8 h-8 mr-2" alt="Software">
+              <span class="text-xl font-bold text-[#02847E]">Software Solution</span>
             </div>
-            <div class="team-info">
-              <h3>Sara Khan</h3>
-              <p>Business Analyst</p>
-              <a href="https://linkedin.com" target="_blank" class="linkedin-link">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/960px-LinkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon">
-              </a>
+            <div class="text-gray-700 text-[15px] leading-relaxed">
+              Some businesses don’t fit a mold — and neither should their software. CHECXO specializes in crafting custom software that solves specific, often complex, business problems. Whether it’s an enterprise ERP system, a mobile workforce solution, or a web customer portal, our AI-enhanced analytics and automation deliver every feature with your processes and users’ real world needs. Our full-stack development capabilities span web, mobile, desktop, and cloud, using modern frameworks and scalable architectures. Plus, we ensure long-term reliability through robust QA, documentation, and post-launch support.
             </div>
-          </div>
-          <!-- Team Member 6 -->
-          <div class="team-card">
-            <div class="team-photo-frame">
-              <div class="team-photo">
-                <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752314509/79607abd66ccefd7b6fe739c570f2f387b7b3624_garosh.png" alt="Bilal Ahmed">
-              </div>
-            </div>
-            <div class="team-info">
-              <h3>Bilal Ahmed</h3>
-              <p>Lead Developer</p>
-              <a href="https://linkedin.com" target="_blank" class="linkedin-link">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/960px-LinkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon">
-              </a>
+            <div class="mt-4">
+              <a href="#contact" class="inline-block bg-[#02847E] text-white px-5 py-2 rounded-lg font-semibold shadow hover:bg-[#026963] transition">Talk with experts</a>
             </div>
           </div>
-          <!-- Team Member 7 -->
-          <div class="team-card">
-            <div class="team-photo-frame">
-              <div class="team-photo">
-                <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752314509/79607abd66ccefd7b6fe739c570f2f387b7b3624_garosh.png" alt="Usman Tariq">
-              </div>
+        </template>
+        <!-- 4: Gaming -->
+        <template x-if="open === 4">
+          <div>
+            <div class="flex items-center mb-4">
+              <img src="https://img.icons8.com/ios-filled/48/02847E/controller.png" class="w-8 h-8 mr-2" alt="Gaming">
+              <span class="text-xl font-bold text-[#02847E]">Gaming</span>
             </div>
-            <div class="team-info">
-              <h3>Usman Tariq</h3>
-              <p>QA Engineer</p>
-              <a href="https://linkedin.com" target="_blank" class="linkedin-link">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/960px-LinkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon">
-              </a>
+            <div class="text-gray-700 text-[15px] leading-relaxed">
+              Gaming is more than fun — it’s a serious business, and we take it seriously. At CHECXO, we develop performance-optimized, compelling gaming platforms that support both casual and competitive audiences. Our team specializes in game logic, UI/UX design, cloud hosting, and multiplayer infrastructure (with next-gen matchmaking). From arcade-style mobile games to full-scale fantasy worlds, we provide cross-platform compatibility, integrated payment infrastructure, and community management tools. We also help gaming startups launch Web3-integrated games with NFT features, token economies, and blockchain-based achievements — giving players more value and ownership.
             </div>
-          </div>
-          <!-- Team Member 8 -->
-          <div class="team-card">
-            <div class="team-photo-frame">
-              <div class="team-photo">
-                <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752314509/8d798ac57b9948b6908595eb0cb93ba7e19c74dd_gavzgn.png" alt="Adeel Sheikh">
-              </div>
-            </div>
-            <div class="team-info">
-              <h3>Adeel Sheikh</h3>
-              <p>Marketing Lead</p>
-              <a href="https://linkedin.com" target="_blank" class="linkedin-link">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/960px-LinkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon">
-              </a>
+            <div class="mt-4">
+              <a href="#contact" class="inline-block bg-[#02847E] text-white px-5 py-2 rounded-lg font-semibold shadow hover:bg-[#026963] transition">Talk with experts</a>
             </div>
           </div>
-        </div>
+        </template>
+        <!-- 5: Software Solutions -->
+        <template x-if="open === 5">
+          <div>
+            <div class="flex items-center mb-4">
+              <img src="https://img.icons8.com/ios-filled/48/02847E/settings--v1.png" class="w-8 h-8 mr-2" alt="Software Solutions">
+              <span class="text-xl font-bold text-[#02847E]">Software Solutions</span>
+            </div>
+            <div class="text-gray-700 text-[15px] leading-relaxed">
+              CHECXO specializes in crafting custom software solutions to fit your business needs. Our software engineering teams deliver scalable, secure, and reliable applications tailored to your unique requirements. From ERP systems to SaaS platforms, we use the latest technologies to help you stay competitive in a digital world.
+            </div>
+            <div class="mt-4">
+              <a href="#contact" class="inline-block bg-[#02847E] text-white px-5 py-2 rounded-lg font-semibold shadow hover:bg-[#026963] transition">Talk with experts</a>
+            </div>
+          </div>
+        </template>
+        <!-- 6: Blockchain -->
+        <template x-if="open === 6">
+          <div>
+            <div class="flex items-center mb-4">
+              <img src="https://img.icons8.com/ios-filled/48/02847E/blockchain-technology.png" class="w-8 h-8 mr-2" alt="Blockchain">
+              <span class="text-xl font-bold text-[#02847E]">web-3 Blockchain</span>
+            </div>
+            <div class="text-gray-700 text-[15px] leading-relaxed">
+              Blockchain is transforming trust and transparency — and CHECXO helps you take full advantage. We develop decentralized applications (DApps), smart contracts, crypto wallets, NFT platforms, DAO tools, and token ecosystems tailored to your use case. Our blockchain experts understand the technical depth and real-world use cases that drive adoption — whether it’s securing supply chains, creating digital assets, or enabling peer-to-peer payments. We work with Ethereum, Binance Smart Chain, Polygon, and Solana to build efficient and secure systems. From ideation to audit-ready deployment, we help you launch confidently in the Web3 world.
+            </div>
+            <div class="mt-4">
+              <a href="#contact" class="inline-block bg-[#02847E] text-white px-5 py-2 rounded-lg font-semibold shadow hover:bg-[#026963] transition">Talk with experts</a>
+            </div>
+          </div>
+        </template>
+        <!-- 7: Retail & CPG -->
+        <template x-if="open === 7">
+          <div>
+            <div class="flex items-center mb-4">
+              <img src="https://img.icons8.com/ios-filled/48/02847E/department.png" class="w-8 h-8 mr-2" alt="Retail">
+              <span class="text-xl font-bold text-[#02847E]">Retail & CPG</span>
+            </div>
+            <div class="text-gray-700 text-[15px] leading-relaxed">
+              Today’s retail landscape is digital, fast-paced, and hyper-competitive. CHECXO equips CPG brands and retailers with the tools to meet modern customer expectations — from smart inventory systems and POS integrations to custom e-commerce platforms and omnichannel dashboards, we create solutions that personalize user experiences, automate marketing, and manage logistics across channels. Whether it’s in-store or B2B sales, our systems are finished D2C websites, enable custom solutions, or unify branding and operational visibility. With mobile commerce and AI-driven insights, we help you stay one step ahead in an evolving marketplace.
+            </div>
+            <div class="mt-4">
+              <a href="#contact" class="inline-block bg-[#02847E] text-white px-5 py-2 rounded-lg font-semibold shadow hover:bg-[#026963] transition">Talk with experts</a>
+            </div>
+          </div>
+        </template>
+        <!-- 8: Startups -->
+        <template x-if="open === 8">
+          <div>
+            <div class="flex items-center mb-4">
+              <img src="https://img.icons8.com/ios-filled/48/02847E/rocket--v1.png" class="w-8 h-8 mr-2" alt="Startups">
+              <span class="text-xl font-bold text-[#02847E]">Startups</span>
+            </div>
+            <div class="text-gray-700 text-[15px] leading-relaxed">
+              CHECXO is more than a software provider — we’re a growth partner for startups at every stage: companies move from idea to launch with speed, clarity, and technical excellence. We help you define and prototype, MVP, or full-scale product, and get to product market fit with cost-effective, iterative, and user-centered processes adapted to your sector and your market. We offer product strategy, UI/UX design, backend engineering, cloud setup, and iterative tech advisory to supercharge launch quickly, and scale efficiently. We help startups gain funding, enter new markets, and pivot to capture opportunity. Blockchain, fintech, edtech, healthtech, social platforms, and SaaS, making us the perfect partner for ambitious entrepreneurs.
+            </div>
+            <div class="mt-4">
+              <a href="#contact" class="inline-block bg-[#02847E] text-white px-5 py-2 rounded-lg font-semibold shadow hover:bg-[#026963] transition">Talk with experts</a>
+            </div>
+          </div>
+        </template>
       </div>
-    </section>
+      <!-- End Modal Overlay -->
+    </div>
+  </div>
+</section>
 
-      <!-- ================= TESTIMONIALS SECTION ================= -->
-      <section id="testimonials" class="testimonials-section">
-        <div class="container">
-          <h1 class="testimonials-title">
-            Our satisfied clients <span class="highlight">Testimonials</span>
-          </h1>
-          <br>
-          <br>
-          <!-- Ticker container for auto-scrolling -->
-          <div class="testimonials-ticker">
-            <div class="testimonials-grid">
-              <!-- Testimonial 1 -->
-              <div class="testimonial-card">
-                <div class="testimonial-quote">“CHECXO delivered our SaaS platform on time and exceeded every expectation.”</div>
-                <div class="testimonial-client">
-                  <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/men/44.jpg" alt="Michael Reaves">
-                  <div class="testimonial-meta">
-                    <div class="testimonial-role">Michael Reaves</div>
-                    <div class="testimonial-desc">Web Dev. Lead, FinTech Solutions</div>
-                  </div>
-                </div>
-              </div>
-              <!-- Testimonial 2 -->
-              <div class="testimonial-card">
-                <div class="testimonial-quote">“Their team’s attention to detail and communication is world-class.”</div>
-                <div class="testimonial-client">
-                  <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/women/45.jpg" alt="Priya Sharma">
-                  <div class="testimonial-meta">
-                    <div class="testimonial-role">Priya Sharma</div>
-                    <div class="testimonial-desc">Product Manager, HealthSync</div>
-                  </div>
-                </div>
-              </div>
-              <!-- Testimonial 3 -->
-              <div class="testimonial-card">
-                <div class="testimonial-quote">“We saw a 40% increase in user engagement after our redesign with CHECXO.”</div>
-                <div class="testimonial-client">
-                  <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/men/46.jpg" alt="David Kim">
-                  <div class="testimonial-meta">
-                    <div class="testimonial-role">David Kim</div>
-                    <div class="testimonial-desc">CTO, EduPro</div>
-                  </div>
-                </div>
-              </div>
-              <!-- Testimonial 4 -->
-              <div class="testimonial-card">
-                <div class="testimonial-quote">“The AI integration was seamless and boosted our productivity.”</div>
-                <div class="testimonial-client">
-                  <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/women/47.jpg" alt="Fatima Alvi">
-                  <div class="testimonial-meta">
-                    <div class="testimonial-role">Fatima Alvi</div>
-                    <div class="testimonial-desc">COO, Marketly</div>
-                  </div>
-                </div>
-              </div>
-              <!-- Testimonial 5 -->
-              <div class="testimonial-card">
-                <div class="testimonial-quote">“Reliable, innovative, and always available—highly recommended.”</div>
-                <div class="testimonial-client">
-                  <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/men/48.jpg" alt="Lucas Moreau">
-                  <div class="testimonial-meta">
-                    <div class="testimonial-role">Lucas Moreau</div>
-                    <div class="testimonial-desc">CEO, RetailNext</div>
-                  </div>
-                </div>
-              </div>
-              <!-- Testimonial 6 -->
-              <div class="testimonial-card">
-                <div class="testimonial-quote">“From UX to backend, CHECXO’s expertise is unmatched.”</div>
-                <div class="testimonial-client">
-                  <img class="testimonial-avatar" src="https://randomuser.me/api/portraits/women/49.jpg" alt="Sofia Rossi">
-                  <div class="testimonial-meta">
-                    <div class="testimonial-role">Sofia Rossi</div>
-                    <div class="testimonial-desc">Head of Product, TravelEase</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>
-      </div>
-    </section>
+<!-- =================== [SECTION: INDUSTRIES JS LIBRARY] =================== -->
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
-    <!-- Portfolio Section -->
-    <!-- <section class="portfolio animate-fade-in-up" id="portfolio">
-      <h2>Our <span class="highlight">Portfolio</span></h2>
-      <div id="portfolio-grid" class="portfolio-grid"></div>
-    </section> -->
 
-    <!-- Motivation & Project Inquiry Section -->
-    <section class="contact-section" id="contact">
-      <div class="contact-container" style="display: flex; flex-wrap: wrap; gap: 5rem;">
-        <!-- Left: Intro Text -->
-        <div class="contact-right" style="flex: 1 1 40%; min-width: 320px;">
-          <h1 class="testimonials-title">
-            Let's Build <span class="highlight">Your Business</span>
-          </h1>
-          <p class="contact-description">We're here to understand your needs and deliver a solution aligned with your goals.</p>
-          <p class="contact-description">Share your details, and our team will contact you to schedule a conversation.</p>
-        </div>
-        <!-- Right: Form and Heading -->
-        <div class="contact-form-wrapper" style="flex: 1 1 60%; min-width: 370px; max-width: 600px;">
-          <h1 class="testimonials-title">
-            Drop Your <span class="highlight">Project Details</span>
-          </h1>
-          <form class="contact-form">
-            <div class="form-group">
-              <input type="text" class="form-control" name="firstName" placeholder="First Name" required>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =================== [SECTION: LEADERSHIP] =================== -->
+<section id="leadership"
+  class="py-20 relative"
+  style="background: url('https://res.cloudinary.com/dxqmakjxj/image/upload/v1753184426/Group_508_jwrj4a.png') center/cover no-repeat;">
+  <div class="max-w-7xl mx-auto px-4"
+    x-data="leadershipCarousel()"
+    x-init="init()"
+  >
+    <h2 class="text-white text-4xl md:text-5xl font-extrabold tracking-tight text-center mb-8 drop-shadow-lg">
+      Meet CHECXO Leadership
+    </h2>
+    <div class="relative mx-auto overflow-hidden"
+      :style="`width:${containerWidth}px; max-width:100vw; height:${cardHeight}px;`">
+      <div
+        class="flex transition-transform duration-700 ease-in-out"
+        :style="`
+          transform: translateX(-${offset()}px);
+          width:${items.length * (cardWidth + 2*cardMargin)}px;
+        `"
+        @transitionend="onTransitionEnd"
+        x-ref="track"
+        style="will-change: transform;"
+      >
+        <template x-for="(leader, idx) in items" :key="idx">
+          <div
+            class="flex flex-col items-center justify-between bg-white rounded-2xl transition-all duration-300 cursor-pointer"
+            :style="`
+              box-shadow: ${hovered === idx 
+                ? '0 0 10px 2px #fff'
+                : '0 4px 24px rgba(0,0,0,0.09)'
+              };
+              width:${cardWidth}px;
+              height:${cardHeight}px;
+              margin:${isMobile ? '0px' : cardMargin + 'px'};
+            `"
+            @mouseenter="hovered = idx"
+            @mouseleave="hovered = null"
+            @click="hovered = idx"
+          >
+            <div class="flex justify-center mt-8">
+              <img 
+                :src="leader.img" 
+                :alt="leader.name"
+                class="w-full max-w-[90%] h-[220px] object-cover rounded-xl bg-white border-2 border-[#02847E22] shadow"
+              />
             </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="lastName" placeholder="Last Name" required>
+            <div class="w-full text-center mt-7 mb-7">
+              <h3 class="text-2xl font-extrabold text-[#13183e] mb-1" x-text="leader.name"></h3>
+              <p class="text-[#6b7a90] text-base font-medium" x-text="leader.role"></p>
             </div>
-            <div class="form-group">
-              <input type="email" class="form-control" name="email" placeholder="Email" required>
-            </div>
-            <div class="form-group">
-              <div class="phone-input">
-                <select class="country-code" id="phoneCode" name="countryCode">
-                  <option value="+1" data-region="United States">🇺🇸 +1</option>
-                  <option value="+44" data-region="United Kingdom">🇬🇧 +44</option>
-                  <option value="+92" data-region="Pakistan">🇵🇰 +92</option>
-                  <option value="+61" data-region="Australia">🇦🇺 +61</option>
-                  <option value="+971" data-region="UAE">🇦🇪 +971</option>
-                  <option value="+91" data-region="India">🇮🇳 +91</option>
-                  <option value="+86" data-region="China">🇨🇳 +86</option>
-                  <option value="+81" data-region="Japan">🇯🇵 +81</option>
-                </select>
-                <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="companyName" placeholder="Company Name" required>
-            </div>
-            <div class="form-group">
-              <div class="budget-input">
-                <select class="budget-select" id="budgetSelect" name="budget">
-                  <option value="">Select Budget Range</option>
-                  <option value="<1k">Less than 1k</option>
-                  <option value="1k-2k">1k - 2k</option>
-                  <option value="2k-3k">2k - 3k</option>
-                  <option value="3k-4k">3k - 4k</option>
-                  <option value="4k-5k">4k - 5k</option>
-                  <option value="5k-6k">5k - 6k</option>
-                  <option value="6k-7k">6k - 7k</option>
-                  <option value="7k-8k">7k - 8k</option>
-                  <option value="8k-9k">8k - 9k</option>
-                  <option value="9k-10k">9k - 10k</option>
-                  <option value="custom">Enter Custom Amount</option>
-                </select>
-                <input type="text" class="form-control budget-custom" name="budgetCustom" placeholder="Enter custom budget (e.g., 15k)" style="display: none;">
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="region" name="region" placeholder="Region" required>
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" name="projectDetails" placeholder="Your Query / Project Details" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Submit</button>
-          </form>
-        </div>
-      </div>
-    </section>
-    <!-- Success Modal -->
-    <div id="form-success-modal" class="form-success-modal" style="display:none;">
-      <div class="form-success-content">
-        <div class="form-success-icon">✔️</div>
-        <h3>Thank you!</h3>
-        <p>Your project details have been received.<br>Our team will contact you soon.</p>
-        <button class="form-success-close">Close</button>
+          </div>
+        </template>
       </div>
     </div>
-  </main>
+    <div class="flex justify-center items-center gap-3 mt-14 mb-1">
+      <template x-for="(leader, idx) in leaders" :key="idx">
+        <button
+          @click="goTo(idx)"
+          :class="{
+            'bg-[#02847E] border-[#fff] scale-125': realIndex() === idx,
+            'bg-white border-[#fff]': realIndex() !== idx
+          }"
+          class="w-4 h-4 rounded-full border-2 transition-all duration-200"
+        ></button>
+      </template>
+    </div>
+  </div>
+  <!-- =================== [SECTION: LEADERSHIP CAROUSEL LOGIC] =================== -->
+  <script>
+    function leadershipCarousel() {
+      return {
+        leaders: [
+          { name: 'Shoaib Irfan', role: 'Lead Designer', img: 'https://res.cloudinary.com/dxqmakjxj/image/upload/v1753194105/WhatsApp_Image_2025-06-13_at_4.39.07_AM-removebg-preview_2_adqrwx.png' },
+          { name: 'Shayan Yousuf', role: 'Founder & CEO', img: 'https://res.cloudinary.com/dxqmakjxj/image/upload/v1753194105/Frame_460_1_yea7yh.png' },
+          { name: 'Yasir Bucha', role: 'Strategic Advisor', img: 'https://res.cloudinary.com/dxqmakjxj/image/upload/v1753194105/Group_495_v4ydmr.png' },
+          { name: 'Sarah Malik', role: 'Product Manager', img: 'https://res.cloudinary.com/dxqmakjxj/image/upload/v1753194105/WhatsApp_Image_2025-06-13_at_8.16.01_PM-removebg-preview_brhxdj.png' },
+          { name: 'Ayaz Qaiser', role: 'CTO', img: 'https://res.cloudinary.com/dxqmakjxj/image/upload/v1753194105/WhatsApp_Image_2025-06-13_at_4.39.07_AM-removebg-preview_2_adqrwx.png' },
+          { name: 'Irfan Malik', role: 'Founder & CEO', img: 'https://res.cloudinary.com/dxqmakjxj/image/upload/v1753194105/Frame_460_1_yea7yh.png' }
+        ],
+        visibleCount: 3,
+        cardWidth: 320,
+        cardHeight: 400,
+        cardMargin: 18,
+        containerWidth: 1100,
+        current: 0,
+        hovered: null,
+        items: [],
+        timer: null,
+        isMobile: false,
+        init() {
+          this.updateCardLayout();
+          window.addEventListener('resize', () => this.updateCardLayout());
+          this.startAutoSlide();
+        },
+        updateCardLayout() {
+          let ww = window.innerWidth;
+          this.isMobile = ww < 700;
+          if (ww < 700) {
+            this.visibleCount = 1;
+            this.cardWidth = Math.max(ww - 40, 210);
+            this.cardMargin = 0;
+            this.containerWidth = this.cardWidth;
+          } else if (ww < 1200) {
+            this.visibleCount = 2;
+            this.cardWidth = 270;
+            this.cardMargin = 14;
+            this.containerWidth = this.cardWidth * this.visibleCount + this.cardMargin * 2 * this.visibleCount;
+          } else if (ww < 1500) {
+            this.visibleCount = 3;
+            this.cardWidth = 320;
+            this.cardMargin = 18;
+            this.containerWidth = this.cardWidth * this.visibleCount + this.cardMargin * 2 * this.visibleCount;
+          } else {
+            this.visibleCount = 4;
+            this.cardWidth = 300;
+            this.cardMargin = 18;
+            this.containerWidth = this.cardWidth * this.visibleCount + this.cardMargin * 2 * this.visibleCount;
+          }
+          this.cardHeight = Math.floor(this.cardWidth * 1.18);
+          this.items = [
+            ...this.leaders.slice(-this.visibleCount),
+            ...this.leaders,
+            ...this.leaders.slice(0, this.visibleCount)
+          ];
+          if (this.current < this.visibleCount || this.current > this.leaders.length + this.visibleCount - 1) {
+            this.current = this.visibleCount;
+          }
+        },
+        offset() {
+          // Center cards for desktop, just scroll 1 card per view for mobile
+          return this.current * (this.cardWidth + 2*this.cardMargin);
+        },
+        realIndex() {
+          return (this.current - this.visibleCount + this.leaders.length) % this.leaders.length;
+        },
+        startAutoSlide() {
+          if (this.timer) clearInterval(this.timer);
+          this.timer = setInterval(() => { this.next(); }, 8000);
+        },
+        next() { this.current++; },
+        prev() { this.current--; },
+        onTransitionEnd() {
+          if (this.current >= this.leaders.length + this.visibleCount) {
+            this.current = this.visibleCount;
+            this.jump();
+          }
+          if (this.current < this.visibleCount) {
+            this.current = this.leaders.length + this.visibleCount - 1;
+            this.jump();
+          }
+        },
+        jump() {
+          let el = this.$refs.track;
+          el.style.transition = 'none';
+          el.style.transform = `translateX(-${this.offset()}px)`;
+          el.offsetHeight;
+          el.style.transition = '';
+        },
+        goTo(idx) {
+          let target = idx + this.visibleCount;
+          let direction = target > this.current ? 1 : -1;
+          let move = () => {
+            if (this.current === target) return;
+            this.current += direction;
+            setTimeout(move, 210);
+          };
+          move();
+        }
+      }
+    }
+  </script>
+</section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-logo-section">
-        <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752100944/Group_2_otxeg1.png" alt="CHECXO" class="footer-logo">
-        <h1 class="company-name">CHECXO</h1>
-        <p class="company-subtitle">WEB CRAFTERS</p>
-        <p class="footer-description">Crafting the Future of Technology</p>
+<!-- =================== [SECTION: LEADERSHIP/ALPINE JS LIBRARY] =================== -->
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+<!-- =================== [HEAD: intl-tel-input styles/scripts] =================== -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.min.css">
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+
+<!-- =================== [SECTION: CONTACT] =================== -->
+<section class="relative w-full bg-white overflow-hidden" id="contact" style="min-height:340px;">
+  <!-- Background Image: Always fills section, always behind content -->
+  <img
+    src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099390/Group_z4dpuu.png"
+    alt="Decorative 3D Design"
+    class="absolute left-0 top-0 w-full h-full object-cover object-left-bottom z-0 pointer-events-none select-none"
+    draggable="false"
+    style="min-height:340px;"
+  />
+  <div class="flex flex-col md:flex-row max-w-7xl mx-auto w-full relative z-10" style="min-height:340px;">
+    <!-- Left: Text Content -->
+    <div class="flex-1 flex flex-col justify-start pt-6 pb-8 px-4 md:px-10 z-10 relative" style="min-height:340px;">
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-bold mb-3 text-[#23242b] mt-0 z-10 relative">
+        Let’s Build <span class="text-[#00b6a9] font-extrabold">your business</span>
+      </h1>
+      <p class="text-base md:text-lg mb-2 text-[#23242b] z-10 relative">
+        We’re here to understand your needs and deliver a solution aligned with your goals.
+      </p>
+      <p class="text-base md:text-lg mb-6 text-[#23242b] z-10 relative">
+        Share your details, and our team will contact you to schedule a conversation.
+      </p>
+    </div>
+    <!-- Right: Form -->
+    <div class="relative bg-white border border-gray-200 rounded-xl shadow-lg w-full max-w-md p-6 mx-auto md:mx-0 mt-4 md:mt-10 z-20 pb-10">
+      <h2 class="text-xl font-bold mb-3 text-[#23242b]">
+        Drop Your <span class="text-[#00b6a9] font-extrabold">Project Details</span>
+      </h2>
+      <form class="flex flex-col gap-3" enctype="multipart/form-data" id="contactForm">
+        <input type="text" name="firstName" placeholder="Your first name" class="input" required>
+        <input type="text" name="lastName" placeholder="Your last name" class="input" required>
+        <input type="email" name="email" placeholder="Your business email" class="input" required>
+        <!-- PHONE WITH FLAG -->
+        <div class="phone-row w-full">
+          <input id="phone" type="tel" name="phone" placeholder="e.g. (201) 555-0123" class="input" required>
+        </div>
+        <input type="text" name="companyName" placeholder="Company / Organization name" class="input" required>
+        <input type="text" name="companyDomain" placeholder="Company website or domain" class="input" required>
+        <input type="text" name="budget" placeholder="Estimated project budget (USD)" class="input" required>
+        <input type="text" name="region" id="region" placeholder="Your country or region" class="input" required>
+        <textarea name="projectDetails" placeholder="Describe your project or inquiry" rows="3" class="input resize-y min-h-[40px] max-h-[150px] py-2" required></textarea>
+        <div class="flex flex-row items-center gap-2">
+          <label for="file-upload" class="bg-[#02847E] text-white px-4 py-2 rounded font-semibold cursor-pointer hover:bg-[#00b6a9]">Choose File</label>
+          <input id="file-upload" class="hidden" type="file" name="attachment" onchange="document.getElementById('file-chosen').textContent = this.files[0] ? this.files[0].name : 'No file chosen';">
+          <span id="file-chosen" class="text-sm text-[#23242b]">No file chosen</span>
+        </div>
+        <button type="submit" class="w-full py-3 bg-[#02847E] text-white rounded font-bold hover:bg-[#00b6a9] transition">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- =================== [SECTION: CONTACT FORM CSS] =================== -->
+<style>
+.input {
+  width: 100%;
+  padding: 10px 13px;
+  border: 1px solid #e0e0e0;
+  border-radius: 7px;
+  font-size: 1.04rem;
+  font-family: inherit;
+  background: #fff;
+  color: #23242b;
+  box-sizing: border-box;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.input:focus {
+  border-color: #00b6a9;
+  box-shadow: 0 0 0 2px #00b6a930;
+}
+.phone-row,
+.iti { width: 100%; }
+.iti input,
+#phone { padding-left: 52px !important; min-width: 0 !important; }
+
+.relative.bg-white {
+  padding-bottom: 2.2rem !important;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  section#contact,
+  section#contact .flex-1,
+  section#contact .flex-col { min-height: 340px !important; }
+  section#contact img[alt="Decorative 3D Design"] {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100vw !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    z-index: 0 !important;
+  }
+  section#contact .flex-1,
+  section#contact .flex-col { padding-top: 1.5rem !important; }
+  .relative.bg-white { padding-bottom: 1.8rem !important; }
+}
+</style>
+
+<!-- =================== [SECTION: intl-tel-input FLAG JS] =================== -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Intl-Tel-Input initialization for phone
+  const phoneInput = document.querySelector("#phone");
+  if(phoneInput) {
+    window.intlTelInput(phoneInput, {
+      initialCountry: "us",
+      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js"
+    });
+  }
+  // File input label click
+  const fileLabel = document.querySelector('label[for="file-upload"]');
+  const fileInput = document.getElementById('file-upload');
+  if (fileLabel && fileInput) {
+    fileLabel.onclick = function(e) { e.preventDefault(); fileInput.click(); };
+  }
+  // Optional: Basic phone validation before form submit
+  document.getElementById('contactForm').onsubmit = function(e) {
+    if(phoneInput && phoneInput.value.trim() !== '') {
+      const iti = window.intlTelInputGlobals.getInstance(phoneInput);
+      if(!iti.isValidNumber()) {
+        alert('Please enter a valid phone number.');
+        phoneInput.focus();
+        e.preventDefault();
+        return false;
+      }
+    }
+    // Your AJAX/form submit here if needed...
+    // e.preventDefault(); // <-- remove if using default form post
+    return true;
+  }
+});
+</script>
+
+
+
+
+
+ 
+
+
+
+<section id="testimonials" class="py-20 bg-white">
+  <div class="max-w-2xl mx-auto px-2 flex flex-col items-center">
+    <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-center text-[#24292f]">Hear From Our Clients</h2>
+
+    <div
+      x-data="{
+        testimonials: [
+          { name: 'Fatima Khan', role: 'Project Owner, Dubai', img: 'https://randomuser.me/api/portraits/women/95.jpg', text: 'CHECXO made our SaaS platform 10x faster and more reliable. Their communication was world class.' },
+          { name: 'John Doe', role: 'Founder, UK', img: 'https://randomuser.me/api/portraits/men/11.jpg', text: 'Loved the transparent process. The UI/UX design was truly next-gen. Highly recommended!' },
+          { name: 'Sana Malik', role: 'Product Lead, Lahore', img: 'https://randomuser.me/api/portraits/women/32.jpg', text: 'Our project shipped 3 weeks early! Collaboration felt like family. Would work again.' },
+          { name: 'Daniel Wu', role: 'CTO, Singapore', img: 'https://randomuser.me/api/portraits/men/80.jpg', text: 'Their AI automation saved us countless hours. CHECXO is now our top vendor.' },
+          { name: 'Ayesha Rahman', role: 'Marketing Lead, Karachi', img: 'https://randomuser.me/api/portraits/women/68.jpg', text: 'Results were above expectations. Excellent followup and guidance through every phase.' },
+          { name: 'Lucas Brown', role: 'CEO, Toronto', img: 'https://randomuser.me/api/portraits/men/66.jpg', text: 'Finally, a team that truly gets digital transformation. Every promise delivered.' },
+        ],
+        idx: 0,
+        timer: null,
+        duration: 8000,
+        progress: 0,
+        interval: null,
+        startTimer() {
+          this.clearTimers();
+          this.progress = 0;
+          this.timer = setTimeout(() => { this.next(); }, this.duration);
+          let step = 100 / (this.duration/60);
+          this.interval = setInterval(() => {
+            if(this.progress >= 100) { clearInterval(this.interval); return; }
+            this.progress += step;
+          }, 60);
+        },
+        clearTimers() {
+          clearTimeout(this.timer);
+          clearInterval(this.interval);
+        },
+        next() { 
+          this.idx = (this.idx+1) % this.testimonials.length; 
+        },
+        prev() { 
+          this.idx = (this.idx-1+this.testimonials.length) % this.testimonials.length; 
+        },
+        jump(i) { this.idx = i; this.startTimer(); },
+        init() {
+          this.startTimer();
+          this.$watch('idx', () => { this.startTimer(); });
+        }
+      }"
+      x-init="init()"
+      @mouseenter="clearTimers()"
+      @mouseleave="startTimer()"
+      class="relative w-full max-w-xl"
+    >
+
+      <div class="relative min-h-[310px] flex items-center justify-center overflow-hidden">
+        <template x-for="(item, i) in testimonials" :key="i">
+          <div
+            x-show="i === idx"
+            x-transition:enter="transition duration-500 ease"
+            x-transition:enter-start="opacity-0 translate-y-6 scale-95"
+            x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+            x-transition:leave="transition duration-400"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0 scale-90 translate-y-6"
+            class="absolute w-full"
+          >
+            <div class="rounded-2xl shadow-lg bg-white px-7 py-8 flex flex-col items-center text-center relative"
+                 style="box-shadow: 0 4px 40px 0 rgba(32, 132, 126, 0.14), 0 0px 0 0 #fff;">
+              <img :src="item.img" :alt="item.name"
+                class="w-16 h-16 rounded-full object-cover border-4 border-white shadow absolute -top-8 left-1/2 -translate-x-1/2 bg-white" />
+              <div class="mt-10 text-[#222] font-medium text-base leading-normal" x-text="item.text"></div>
+              <div class="mt-7 text-[#02847E] font-extrabold text-lg" x-text="item.name"></div>
+              <div class="text-[#667] font-medium mb-1 text-sm" x-text="item.role"></div>
+            </div>
+          </div>
+        </template>
       </div>
 
-      <div class="footer-services">
-        <h2 class="footer-heading">Services</h2>
-        <ul class="footer-services-list">
-          <li>Web Development</li>
-          <li>App Development</li>
-          <li>UX/UI Design</li>
-          <li>Generative AI</li>
-          <li>Blockchain</li>
-          <li>Cyber Security</li>
-          <li>Software Solutions</li>
-          <li>Ecommerce</li>
-        </ul>
+      <!-- Progress bar -->
+      <div class="w-full h-1 bg-gray-200 rounded-lg mt-6 mb-2 overflow-hidden relative">
+        <div class="h-full bg-[#02847E] transition-all duration-200" :style="'width: ' + progress + '%;'"></div>
       </div>
 
-      <div class="footer-contact">
-        <h2 class="footer-heading">Let's <span>Connect</span></h2>
-        <div class="footer-contact-info">
-          <a href="tel:+447745813953">+44 7745 813953</a>
-          <a href="mailto:infochecxo@gmail.com">infochecxo@gmail.com</a>
-        </div>
-        <div class="footer-locations">
-          <p>United Kingdom</p>
-          <p>Pakistan</p>
-          <p>Australia</p>
-        </div>
-      </div>
-
-      <div class="footer-social-heading">Connect with us
-        <div class="footer-social">
-          <a href="https://twitter.com/checxo" target="_blank" class="social-icon">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/X_logo.jpg/1200px-X_logo.jpg" alt="Twitter" width="24">
-          </a>
-          <a href="https://linkedin.com/company/checxo" target="_blank" class="social-icon">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/960px-LinkedIn_logo_initials.png" alt="LinkedIn" width="24">
-          </a>
-          <a href="https://instagram.com/checxo" target="_blank" class="social-icon">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1024px-Instagram_icon.png" alt="Instagram" width="24">
-          </a>
-        </div>
-       
+      <!-- Arrows -->
+      <div class="flex justify-between w-full px-2 mt-2 absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none">
+        <button @click="prev(); startTimer()" class="pointer-events-auto bg-[#eef5f7] hover:bg-[#daeef0] transition p-2 rounded-full shadow" aria-label="Prev">
+          <svg class="w-6 h-6 text-[#02847E]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M15 19l-7-7 7-7" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button @click="next(); startTimer()" class="pointer-events-auto bg-[#eef5f7] hover:bg-[#daeef0] transition p-2 rounded-full shadow" aria-label="Next">
+          <svg class="w-6 h-6 text-[#02847E]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M9 5l7 7-7 7" stroke-linecap="round"/>
+          </svg>
+        </button>
       </div>
     </div>
-  </footer>
-  <!-- Spline Viewer Script (UPDATED) -->
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.29/build/spline-viewer.js"></script>
-  <script src="js/main.js" defer></script>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <!-- EmailJS CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script src="js/inline-scripts.js" defer></script>
+  </div>
+</section>
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =================== [SECTION: FOOTER] =================== -->
+<footer class="bg-[#191A2B] text-white py-14 font-inter">
+  <div class="max-w-[1150px] mx-auto flex flex-col md:flex-row justify-between items-start gap-y-10 gap-x-8 px-4 sm:px-6 lg:px-8 w-full">
+    <!-- Logo Column -->
+    <div class="w-full md:w-1/3 flex flex-col items-start mb-4 md:mb-0">
+      <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1753276886/Group_47_jpyvor.png" alt="CHECXO Logo and Tagline" class="max-w-[180px] sm:max-w-[240px] md:max-w-[280px] w-full h-auto mb-3">
+    </div>
+    <!-- Services Column -->
+    <div class="w-full md:w-1/3 mb-4 md:mb-0">
+      <div class="text-[#00b6a9] text-lg font-bold mb-2">Services</div>
+      <ul>
+        <li><a href="#" class="block text-base py-1 transition-colors duration-200 hover:text-[#00b6a9]">Web Development</a></li>
+        <li><a href="#" class="block text-base py-1 transition-colors duration-200 hover:text-[#00b6a9]">App Development</a></li>
+        <li><a href="#" class="block text-base py-1 transition-colors duration-200 hover:text-[#00b6a9]">UI/UX Design</a></li>
+        <li><a href="#" class="block text-base py-1 transition-colors duration-200 hover:text-[#00b6a9]">Generative AI</a></li>
+        <li><a href="#" class="block text-base py-1 transition-colors duration-200 hover:text-[#00b6a9]">Cyber Security</a></li>
+        <li><a href="#" class="block text-base py-1 transition-colors duration-200 hover:text-[#00b6a9]">Blockchain</a></li>
+      </ul>
+    </div>
+    <!-- Contact & Social Column -->
+    <div class="w-full md:w-1/3">
+      <div class="flex items-center gap-5 mb-3">
+        <div class="text-lg font-bold whitespace-nowrap">Let’s <span class="text-[#00b6a9]">Connect</span></div>
+        <div class="flex items-center gap-3">
+          <!-- X -->
+          <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X"
+             class="rounded-md transition-colors duration-200 hover:text-[#00b6a9] p-1">
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none">
+              <path d="M17.53 6.47L6.47 17.53M6.47 6.47L17.53 17.53"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </a>
+          <!-- LinkedIn -->
+          <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"
+             class="rounded-md transition-colors duration-200 hover:text-[#00b6a9] p-1">
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M7 17V13M7 10V10.01M12 17V13C12 11.8954 12.8954 11 14 11C15.1046 11 16 11.8954 16 13V17"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </a>
+          <!-- Instagram -->
+          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"
+             class="rounded-md transition-colors duration-200 hover:text-[#00b6a9] p-1">
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/>
+              <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <!-- Contact details -->
+      <div class="mb-2 text-sm">
+        <div class="flex items-center mb-2">
+          <!-- Phone icon -->
+          <svg class="w-5 h-5 mr-2 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.08 5.18 2 2 0 0 1 5.07 3h3a2 2 0 0 1 2 1.72
+            12.05 12.05 0 0 0 .56 2.22 2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.07 6.07l1.27-1.27a2 2 0 0 1 2.11-.45
+            c.71.26 1.45.49 2.22.56A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <a href="https://wa.me/447745813953" target="_blank" rel="noopener"
+             class="text-white transition-colors duration-200 hover:text-[#00b6a9]">+44 7745 813953</a>
+        </div>
+        <div class="flex items-center mb-2">
+          <!-- Email icon -->
+          <svg class="w-5 h-5 mr-2 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="3" y="5" width="18" height="14" rx="2"/>
+            <polyline points="3 7 12 13 21 7"/>
+          </svg>
+          <a href="mailto:infochecxo@gmail.com" target="_blank" rel="noopener"
+             class="text-white transition-colors duration-200 hover:text-[#00b6a9]">infochecxo@gmail.com</a>
+        </div>
+      </div>
+      <hr class="border-t border-[#cccccc30] mb-2 w-11/12">
+      <ul class="text-white text-base space-y-2">
+        <li class="flex items-center">
+          <svg class="w-5 h-5 mr-2 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 10.5C21 17.5 12 22 12 22S3 17.5 3 10.5a9 9 0 1 1 18 0z"/>
+            <circle cx="12" cy="10.5" r="3.5"/>
+          </svg>
+          United Kingdom
+        </li>
+        <li class="flex items-center">
+          <svg class="w-5 h-5 mr-2 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 10.5C21 17.5 12 22 12 22S3 17.5 3 10.5a9 9 0 1 1 18 0z"/>
+            <circle cx="12" cy="10.5" r="3.5"/>
+          </svg>
+          Pakistan
+        </li>
+        <li class="flex items-center">
+          <svg class="w-5 h-5 mr-2 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 10.5C21 17.5 12 22 12 22S3 17.5 3 10.5a9 9 0 1 1 18 0z"/>
+            <circle cx="12" cy="10.5" r="3.5"/>
+          </svg>
+          Australia
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- =================== [SECTION: FOOTER RESPONSIVE CSS] =================== -->
+<style>
+@media (max-width: 768px) {
+  footer .max-w-\[1150px\] {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  footer .w-full, footer .md\:w-1\/3 {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  footer img {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 70vw !important;
+    width: 100% !important;
+  }
+}
+</style>
+
+
+ 
+
+
+
 </body>
-</html>
 </html>
