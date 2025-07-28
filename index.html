@@ -10,6 +10,9 @@
   <!-- =================== [SECTION: TEL INPUT CSS/JS] =================== -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.min.css">
   <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+  
+  <!-- =================== [SECTION: EMAILJS CDN] =================== -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 
 <body class="bg-gray-50">
@@ -884,16 +887,21 @@ a.servicecard {
         <input type="text" name="budget" placeholder="Estimated project budget (USD)" class="input" required>
         <input type="text" name="region" id="region" placeholder="Your country or region" class="input" required>
         <textarea name="projectDetails" placeholder="Describe your project or inquiry" rows="3" class="input resize-y min-h-[40px] max-h-[150px] py-2" required></textarea>
-        <div class="flex flex-row items-center gap-2">
-          <label for="file-upload" class="bg-[#02847E] text-white px-4 py-2 rounded font-semibold cursor-pointer hover:bg-[#00b6a9]">Choose File</label>
-          <input id="file-upload" class="hidden" type="file" name="attachment" onchange="document.getElementById('file-chosen').textContent = this.files[0] ? this.files[0].name : 'No file chosen';">
-          <span id="file-chosen" class="text-sm text-[#23242b]">No file chosen</span>
-        </div>
-        <button type="submit" class="w-full py-3 bg-[#02847E] text-white rounded font-bold hover:bg-[#00b6a9] transition">Submit</button>
+        <button type="submit" class="w-full py-3 bg-[#02847E] text-white rounded font-bold hover:bg-[#00b6a9] transition-all duration-300">Submit</button>
       </form>
     </div>
   </div>
 </section>
+
+<!-- Success Modal -->
+<div id="form-success-modal" class="form-success-modal" style="display:none;">
+  <div class="form-success-content">
+    <div class="form-success-icon">✔️</div>
+    <h3>Thank you!</h3>
+    <p>Your project details have been received.<br>Our team will contact you soon.</p>
+    <button class="form-success-close">Close</button>
+  </div>
+</div>
 
 <!-- =================== [SECTION: CONTACT FORM CSS] =================== -->
 <style>
@@ -942,6 +950,51 @@ a.servicecard {
   section#contact .flex-col { padding-top: 1.5rem !important; }
   .relative.bg-white { padding-bottom: 1.8rem !important; }
 }
+
+/* Success Modal Styles */
+.form-success-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.form-success-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+  margin: 1rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.form-success-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.form-success-close {
+  background: #02847E;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.form-success-close:hover {
+  background: #00b6a9;
+}
 </style>
 
 <!-- =================== [SECTION: intl-tel-input FLAG JS] =================== -->
@@ -955,26 +1008,86 @@ document.addEventListener('DOMContentLoaded', function() {
       utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js"
     });
   }
-  // File input label click
-  const fileLabel = document.querySelector('label[for="file-upload"]');
-  const fileInput = document.getElementById('file-upload');
-  if (fileLabel && fileInput) {
-    fileLabel.onclick = function(e) { e.preventDefault(); fileInput.click(); };
-  }
-  // Optional: Basic phone validation before form submit
-  document.getElementById('contactForm').onsubmit = function(e) {
-    if(phoneInput && phoneInput.value.trim() !== '') {
-      const iti = window.intlTelInputGlobals.getInstance(phoneInput);
-      if(!iti.isValidNumber()) {
-        alert('Please enter a valid phone number.');
-        phoneInput.focus();
-        e.preventDefault();
-        return false;
+  
+  // EmailJS form handling
+  const form = document.querySelector('#contactForm');
+  const modal = document.getElementById('form-success-modal');
+  const closeBtn = document.querySelector('.form-success-close');
+  
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Check if EmailJS is available
+      if (typeof emailjs === 'undefined') {
+        alert('Email service not available. Please refresh the page and try again.');
+        return;
       }
-    }
-    // Your AJAX/form submit here if needed...
-    // e.preventDefault(); // <-- remove if using default form post
-    return true;
+      
+      // Show loading state
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      
+      // Get form data
+      const formData = new FormData(form);
+      const templateParams = {
+        from_name: formData.get('firstName') + ' ' + formData.get('lastName'),
+        from_email: formData.get('email'),
+        phone: formData.get('phone') || 'Not provided',
+        company: formData.get('companyName'),
+        company_domain: formData.get('companyDomain'),
+        budget: formData.get('budget') || 'Not specified',
+        region: formData.get('region'),
+        message: formData.get('projectDetails') || 'No details provided',
+        current_date: new Date().toLocaleString()
+      };
+      
+      console.log('Template params:', templateParams);
+      
+      // Send email using EmailJS
+      emailjs.send('service_7me2ter', 'template_d4hovjb', templateParams)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          
+          // Reset button
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          
+          // Show success modal
+          if (modal) {
+            modal.style.display = 'block';
+          }
+          
+          // Reset form
+          form.reset();
+        }, function(error) {
+          console.log('FAILED...', error);
+          console.error('EmailJS Error Details:', error);
+          
+          // Reset button
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          
+          // Show detailed error message
+          alert('Email sending failed. Error: ' + error.text + '\n\nPlease check your EmailJS configuration or try again later.');
+        });
+    });
+  }
+  
+  // Close modal functionality
+  if (closeBtn && modal) {
+    closeBtn.addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
+    
+    // Close modal when clicking outside
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
   }
 });
 </script>
@@ -1223,10 +1336,18 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 </style>
 
-
- 
-
-
+<!-- =================== [SECTION: EMAILJS INITIALIZATION] =================== -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize EmailJS
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init("S8v3MYxKpGGB9rdMh");
+    console.log('EmailJS initialized successfully');
+  } else {
+    console.error('EmailJS not loaded');
+  }
+});
+</script>
 
 </body>
 </html>
