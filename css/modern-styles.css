@@ -1,0 +1,292 @@
+/* =================== [MODERN STYLES FOR ALL PAGES] =================== */
+
+/* Base Styles */
+body { 
+  font-family: 'Inter', Arial, sans-serif; 
+}
+
+.brand-color { 
+  color: #02847E !important; 
+}
+
+/* Navbar Styles */
+.navbar-blur { 
+  background: rgba(255,255,255,0.97); 
+  backdrop-filter: blur(16px); 
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.nav-link { 
+  color: #222; 
+  font-weight: 500; 
+  transition: color .2s; 
+}
+
+.nav-link.active, 
+.nav-link:hover { 
+  color: #02847E !important;
+}
+
+.nav-btn-outline { 
+  border: 2px solid #02847E; 
+  color: #02847E; 
+  background: transparent; 
+}
+
+.nav-btn-outline:hover { 
+  background: #02847E; 
+  color: #fff !important; 
+}
+
+.no-scroll { 
+  overflow: hidden !important; 
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 640px) {
+  .mobile-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    display: block;
+  }
+  .mobile-btn:first-child { 
+    margin-top: 1rem; 
+  }
+  .leadership-card { 
+    min-width: 90vw !important; 
+    max-width: 95vw !important; 
+  }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+  .leadership-card { 
+    min-width: 46vw !important; 
+    max-width: 55vw !important; 
+  }
+}
+
+@media (min-width: 901px) {
+  .leadership-card { 
+    min-width: 350px !important; 
+    max-width: 400px !important; 
+  }
+}
+
+/* Hide horizontal scrollbar for navbar on desktop only */
+@media (min-width: 768px) {
+  .navbar-scrollbar::-webkit-scrollbar { 
+    display: none; 
+  }
+  .navbar-scrollbar { 
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+  }
+}
+
+/* Contact Form Input Styles */
+.input {
+  width: 100%;
+  padding: 10px 13px;
+  border: 1px solid #e0e0e0;
+  border-radius: 7px;
+  font-size: 1.04rem;
+  font-family: inherit;
+  background: #fff;
+  color: #23242b;
+  box-sizing: border-box;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.input:focus {
+  border-color: #00b6a9;
+  box-shadow: 0 0 0 2px #00b6a930;
+}
+
+.phone-row,
+.iti { 
+  width: 100%; 
+}
+
+.iti input,
+#phone { 
+  padding-left: 52px !important; 
+  min-width: 0 !important; 
+}
+
+.relative.bg-white {
+  padding-bottom: 2.2rem !important;
+}
+
+/* Success Modal Styles */
+.form-success-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.form-success-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+  margin: 1rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.form-success-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.form-success-close {
+  background: #02847E;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.form-success-close:hover {
+  background: #00b6a9;
+}
+
+/* Footer Responsive Styles */
+@media (max-width: 768px) {
+  footer .max-w-\[1150px\] {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  footer .w-full, 
+  footer .md\:w-1\/3 {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  footer img {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 70vw !important;
+    width: 100% !important;
+  }
+}
+
+/* Morph Button Animation Styles */
+.morph-on-hover .btn-text {
+  transition: all 0.3s cubic-bezier(.4,2,.6,1);
+  display: inline-block;
+}
+
+.morph-on-hover:hover .btn-text {
+  opacity: 0;
+  transform: translateY(-10px) scale(0.9);
+}
+
+.morph-on-hover::after {
+  content: 'Get Started';
+  display: inline-block;
+  position: absolute;
+  left: 0; 
+  right: 0;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  color: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  transition: all 0.3s cubic-bezier(.4,2,.6,1);
+  transform: translateY(10px) scale(0.9);
+}
+
+.morph-on-hover:hover::after {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.morph-on-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Navigation Link Styles */
+.nav-link, 
+.nav-link-mobile {
+  font-weight: 500;
+  color: #222;
+  border-bottom: 2.5px solid transparent;
+  transition: color 0.18s, border 0.18s;
+  background: transparent !important;
+  text-align: center;
+}
+
+.nav-link.active, 
+.nav-link-mobile.active {
+  color: #02847E !important;
+  border-bottom: 2.5px solid #02847E;
+  background: transparent !important;
+}
+
+.nav-btn-outline {
+  font-weight: 600;
+  color: #02847E;
+  border: 2px solid #02847E;
+  background: transparent;
+  transition: background 0.18s, color 0.18s;
+}
+
+.nav-btn-outline:hover, 
+.nav-btn-outline.active {
+  background: #e3f7f6 !important;
+  color: #02847E !important;
+}
+
+/* Mobile Menu Styles */
+@media (min-width: 768px) {
+  #mobile-menu { 
+    display: none !important; 
+  }
+  #mobile-overlay { 
+    display: none !important; 
+  }
+  #nav-toggle { 
+    display: none !important; 
+  }
+}
+
+/* Cyber-specific responsive styles */
+@media (max-width: 768px) {
+  section#contact,
+  section#contact .flex-1,
+  section#contact .flex-col { 
+    min-height: 340px !important; 
+  }
+  section#contact img[alt="Decorative 3D Design"] {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100vw !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    z-index: 0 !important;
+  }
+  section#contact .flex-1,
+  section#contact .flex-col { 
+    padding-top: 1.5rem !important; 
+  }
+} 

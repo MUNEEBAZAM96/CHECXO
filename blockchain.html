@@ -6,44 +6,68 @@
   <title>Blockchain Solutions | CHECXO</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/genai.css">
-  <link rel="stylesheet" href="css/services.css">
-  <link rel="stylesheet" href="css/industries.css">
-  <link rel="stylesheet" href="css/leadership.css">
-  <link rel="stylesheet" href="css/portfolio.css">
-  <link rel="stylesheet" href="css/contact.css">
-  <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/hero.css">
-  <link rel="stylesheet" href="css/navbar.css">
-  <link rel="stylesheet" href="css/brands-bar.css">
-  <link rel="stylesheet" href="css/blockchain-custom.css">
+
+  
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papm6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Swiper.js CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <!-- Tailwind CSS for navigation and footer styles -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- intl-tel-input styles and script for contact form -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+  <!-- Modern Styles CSS -->
+  <link rel="stylesheet" href="css/modern-styles.css">
 </head>
 <body>
-  <!-- ================= NAVBAR ================= -->
-  <nav class="navbar">
-    <div class="navbar-container">
-      <!-- Logo -->
-      <a href="/" class="navbar-logo">
-        <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752101080/image_25_wdnh4o.png" alt="CHECXO">
-      </a>
-      <!-- Navigation Links -->
-      <ul class="navbar-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#industries">Industries</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#leadership">Leadership</a></li>
-      </ul>
-      <!-- Call-to-Action Buttons -->
-      <div class="navbar-actions">
-        <a href="#contact" class="btn-lets-connect morph-on-hover"><span class="btn-text">Lets Connect</span></a>
-      </div>
+  <!-- =================== [SECTION: MOBILE MODAL OVERLAY] =================== -->
+  <div id="mobile-overlay"
+    class="hidden fixed inset-0 z-30 md:hidden"
+    style="background: #fff; opacity: 1; pointer-events: auto;">
+  </div>
+
+  <!-- =================== [SECTION: NAVIGATION BAR] =================== -->
+  <nav class="fixed left-0 right-0 top-1 z-50 bg-white/80 backdrop-blur shadow-xl rounded-full w-full px-8 py-1 flex items-center justify-between max-w-[99vw] mx-auto" style="min-height: 64px;">
+    <!-- Logo -->
+    <a href="#hero" class="flex items-center min-w-[140px] -my-2 mr-2">
+      <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1753196260/Logo-removebg-preview_oti56g.png"
+           alt="CHECXO Logo"
+           class="w-44 h-16 object-contain -my-2"
+           style="max-height:48px; min-width:120px;" />
+    </a>
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center justify-end w-full gap-2 lg:gap-6">
+      <a href="index.html" class="nav-link px-4 py-2" data-section="hero">Home</a>
+      <a href="#services" class="nav-link px-4 py-2" data-section="services">Services</a>
+      <a href="#industries" class="nav-link px-4 py-2" data-section="industries">Industries</a>
+      <a href="#leadership" class="nav-link px-4 py-2" data-section="leadership">Leadership</a>
+      <a href="#testimonial" class="nav-link px-4 py-2" data-section="testimonial">Testimonial</a>
+      <a href="#contact" class="ml-6 nav-btn-outline px-6 py-2 rounded-full font-semibold text-base border-2 border-[#02847E] text-[#02847E]" data-section="contact">Contact Us</a>
+    </div>
+    <!-- Hamburger Button (mobile only) -->
+    <button id="nav-toggle" class="md:hidden flex items-center z-50 ml-2" aria-label="Open Menu">
+      <svg class="w-9 h-9 text-[#02847E]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <!-- MOBILE MENU -->
+    <div
+      id="mobile-menu"
+      class="hidden fixed inset-0 z-40 pt-24 flex flex-col items-center md:hidden"
+      style="background: #fff !important;">
+      <a href="index.html" class="nav-link-mobile text-lg mb-2" data-section="hero">Home</a>
+      <a href="#services" class="nav-link-mobile text-lg mb-2" data-section="services">Services</a>
+      <a href="#industries" class="nav-link-mobile text-lg mb-2" data-section="industries">Industries</a>
+      <a href="#leadership" class="nav-link-mobile text-lg mb-2" data-section="leadership">Leadership</a>
+      <a href="#testimonial" class="nav-link-mobile text-lg mb-4" data-section="testimonial">Testimonial</a>
+      <a href="#contact" class="nav-btn-outline w-11/12 text-center px-4 py-3 rounded-full font-semibold text-base border-2 border-[#02847E] text-[#02847E] mb-2" data-section="contact">Contact Us</a>
     </div>
   </nav>
+
+  <!-- Modern Scripts JS -->
+  <script src="js/modern-scripts.js"></script>
   <main>
     <!-- Hero Section -->
     <section class="hero hero-genai animate-fade-in" id="hero">
@@ -148,63 +172,63 @@
       <div class="swiper projects-swiper">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <a class="project-card" href="#" target="_blank">
-              <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Blockchain Project 1" class="project-img" />
+            <a class="project-card" href="https://usdbit.io/" target="_blank">
+              <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="USD Bit Blockchain" class="project-img" />
               <div class="project-img-overlay"></div>
               <div class="project-info">
-                <div class="project-title">Crypto Wallet</div>
-                <div class="project-desc">Multi-currency wallet with advanced security and analytics.</div>
+                <div class="project-title">USD Bit Blockchain</div>
+                <div class="project-desc">Cryptocurrency trading platform with real-time market data and secure transaction processing.</div>
               </div>
             </a>
           </div>
           <div class="swiper-slide">
-            <a class="project-card" href="#" target="_blank">
-              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Blockchain Project 2" class="project-img" />
+            <a class="project-card" href="https://github.com/mubarizkyc/vulacana" target="_blank">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Vulacana Blockchain" class="project-img" />
               <div class="project-img-overlay"></div>
               <div class="project-info">
-                <div class="project-title">Smart Contract Platform</div>
-                <div class="project-desc">Automated, transparent smart contract solutions for business.</div>
+                <div class="project-title">Vulacana Blockchain</div>
+                <div class="project-desc">Solana response aggregator for faster blockchain transactions and improved RPC reliability.</div>
               </div>
             </a>
           </div>
           <div class="swiper-slide">
-            <a class="project-card" href="#" target="_blank">
-              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Blockchain Project 3" class="project-img" />
+            <a class="project-card" href="https://live-docs-goto.vercel.app/sign-in" target="_blank">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="AI Docs App" class="project-img" />
               <div class="project-img-overlay"></div>
               <div class="project-info">
-                <div class="project-title">Decentralized Exchange</div>
-                <div class="project-desc">Secure, scalable DEX for global crypto trading.</div>
+                <div class="project-title">AI Docs App</div>
+                <div class="project-desc">Intelligent documentation platform with AI-powered features and real-time collaboration.</div>
               </div>
             </a>
           </div>
           <!-- Added projects -->
           <div class="swiper-slide">
-            <a class="project-card" href="#" target="_blank">
-              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Blockchain Project 4" class="project-img" />
+            <a class="project-card" href="https://brainwave-og.vercel.app/" target="_blank">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Brain Wave AI" class="project-img" />
               <div class="project-img-overlay"></div>
               <div class="project-info">
-                <div class="project-title">NFT Marketplace</div>
-                <div class="project-desc">A platform for minting, buying, and selling NFTs securely.</div>
+                <div class="project-title">Brain Wave AI</div>
+                <div class="project-desc">Advanced AI platform with neural network visualization and machine learning capabilities.</div>
               </div>
             </a>
           </div>
           <div class="swiper-slide">
-            <a class="project-card" href="#" target="_blank">
-              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Blockchain Project 5" class="project-img" />
+            <a class="project-card" href="https://the-care-pulse.vercel.app/" target="_blank">
+              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Medical Care Platform" class="project-img" />
               <div class="project-img-overlay"></div>
               <div class="project-info">
-                <div class="project-title">Supply Chain Blockchain</div>
-                <div class="project-desc">Track and verify supply chain data with blockchain transparency.</div>
+                <div class="project-title">Medical Care Platform</div>
+                <div class="project-desc">Comprehensive healthcare management system with patient appointment scheduling and care coordination.</div>
               </div>
             </a>
           </div>
           <div class="swiper-slide">
-            <a class="project-card" href="#" target="_blank">
-              <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Blockchain Project 6" class="project-img" />
+            <a class="project-card" href="https://iphone-15-clone-nine.vercel.app/" target="_blank">
+              <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="iPhone E-commerce App" class="project-img" />
               <div class="project-img-overlay"></div>
               <div class="project-info">
-                <div class="project-title">DeFi Lending Platform</div>
-                <div class="project-desc">Decentralized finance platform for lending and borrowing crypto assets.</div>
+                <div class="project-title">iPhone E-commerce App</div>
+                <div class="project-desc">Modern mobile shopping experience with Apple-inspired design and seamless checkout process.</div>
               </div>
             </a>
           </div>
@@ -228,80 +252,53 @@
         </div>
       </div>
     </section>
-        <!-- Motivation & Project Inquiry Section -->
-        <section class="contact-section" id="contact">
-          <div class="contact-container" style="display: flex; flex-wrap: wrap; gap: 5rem;">
-            <!-- Left: Intro Text -->
-            <div class="contact-right" style="flex: 1 1 40%; min-width: 320px;">
-              <h1 class="testimonials-title">
-                Let's Build <span class="highlight">Your Business</span>
+        <!-- =================== [SECTION: CONTACT] =================== -->
+        <section class="relative w-full bg-white overflow-hidden" id="contact" style="min-height:340px;">
+          <!-- Background Image: Always fills section, always behind content -->
+          <img
+            src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752099390/Group_z4dpuu.png"
+            alt="Decorative 3D Design"
+            class="absolute left-0 top-0 w-full h-full object-cover object-left-bottom z-0 pointer-events-none select-none"
+            draggable="false"
+            style="min-height:340px;"
+          />
+          <div class="flex flex-col md:flex-row max-w-7xl mx-auto w-full relative z-10" style="min-height:340px;">
+            <!-- Left: Text Content -->
+            <div class="flex-1 flex flex-col justify-start pt-6 pb-8 px-4 md:px-10 z-10 relative" style="min-height:340px;">
+              <h1 class="text-xl sm:text-2xl md:text-3xl font-bold mb-3 text-[#23242b] mt-0 z-10 relative">
+                Let’s Build <span class="text-[#00b6a9] font-extrabold">your business</span>
               </h1>
-              <p class="contact-description">We're here to understand your needs and deliver a solution aligned with your goals.</p>
-              <p class="contact-description">Share your details, and our team will contact you to schedule a conversation.</p>
+              <p class="text-base md:text-lg mb-2 text-[#23242b] z-10 relative">
+                We’re here to understand your needs and deliver a solution aligned with your goals.
+              </p>
+              <p class="text-base md:text-lg mb-6 text-[#23242b] z-10 relative">
+                Share your details, and our team will contact you to schedule a conversation.
+              </p>
             </div>
-            <!-- Right: Form and Heading -->
-            <div class="contact-form-wrapper" style="flex: 1 1 60%; min-width: 370px; max-width: 600px;">
-              <h1 class="testimonials-title">
-                Drop Your <span class="highlight">Project Details</span>
-              </h1>
-              <form class="contact-form">
-                <div class="form-group">
-                  <input type="text" class="form-control" name="firstName" placeholder="First Name" required>
+            <!-- Right: Form -->
+            <div class="relative bg-white border border-gray-200 rounded-xl shadow-lg w-full max-w-md p-6 mx-auto md:mx-0 mt-4 md:mt-10 z-20 pb-10">
+              <h2 class="text-xl font-bold mb-3 text-[#23242b]">
+                Drop Your <span class="text-[#00b6a9] font-extrabold">Project Details</span>
+              </h2>
+              <form class="flex flex-col gap-3" enctype="multipart/form-data" id="contactForm">
+                <input type="text" name="firstName" placeholder="Your first name" class="input" required>
+                <input type="text" name="lastName" placeholder="Your last name" class="input" required>
+                <input type="email" name="email" placeholder="Your business email" class="input" required>
+                <!-- PHONE WITH FLAG -->
+                <div class="phone-row w-full">
+                  <input id="phone" type="tel" name="phone" placeholder="e.g. (201) 555-0123" class="input" required>
                 </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" name="lastName" placeholder="Last Name" required>
-                </div>
-                <div class="form-group">
-                  <input type="email" class="form-control" name="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                  <div class="phone-input">
-                    <select class="country-code" id="phoneCode" name="countryCode">
-                      <option value="+1" data-region="United States">🇺🇸 +1</option>
-                      <option value="+44" data-region="United Kingdom">🇬🇧 +44</option>
-                      <option value="+92" data-region="Pakistan">🇵🇰 +92</option>
-                      <option value="+61" data-region="Australia">🇦🇺 +61</option>
-                      <option value="+971" data-region="UAE">🇦🇪 +971</option>
-                      <option value="+91" data-region="India">🇮🇳 +91</option>
-                      <option value="+86" data-region="China">🇨🇳 +86</option>
-                      <option value="+81" data-region="Japan">🇯🇵 +81</option>
-                    </select>
-                    <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" name="companyName" placeholder="Company Name" required>
-                </div>
-                <div class="form-group">
-                  <div class="budget-input">
-                    <select class="budget-select" id="budgetSelect" name="budget">
-                      <option value="">Select Budget Range</option>
-                      <option value="<1k">Less than 1k</option>
-                      <option value="1k-2k">1k - 2k</option>
-                      <option value="2k-3k">2k - 3k</option>
-                      <option value="3k-4k">3k - 4k</option>
-                      <option value="4k-5k">4k - 5k</option>
-                      <option value="5k-6k">5k - 6k</option>
-                      <option value="6k-7k">6k - 7k</option>
-                      <option value="7k-8k">7k - 8k</option>
-                      <option value="8k-9k">8k - 9k</option>
-                      <option value="9k-10k">9k - 10k</option>
-                      <option value="custom">Enter Custom Amount</option>
-                    </select>
-                    <input type="text" class="form-control budget-custom" name="budgetCustom" placeholder="Enter custom budget (e.g., 15k)" style="display: none;">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="region" name="region" placeholder="Region" required>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="projectDetails" placeholder="Your Query / Project Details" rows="4" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Submit</button>
+                <input type="text" name="companyName" placeholder="Company / Organization name" class="input" required>
+                <input type="text" name="companyDomain" placeholder="Company website or domain" class="input" required>
+                <input type="text" name="budget" placeholder="Estimated project budget (USD)" class="input" required>
+                <input type="text" name="region" id="region" placeholder="Your country or region" class="input" required>
+                <textarea name="projectDetails" placeholder="Describe your project or inquiry" rows="3" class="input resize-y min-h-[40px] max-h-[150px] py-2" required></textarea>
+                <button type="submit" class="w-full py-3 bg-[#02847E] text-white rounded font-bold hover:bg-[#00b6a9] transition-all duration-300">Submit</button>
               </form>
             </div>
           </div>
         </section>
+
         <!-- Success Modal -->
         <div id="form-success-modal" class="form-success-modal" style="display:none;">
           <div class="form-success-content">
@@ -311,101 +308,112 @@
             <button class="form-success-close">Close</button>
           </div>
         </div>
+
+
       </main>
     
-      <!-- Footer -->
-      <footer class="footer">
-        <div class="footer-container">
-          <div class="footer-logo-section">
-            <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1752100944/Group_2_otxeg1.png" alt="CHECXO" class="footer-logo">
-            <h1 class="company-name">CHECXO</h1>
-            <p class="company-subtitle">WEB CRAFTERS</p>
-            <p class="footer-description">Crafting the Future of Technology</p>
+      <!-- =================== [SECTION: FOOTER] =================== -->
+      <footer class="bg-[#191A2B] text-white py-14 font-inter">
+        <div class="max-w-[1150px] mx-auto flex flex-col md:flex-row justify-between items-start gap-y-10 gap-x-8 px-4 sm:px-6 lg:px-8 w-full">
+          <!-- Logo Column -->
+          <div class="w-full md:w-1/3 flex flex-col items-start mb-4 md:mb-0">
+            <img src="https://res.cloudinary.com/dxqmakjxj/image/upload/v1753276886/Group_47_jpyvor.png" alt="CHECXO Logo and Tagline" class="max-w-[180px] sm:max-w-[240px] md:max-w-[280px] w-full h-auto mb-3">
           </div>
-    
-          <div class="footer-services">
-            <h2 class="footer-heading">Services</h2>
-            <ul class="footer-services-list">
-              <li>Web Development</li>
-              <li>App Development</li>
-              <li>UX/UI Design</li>
-              <li>Generative AI</li>
-              <li>Blockchain</li>
-              <li>Cyber Security</li>
-              <li>Software Solutions</li>
-              <li>Ecommerce</li>
+          <!-- Services Column -->
+          <div class="w-full md:w-1/3 mb-4 md:mb-0">
+            <div class="text-[#00b6a9] text-lg font-bold mb-2">Services</div>
+            <ul>
+              <li><a href="#" class="block text-base py-1 transition-colors duration-200 hover:text-[#00b6a9]">Web Development</a></li>
+              <li><a href="#" class="block text-base py-1 transition-colors duration-200 hover:text-[#00b6a9]">App Development</a></li>
+              <li><a href="#" class="block text-base py-1 transition-colors duration-200 hover:text-[#00b6a9]">UI/UX Design</a></li>
+              <li><a href="#" class="block text-base py-1 transition-colors duration-200 hover:text-[#00b6a9]">Generative AI</a></li>
+              <li><a href="#" class="block text-base py-1 transition-colors duration-200 hover:text-[#00b6a9]">Cyber Security</a></li>
+              <li><a href="#" class="block text-base py-1 transition-colors duration-200 hover:text-[#00b6a9]">Blockchain</a></li>
             </ul>
           </div>
-    
-          <div class="footer-contact">
-            <h2 class="footer-heading">Let's <span>Connect</span></h2>
-            <div class="footer-contact-info">
-              <a href="tel:+447745813953">+44 7745 813953</a>
-              <a href="mailto:infochecxo@gmail.com">infochecxo@gmail.com</a>
+          <!-- Contact & Social Column -->
+          <div class="w-full md:w-1/3">
+            <div class="flex items-center gap-5 mb-3">
+              <div class="text-lg font-bold whitespace-nowrap">Let’s <span class="text-[#00b6a9]">Connect</span></div>
+              <div class="flex items-center gap-3">
+                <!-- X -->
+                <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X"
+                   class="rounded-md transition-colors duration-200 hover:text-[#00b6a9] p-1">
+                  <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                    <path d="M17.53 6.47L6.47 17.53M6.47 6.47L17.53 17.53"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </a>
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"
+                   class="rounded-md transition-colors duration-200 hover:text-[#00b6a9] p-1">
+                  <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="2"/>
+                    <path d="M7 17V13M7 10V10.01M12 17V13C12 11.8954 12.8954 11 14 11C15.1046 11 16 11.8954 16 13V17"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </a>
+                <!-- Instagram -->
+                <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"
+                   class="rounded-md transition-colors duration-200 hover:text-[#00b6a9] p-1">
+                  <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+                  </svg>
+                </a>
+              </div>
             </div>
-            <div class="footer-locations">
-              <p>United Kingdom</p>
-              <p>Pakistan</p>
-              <p>Australia</p>
+            <!-- Contact details -->
+            <div class="mb-2 text-sm">
+              <div class="flex items-center mb-2">
+                <!-- Phone icon -->
+                <svg class="w-5 h-5 mr-2 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.08 5.18 2 2 0 0 1 5.07 3h3a2 2 0 0 1 2 1.72
+                  12.05 12.05 0 0 0 .56 2.22 2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.07 6.07l1.27-1.27a2 2 0 0 1 2.11-.45
+                  c.71.26 1.45.49 2.22.56A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                <a href="https://wa.me/447745813953" target="_blank" rel="noopener"
+                   class="text-white transition-colors duration-200 hover:text-[#00b6a9]">+44 7745 813953</a>
+              </div>
+              <div class="flex items-center mb-2">
+                <!-- Email icon -->
+                <svg class="w-5 h-5 mr-2 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <rect x="3" y="5" width="18" height="14" rx="2"/>
+                  <polyline points="3 7 12 13 21 7"/>
+                </svg>
+                <a href="mailto:infochecxo@gmail.com" target="_blank" rel="noopener"
+                   class="text-white transition-colors duration-200 hover:text-[#00b6a9]">infochecxo@gmail.com</a>
+              </div>
             </div>
-          </div>
-    
-          <div class="footer-social-heading">Connect with us
-            <div class="footer-social">
-              <a href="https://twitter.com/checxo" target="_blank" class="social-icon">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/X_logo.jpg/1200px-X_logo.jpg" alt="Twitter" width="24">
-              </a>
-              <a href="https://linkedin.com/company/checxo" target="_blank" class="social-icon">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/960px-LinkedIn_logo_initials.png" alt="LinkedIn" width="24">
-              </a>
-              <a href="https://instagram.com/checxo" target="_blank" class="social-icon">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1024px-Instagram_icon.png" alt="Instagram" width="24">
-              </a>
-            </div>
-           
+            <hr class="border-t border-[#cccccc30] mb-2 w-11/12">
+            <ul class="text-white text-base space-y-2">
+              <li class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M21 10.5C21 17.5 12 22 12 22S3 17.5 3 10.5a9 9 0 1 1 18 0z"/>
+                  <circle cx="12" cy="10.5" r="3.5"/>
+                </svg>
+                United Kingdom
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M21 10.5C21 17.5 12 22 12 22S3 17.5 3 10.5a9 9 0 1 1 18 0z"/>
+                  <circle cx="12" cy="10.5" r="3.5"/>
+                </svg>
+                Pakistan
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M21 10.5C21 17.5 12 22 12 22S3 17.5 3 10.5a9 9 0 1 1 18 0z"/>
+                  <circle cx="12" cy="10.5" r="3.5"/>
+                </svg>
+                Australia
+              </li>
+            </ul>
           </div>
         </div>
       </footer>
-  <script src="js/blockchain-custom.js"></script>
   <!-- Swiper.js -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  <script>
-    // Swiper 3D Coverflow for Projects
-    document.addEventListener('DOMContentLoaded', function() {
-      new Swiper('.projects-swiper', {
-        effect: 'coverflow',
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        loop: true,
-        coverflowEffect: {
-          rotate: 30,
-          stretch: 0,
-          depth: 200,
-          modifier: 1,
-          slideShadows: true,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        breakpoints: {
-          900: { slidesPerView: 2 },
-          1200: { slidesPerView: 3 },
-        }
-      });
-    });
-  </script>
-  <script>
-    // Swiper for Methodology Section
-    document.addEventListener('DOMContentLoaded', function() {
-      // This section is now static, so no Swiper initialization is needed.
-      // The images are displayed directly.
-    });
-  </script>
 </body>
 </html> 

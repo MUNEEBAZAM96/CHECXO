@@ -16,42 +16,13 @@
 
   <!-- =================== [SECTION: CUSTOM CSS] =================== -->
   <link rel="stylesheet" href="css/index-custom.css">
+  <!-- Modern Styles CSS -->
+  <link rel="stylesheet" href="css/modern-styles.css">
+  <!-- Modern Scripts JS -->
+  <script src="js/modern-scripts.js"></script>
 </head>
 
 <body class="bg-gray-50">
-
-  <!-- =================== [SECTION: CORE CSS STYLES] =================== -->
-  <style>
-    body { font-family: 'Inter', Arial, sans-serif; }
-    .brand-color { color: #02847E !important; }
-    .navbar-blur { background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid #e1e4e8;}
-    .nav-link { color: #222; font-weight: 500; transition: color .2s; }
-    .nav-link.active, .nav-link:hover { color: #02847E !important;}
-    .nav-btn-outline { border: 2px solid #02847E; color: #02847E; background: transparent; }
-    .nav-btn-outline:hover { background: #02847E; color: #fff !important; }
-    .no-scroll { overflow: hidden !important; }
-    @media (max-width: 640px) {
-      .mobile-btn {
-        width: 100%;
-        margin-top: 0.5rem;
-        font-size: 1rem;
-        display: block;
-      }
-      .mobile-btn:first-child { margin-top: 1rem; }
-      .leadership-card { min-width: 90vw !important; max-width: 95vw !important; }
-    }
-    @media (min-width: 641px) and (max-width: 900px) {
-      .leadership-card { min-width: 46vw !important; max-width: 55vw !important; }
-    }
-    @media (min-width: 901px) {
-      .leadership-card { min-width: 350px !important; max-width: 400px !important; }
-    }
-    /* Hide horizontal scrollbar for navbar on desktop only */
-    @media (min-width: 768px) {
-      .navbar-scrollbar::-webkit-scrollbar { display: none; }
-      .navbar-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    }
-  </style>
 
   <!-- =================== [SECTION: MOBILE MODAL OVERLAY] =================== -->
   <div id="mobile-overlay"
@@ -70,7 +41,7 @@
     </a>
     <!-- Desktop Nav -->
     <div class="hidden md:flex items-center justify-end w-full gap-2 lg:gap-6">
-      <a href="#hero" class="nav-link px-4 py-2" data-section="hero">Home</a>
+      <a href="index.html" class="nav-link px-4 py-2" data-section="hero">Home</a>
       <a href="#services" class="nav-link px-4 py-2" data-section="services">Services</a>
       <a href="#industries" class="nav-link px-4 py-2" data-section="industries">Industries</a>
       <a href="#leadership" class="nav-link px-4 py-2" data-section="leadership">Leadership</a>
@@ -88,7 +59,7 @@
       id="mobile-menu"
       class="hidden fixed inset-0 z-40 pt-24 flex flex-col items-center md:hidden"
       style="background: #fff !important;">
-      <a href="#hero" class="nav-link-mobile text-lg mb-2" data-section="hero">Home</a>
+      <a href="index.html" class="nav-link-mobile text-lg mb-2" data-section="hero">Home</a>
       <a href="#services" class="nav-link-mobile text-lg mb-2" data-section="services">Services</a>
       <a href="#industries" class="nav-link-mobile text-lg mb-2" data-section="industries">Industries</a>
       <a href="#leadership" class="nav-link-mobile text-lg mb-2" data-section="leadership">Leadership</a>
