@@ -15,43 +15,12 @@
   <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/brands-bar.css">
+  <link rel="stylesheet" href="css/blockchain-custom.css">
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papm6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Swiper.js CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-  <style>
-    .morph-on-hover .btn-text {
-      transition: all 0.3s cubic-bezier(.4,2,.6,1);
-      display: inline-block;
-    }
-    .morph-on-hover:hover .btn-text {
-      opacity: 0;
-      transform: translateY(-10px) scale(0.9);
-    }
-    .morph-on-hover::after {
-      content: 'Get Started';
-      display: inline-block;
-      position: absolute;
-      left: 0; right: 0;
-      text-align: center;
-      opacity: 0;
-      pointer-events: none;
-      color: inherit;
-      font-weight: inherit;
-      font-size: inherit;
-      transition: all 0.3s cubic-bezier(.4,2,.6,1);
-      transform: translateY(10px) scale(0.9);
-    }
-    .morph-on-hover:hover::after {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-    .morph-on-hover {
-      position: relative;
-      overflow: hidden;
-    }
-  </style>
 </head>
 <body>
   <!-- ================= NAVBAR ================= -->
@@ -397,148 +366,7 @@
           </div>
         </div>
       </footer>
-  <script>
-    // Typing animation for hero overlay title
-    document.addEventListener('DOMContentLoaded', function() {
-      const text = 'Secure, Decentralized, and Scalable Blockchain Innovations';
-      const el = document.getElementById('blockchain-typed');
-      let i = 0;
-      function typeChar() {
-        if (i <= text.length) {
-          el.textContent = text.slice(0, i);
-          i++;
-          setTimeout(typeChar, 32);
-        }
-      }
-      if (el) typeChar();
-    });
-  </script>
-  <!-- EmailJS CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script>
-    // Initialize EmailJS with proper error handling
-    document.addEventListener('DOMContentLoaded', function() {
-      // Initialize EmailJS
-      if (typeof emailjs !== 'undefined') {
-        emailjs.init("S8v3MYxKpGGB9rdMh");
-        console.log('EmailJS initialized successfully');
-      } else {
-        console.error('EmailJS not loaded');
-      }
-    });
-
-    // EmailJS form handling with better error handling
-    document.addEventListener('DOMContentLoaded', function() {
-      const form = document.querySelector('.project-form');
-      const modal = document.getElementById('form-success-modal');
-      const closeBtn = document.querySelector('.form-success-close');
-      
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          // Check if EmailJS is available
-          if (typeof emailjs === 'undefined') {
-            alert('Email service not available. Please refresh the page and try again.');
-            return;
-          }
-          
-          // Show loading state
-          const submitBtn = form.querySelector('.submit-btn');
-          const originalText = submitBtn.textContent;
-          submitBtn.textContent = 'Sending...';
-          submitBtn.disabled = true;
-          submitBtn.classList.add('loading');
-          
-          // Get form data
-          const formData = new FormData(form);
-          const templateParams = {
-            from_name: formData.get('firstName') + ' ' + formData.get('lastName'),
-            from_email: formData.get('email'),
-            phone: formData.get('countryCode') + ' ' + formData.get('phone'),
-            company: formData.get('companyName'),
-            budget: formData.get('budget') || 'Not specified',
-            region: formData.get('region'),
-            message: formData.get('projectDetails') || 'No details provided',
-            current_date: new Date().toLocaleString(),
-            attachment_name: 'No file attached',
-            attachment_size: 'N/A'
-          };
-          
-          console.log('Template params:', templateParams);
-          
-          // Send email using EmailJS
-          emailjs.send('service_7me2ter', 'template_d4hovjb', templateParams)
-            .then(function(response) {
-              console.log('SUCCESS!', response.status, response.text);
-              
-              // Reset button
-              submitBtn.textContent = originalText;
-              submitBtn.disabled = false;
-              submitBtn.classList.remove('loading');
-              
-              // Show success modal
-              if (modal) {
-                modal.style.display = 'block';
-              }
-              
-              // Reset form
-              form.reset();
-            }, function(error) {
-              console.log('FAILED...', error);
-              console.error('EmailJS Error Details:', error);
-              
-              // Reset button
-              submitBtn.textContent = originalText;
-              submitBtn.disabled = false;
-              submitBtn.classList.remove('loading');
-              
-              // Show detailed error message
-              alert('Email sending failed. Error: ' + error.text + '\n\nPlease check your EmailJS configuration or try again later.');
-            });
-        });
-      }
-      
-      // Close modal functionality
-      if (closeBtn && modal) {
-        closeBtn.addEventListener('click', function() {
-          modal.style.display = 'none';
-        });
-        
-        // Close modal when clicking outside
-        modal.addEventListener('click', function(e) {
-          if (e.target === modal) {
-            modal.style.display = 'none';
-          }
-        });
-      }
-
-      // Add form validation and visual feedback
-      const inputs = document.querySelectorAll('.project-form input, .project-form textarea, .project-form select');
-      
-      inputs.forEach(input => {
-        // Add focus effects
-        input.addEventListener('focus', function() {
-          this.parentElement.style.transform = 'translateY(-2px)';
-        });
-        
-        input.addEventListener('blur', function() {
-          this.parentElement.style.transform = 'translateY(0)';
-        });
-        
-        // Add real-time validation
-        input.addEventListener('input', function() {
-          if (this.checkValidity()) {
-            this.style.borderColor = '#00bcd4';
-            this.style.boxShadow = '0 0 0 4px rgba(0,188,212,0.15)';
-          } else {
-            this.style.borderColor = '#e53935';
-            this.style.boxShadow = '0 0 0 4px rgba(229,57,53,0.15)';
-          }
-        });
-      });
-    });
-  </script>
+  <script src="js/blockchain-custom.js"></script>
   <!-- Swiper.js -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
   <script>
