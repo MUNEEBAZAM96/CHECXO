@@ -87,7 +87,7 @@
     "side-channel-list": "^1.0.0",
     "side-channel-map": "^1.0.1",
     "side-channel-weakmap": "^1.0.2",
-    "simple-update-notifier": "^1.1.0",
+    "simple-update-notifier": "^2.0.0",
     "statuses": "^2.0.1",
     "supports-color": "^5.5.0",
     "to-regex-range": "^5.0.1",
